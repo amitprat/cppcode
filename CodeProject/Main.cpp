@@ -1,7 +1,7 @@
-#include "FindNodesWithGivenSuminBST.h"
+#include "KClosestElement.h"
 
 int main()
 {
-    FindNodesWithGivenSuminBST::test();
+    KClosestElement::test();
     return 0;
 }

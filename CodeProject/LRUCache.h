@@ -5,15 +5,20 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <sstream> 
+#include <chrono>
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
+
+typedef std::chrono::high_resolution_clock Time;
+typedef std::chrono::microseconds ms;
+typedef std::chrono::duration<float> fsec;
 
 template <class K, class V>
 class LRUCache
@@ -22,10 +27,17 @@ class LRUCache
 private:
     int capacity;
     list<E> dq;
-    unordered_map<int, list<pair<int, int>>::iterator> map;
+    unordered_map<K, list<pair<int, int>>::iterator> map;
+    ofstream out;
+    ifstream in;
+    string file;
 
 public:
-    LRUCache(int capacity) : capacity(capacity) {}
+    LRUCache(int capacity) : capacity(capacity) {
+        this->file = "D:/out.log";
+        this->in.open(file);
+    }
+
     static void test()
     {
         int capacity = 5;
@@ -36,7 +48,7 @@ public:
         lru.put(4, 400);
         lru.put(5, 500);
         lru.put(6, 600);
-        cout << "Value for key 1:" << lru.get(1) << endl;
+        cout << "Value for key 1:" << lru.get(1) << endl << endl;
         cout << "Value for key 2:" << lru.get(2) << endl;
         cout << "Value for key 3:" << lru.get(3) << endl;
         cout << "Value for key 5:" << lru.get(5) << endl;
@@ -60,34 +72,94 @@ public:
     void put(K key, V val)
     {
         cout << "Inserting: " << key << " " << val << endl;
-        if (map.find(key) != map.end()) {
-            cout << "Item already exists in cache" << endl;
-            return;
+        in.clear();
+        auto currentState = readAll();
+        if (currentState.find(to_string(key)) != currentState.end()) {
+            currentState[to_string(key)] = to_string(val);
         }
-
-        if (map.size() == capacity) {
-            map.erase(dq.back().first);
-            dq.pop_back();
+        else {
+            currentState.insert({ to_string(key), to_string(val) });
         }
-
-        dq.push_front({ key, val });
-        map[key] = dq.begin();
+        writeAll(currentState);
+        in.clear();
     }
 
     V get(K key)
     {
         cout << "Getting for key: " << key << endl;
         if (map.find(key) == map.end()) {
-            cout << "Key doesn't exist in cache" << endl;
-            return -1;
+            auto t0 = Time::now();
+            cout << "Key " << key << " doesn't exist in cache, load from backend." << endl;
+            E readValue;
+            bool res = readFromFile(key, readValue);
+            if (!res) {
+                cout << "Key " << key << " doesn't exist data in backend store" << endl;
+                return V();
+            }
+            dq.push_front(readValue);
+            map[key] = dq.begin();
+            auto t1 = Time::now();
+            fsec fs = t1 - t0;
+            ms d = std::chrono::duration_cast<ms>(fs);
+            cout << "Value loaded from backend data in " << d.count() << "ms." << endl;
+            return readValue.second;
         }
+
+        auto t0 = Time::now();
         auto val = map[key]->second;
         dq.erase(map[key]);
         map.erase(key);
 
         dq.push_front({ key, val });
         map[key] = dq.begin();
+        auto t1 = Time::now();
+        fsec fs = t1 - t0;
+        ms d = std::chrono::duration_cast<ms>(fs);
+        cout << "Value loaded from cache data in " << d.count() << "ms." << endl;
 
         return val;
+    }
+
+    bool readFromFile(K key, E& response)
+    {
+        string line;
+        while (in >> line) {
+            pair<string, string> parts = split(line, ':');
+            if (stoi(parts.first) == key) {
+                cout << "Found data in backend for key " << key << endl;
+                response = { stoi(parts.first), stoi(parts.second) };
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    pair<string, string> split(string line, char ch)
+    {
+        size_t pos = line.find(ch);
+        return { line.substr(0, pos), line.substr(pos + 1) };
+    }
+
+    unordered_map<string, string> readAll()
+    {
+        unordered_map<string, string> map;
+        string line;
+        while (in >> line) {
+            pair<string, string> parts = split(line, ':');
+            map.insert(parts);
+        }
+
+        return map;
+    }
+
+    void writeAll(unordered_map<string, string> currentState)
+    {
+        out.open(file, std::ofstream::out | std::ofstream::trunc);
+        for (auto cur : currentState) {
+            out << cur.first << ":" << cur.second << endl;
+        }
+        out.flush();
+        out.close();
     }
 };

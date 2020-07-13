@@ -6,12 +6,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <algorithm> 
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 #include <map>

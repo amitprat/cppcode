@@ -5,7 +5,7 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 using namespace std;
 const int SIZE = 10000;

@@ -4,12 +4,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <unordered_set>
 #include <time.h>
 #include <fstream>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <sstream>
@@ -136,7 +136,7 @@ public:
     }
     bool isInMinheap(int v)
     {
-        return pos.size() > v&& pos[v] < sz;
+        return pos.size() > v && pos[v] < sz;
     }
 
     static void test()
@@ -154,7 +154,6 @@ public:
         }
     }
 };
-
 
 class Dijkstra
 {

@@ -5,7 +5,7 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <algorithm>
 using namespace std;
 

@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <tuple>
-#include <sstream> 
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -41,7 +41,7 @@ public:
             rb.push(1);
             //rb.pop();
         }
-        catch (exception & e) {
+        catch (exception& e) {
             cout << e.what() << endl;
         }
     }
@@ -57,7 +57,7 @@ public:
     {
         if (isFull()) throw new exception("Ring buffer is full!!");
         buffer[tail] = item;
-        tail = (tail+1)%capacity;
+        tail = (tail + 1) % capacity;
         sz++;
     }
 
@@ -68,7 +68,7 @@ public:
             throw new exception("Ring buffer is empty!!");
         }
         T item = buffer[head];
-        head = (head+1)%capacity;
+        head = (head + 1) % capacity;
         sz--;
 
         return item;

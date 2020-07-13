@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <sstream> 
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;

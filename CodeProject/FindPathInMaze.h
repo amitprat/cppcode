@@ -2,12 +2,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <algorithm> 
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 #include <queue>
@@ -84,6 +84,6 @@ public:
     }
 
     bool valid(Point p) {
-        return p.first >= 0 && p.second >= 0 && p.first < N && p.second < N;
+        return p.first >= 0 && p.second >= 0 && p.first < N&& p.second < N;
     }
 };

@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <tuple>
-#include <sstream> 
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -39,10 +39,10 @@ public:
         int res = count(str, index + 1, col, prefix + string(1, str[index] + 'a' - '1'));
         if (index + 1 < str.size()) {
             if (str[index] == '1') {
-                res += count(str, index + 2, col, prefix + string(1, 10 + str[index+1] + 'a' - '1'));
+                res += count(str, index + 2, col, prefix + string(1, 10 + str[index + 1] + 'a' - '1'));
             }
             if (str[index] == '2' && str[index + 1] <= '6') {
-                res += count(str, index + 2, col, prefix + string(1, 20 + str[index+1] + 'a' - '1'));
+                res += count(str, index + 2, col, prefix + string(1, 20 + str[index + 1] + 'a' - '1'));
             }
         }
 

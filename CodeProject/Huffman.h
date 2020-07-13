@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <unordered_set>
 #include <time.h>
 #include <fstream>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <sstream>
@@ -173,7 +173,6 @@ public:
             ss << "}\n";
             cout << ss.str();
         }
-
     }
 
     vector<pair<char, string>> huffman(vector<pair<char, int>> input)

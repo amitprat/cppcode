@@ -4,12 +4,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <unordered_set>
 #include <cassert>
 #include <fstream>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <sstream>
@@ -66,7 +66,6 @@ public:
                     if (weights[i - 1] <= j) table[i][j] = max(table[i - 1][j - weights[i - 1]] + profits[i - 1], table[i - 1][j]);
                     else table[i][j] = table[i - 1][j];
                 }
-
             }
         }
 

@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <algorithm>
 #include <time.h>
 #include <stack>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <unordered_set>
@@ -59,14 +59,14 @@ private:
     int eval(int f, int s, char op)
     {
         switch (op) {
-        case '*':
-            return f * s;
-        case '/':
-            return f / s;
-        case '+':
-            return f + s;
-        case '-':
-            return f - s;
+            case '*':
+                return f * s;
+            case '/':
+                return f / s;
+            case '+':
+                return f + s;
+            case '-':
+                return f - s;
         }
     }
     vector<string> postfix(string expr)
@@ -139,16 +139,16 @@ private:
 
     int prec(char op) {
         switch (op) {
-        case '^':
-            return 0; break;
-        case '*':
-        case '/':
-            return 1; break;
-        case '+':
-        case '-':
-            return 2; break;
-        default:
-            return 3;
+            case '^':
+                return 0; break;
+            case '*':
+            case '/':
+                return 1; break;
+            case '+':
+            case '-':
+                return 2; break;
+            default:
+                return 3;
         }
     }
 };

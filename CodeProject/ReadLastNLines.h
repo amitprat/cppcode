@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <set> 
+#include <set>
 #include <algorithm>
 #include <time.h>
 #include <stack>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <sstream>
 #include <unordered_map>
 #include <fstream>
@@ -26,7 +26,7 @@ public:
         {
             string smallFile = "small.txt";
             ifstream sin;
-            sin.open(smallFile, ifstream::in|ifstream::binary);
+            sin.open(smallFile, ifstream::in | ifstream::binary);
             if (!sin.is_open())
             {
                 cout << "Failed to open file :" << smallFile << endl;
@@ -43,7 +43,7 @@ public:
             vector<ios_base::streampos> positions;
             string largeFile = "large.txt";
             ifstream lin;
-            lin.open(largeFile, ifstream::in|ifstream::binary);
+            lin.open(largeFile, ifstream::in | ifstream::binary);
             if (!lin.is_open())
             {
                 cout << "Failed to open file :" << largeFile << endl;

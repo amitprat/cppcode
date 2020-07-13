@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <algorithm> 
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -54,7 +54,7 @@ public:
 
         if (n / mul < 2) return counts(mul) + count(n % mul);
         else if (n / mul == 2) {
-            return (n - mul * 2) + 2*counts(mul);
+            return (n - mul * 2) + 2 * counts(mul);
         }
         else {
             return mul + (n / mul) * count(mul);

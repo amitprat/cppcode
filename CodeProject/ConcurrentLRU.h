@@ -130,7 +130,6 @@ public:
 
 class ThreadPool
 {
-
 };
 
 class ConcurrentLRUTester
@@ -145,12 +144,10 @@ public:
 
     void put()
     {
-
     }
 
     void get()
     {
-
     }
 };
 

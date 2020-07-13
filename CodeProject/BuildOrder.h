@@ -5,16 +5,15 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <sstream> 
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
-
 
 template <class T>
 class Graph
@@ -23,7 +22,6 @@ public:
     int V;
     unordered_set<T> vertices;
     unordered_map<T, vector<T>> edges;
-
 
     Graph() {}
     Graph(int V) : V(V) {}

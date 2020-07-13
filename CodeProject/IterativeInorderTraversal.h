@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <sstream> 
+#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -107,7 +107,7 @@ public:
             }
 
             if (st1.empty() && st2.empty()) break;
-            if (st1.empty()) { 
+            if (st1.empty()) {
                 node2 = st2.top(); st2.pop();
                 merged
             }

@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <set> 
+#include <set>
 #include <algorithm>
 #include <time.h>
 #include <stack>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <mutex>
 #include <unordered_map>
 #include <unordered_set>
@@ -44,7 +44,7 @@ public:
 
         for (auto p : positions) {
             for (auto i : p.second) {
-                if (amap[p.first] != (i+amap[p.first]) % a.size()) return { -1, "" };
+                if (amap[p.first] != (i + amap[p.first]) % a.size()) return { -1, "" };
             }
         }
 

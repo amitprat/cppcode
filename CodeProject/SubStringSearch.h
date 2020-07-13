@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 
@@ -26,7 +26,6 @@ public:
             {"aaaaaa", "aa"},
             {"abcdefghcde", "cde"}
         };
-
 
         for (auto i : v) {
             cout << "Processing: {" << i.first << ", " << i.second << "} : ";

@@ -4,12 +4,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <unordered_set>
 #include <cassert>
 #include <fstream>
 #include <tuple>
-#include <queue> 
+#include <queue>
 #include <unordered_map>
 #include <string>
 #include <sstream>
@@ -17,8 +17,8 @@
 #include <iterator>
 #include <algorithm>
 using namespace std;
-#define INF 99999 
-#define V 4  
+#define INF 99999
+#define V 4
 
 class FloydWarshal
 {
@@ -33,7 +33,7 @@ public:
                     {INF, INF, INF, 0}
         };
 
-        // Print the solution  
+        // Print the solution
         obj.floydWarshall(graph);
     }
 

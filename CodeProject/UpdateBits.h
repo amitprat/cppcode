@@ -5,12 +5,12 @@
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
+#include <atomic>
 #include <mutex>
 #include <time.h>
 #include <fstream>
 #include <stack>
-#include <algorithm> 
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
@@ -18,7 +18,6 @@ using namespace std;
 class UpdateBits
 {
 private:
-
 
 public:
     static void test()
