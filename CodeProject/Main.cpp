@@ -1,7 +1,7 @@
-#include "KClosestElement.h"
+#include "string/LongestSubstrWithKUniqueChars.h"
 
 int main()
 {
-    KClosestElement::test();
+    LongestSubstrWithKUniqueChars::test();
     return 0;
 }

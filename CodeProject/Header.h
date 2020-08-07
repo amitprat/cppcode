@@ -1,73 +1,53 @@
 #pragma once
-
 #include <time.h>
 #include <stdlib.h>
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <atomic> 
-#include <mutex>
+#include <set>
+#include <algorithm>
 #include <time.h>
-#include <fstream>
+#include <stack>
+#include <string>
 #include <tuple>
-#include <queue> 
+#include <queue>
+#include <sstream>
 #include <unordered_map>
-
+#include <unordered_set>
+#include <cassert>
 using namespace std;
 
-class TimeFormat
-{
+class Interval {
 public:
-    TimeFormat(string start, start end) : start(start), end(end) {}
-    string start;
-    string end;
+    int start;
+    int end;
+    Interval(int start, int end) : start(start), end(end) {}
+    Interval() {}
+    string to_string() {
+        return "{" + std::to_string(start) + "," + std::to_string(end) + "}";
+    }
 };
 
-class EmployeesCount
-{
-public:
-    EmployeesCount() {
-        int sz = 60 * 60 * 24;
-        countHolder = new int[sz];
-        for (int i = 0; i < sz; i++) countHolder[i] = 0;
-    }
+string to_string(vector<Interval>& input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << i.to_string() << ", ";
+    ss << "]";
+    return ss.str();
+}
 
-    void test()
-    {
-        vector<TimeFormat> v = {
-            TimeFormat("09:12:23", "11:14:35"),
-            TimeFormat("10:34:01", "13:23:40")
-            TimeFormat("10:34:31", "11:20:10")
-        };
+string to_string(vector<int>& input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << i << ", ";
+    ss << "]";
+    return ss.str();
+}
 
-        srand(time(null));
-
-        for (int i = 0; i < 10; i++) {
-            int hr = rand() % 24 + 1;
-            int minute = rand() % 60 + 1;
-            int second = rand() % 60 + 1;
-
-            string tm = to_string(hr) + ":" + to_string(minute) + ":" + to_string(second);
-
-            cout << "Employees inside office at : " << tm << " = " << GetEmployeesCount(tm) << endl;
-        }
-    }
-
-    void preProcess()
-    {
-        for (auto i : v) {
-            int num1 = getNum(i.start);
-            int num2 = getNum(i.end);
-
-            countHolder[num1]++;
-            countHolder[num2]--;
-        }
-    }
-
-    int GetEmployeesCount(string tm) {
-        return countHolder[getNum(tm)];
-    }
-
-private:
-    unsigned int* countHolder;
-};
+string to_string(vector<string>& input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << i << ", ";
+    ss << "]";
+    return ss.str();
+}
