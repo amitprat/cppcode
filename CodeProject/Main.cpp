@@ -1,7 +1,8 @@
-#include "string/LongestSubstrWithKUniqueChars.h"
+#include "linkedlist/RemoveDuplicates.h"
 
 int main()
 {
-    LongestSubstrWithKUniqueChars::test();
+    RemoveDuplicates::test();
+
     return 0;
 }

@@ -1,128 +1,172 @@
 #pragma once
+#include "../header.h"
+#include "../misc/UnionFind.h"
 
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <set>
-#include <algorithm>
-#include <time.h>
-#include <stack>
-#include <tuple>
-#include <queue>
-#include <sstream>
-#include <unordered_map>
-#include <fstream>
-using namespace std;
-
-class UnionFind
-{
-private:
-    int* indx;
-    int sz = 0;
-    int* rank;
-
-public:
-    UnionFind(int sz)
-    {
-        indx = new int[sz];
-        rank = new int[sz];
-        this->sz = sz;
-        for (int i = 0; i < sz; i++) {
-            indx[i] = i;
-            rank[i] = 0;
-        }
-    }
-
-    int find(int p)
-    {
-        while (p != indx[p]) p = indx[p];
-
-        return p;
-    }
-
-    void Union(int a, int b)
-    {
-        int aRoot = find(a);
-        int bRoot = find(b);
-        if (aRoot != bRoot)
-        {
-            if (rank[aRoot] < rank[bRoot]) {
-                indx[aRoot] = bRoot;
-            }
-            else if (rank[aRoot] < rank[bRoot]) {
-                indx[aRoot] = bRoot;
-            }
-            else {
-                indx[aRoot] = bRoot;
-                rank[aRoot]++;
-            }
-        }
-    }
-
-    bool Connected(int a, int b)
-    {
-        return find(a) == find(b);
-    }
-
-    string toString(int n)
-    {
-        stringstream ss;
-        for (int i = 0; i < sz; i++) {
-            ss << "{" << indx[i] / n << "," << indx[i] % n << "} ";
-        }
-
-        return ss.str();
-    }
-};
 class CountNumberOfIslands
 {
 public:
     static void test()
     {
-        {
-            CountNumberOfIslands obj;
-            UnionFind* uf;
-            vector<vector<int>> board = {
-                {1, 1, 0, 0, 0},
-                {0, 1, 0, 0, 1},
-                {1, 0, 0, 1, 1},
-                {0, 0, 0, 0, 0},
-                {1, 0, 1, 0, 1}
-            };
-            int n = board.size();
-            int m = board[0].size();
+        CountNumberOfIslands obj;
+        vector<vector<int>> board = {
+            {1, 1, 0, 0, 0},
+            {0, 1, 0, 0, 1},
+            {1, 0, 0, 1, 1},
+            {0, 0, 0, 0, 0},
+            {1, 0, 1, 0, 1}
+        };
+        int n = board.size();
+        int m = board[0].size();
 
-            uf = new UnionFind(n * m);
-            auto res = obj.countIslands(board, uf, n, m);
-            cout << "Islands = " << res << endl;
+        auto res1 = obj.countIslandsUsingDFS(board, n, m);
+        cout << "Islands Uisng DFS = " << res1 << endl;
+
+        auto res2 = obj.countIslandsDisjointSet1(board, n, m);
+        cout << "Islands Uisng UnionFind1 = " << res2 << endl;
+
+        auto res3 = obj.countIslandsDisjointSet2(board, n, m);
+        cout << "Islands Uisng UnionFind2 = " << res3 << endl;
+        assert((res1 == res2) == (res2 == res3));
+    }
+
+    int countIslandsUsingDFS(vector<vector<int>> board, int n, int m) {
+        int marker = -1;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (board[i][j] == 1) {
+                    dfs(board, i, j, marker); count++;
+                }
+            }
         }
-        {
-            cout << "----------------------------" << endl;
-            ifstream in;
-            in.open("input.txt");
-            CountNumberOfIslands obj;
-            UnionFind* uf = new UnionFind(25);
+        // restore
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (board[i][j] == marker) board[i][j] = 1;
+            }
+        }
 
-            auto res = obj.countIslands(in, uf);
-            cout << "Islands = " << res << endl;
+        return count;
+    }
+    int countIslandsDisjointSet1(vector<vector<int>> board, int n, int m)
+    {
+        UnionFind* uf;
+        uf = new UnionFind(n * m);
+        int count = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                int k = i * n + j;
+                if (board[i][j] == 1)
+                {
+                    count++;
+                    if (j - 1 >= 0 && board[i][j - 1] == 1) {
+                        if (uf->Union(k, i * n + j - 1)) count--;
+                    }
+                    if (i - 1 >= 0 && board[i - 1][j] == 1) {
+                        if (uf->Union(k, (i - 1) * n + j)) count--;
+                    }
+                    if (i - 1 >= 0 && j - 1 >= 0 && board[i - 1][j - 1] == 1) {
+                        if (uf->Union(k, (i - 1) * n + j - 1)) count--;
+                    }
+                    if (i - 1 >= 0 && j + 1 < m && board[i - 1][j + 1] == 1) {
+                        if (uf->Union(k, (i - 1) * n + j + 1)) count--;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+    int countIslandsDisjointSet2(vector<vector<int>> board, int n, int m)
+    {
+        UnionFind* uf;
+        uf = new UnionFind(n * m);
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                int k = i * n + j;
+                if (board[i][j] == 1)
+                {
+                    if (j - 1 >= 0 && board[i][j - 1] == 1) uf->Union(k, i * n + j - 1);
+                    if (i - 1 >= 0 && board[i - 1][j] == 1) uf->Union(k, (i - 1) * n + j);
+                    if (i - 1 >= 0 && j - 1 >= 0 && board[i - 1][j - 1] == 1) uf->Union(k, (i - 1) * n + j - 1);
+                    if (i - 1 >= 0 && j + 1 < m && board[i - 1][j + 1] == 1) uf->Union(k, (i - 1) * n + j + 1);
+                }
+            }
+        }
+
+        int islands = 0;
+        int* parent = new int[n * m];
+        memset(parent, 0, n * m * sizeof(int));
+        unordered_map<int, vector<pair<int, int>>> islandsList;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (board[i][j] == 1)
+                {
+                    int x = uf->find(i * n + j);
+                    if (parent[x] == 0) {
+                        islands++;
+                    }
+                    islandsList[x].push_back({ i,j });
+                    parent[x]++;
+                }
+            }
+        }
+
+        // debug
+        //cout << "[";
+        //for (auto i : islandsList) {
+        //    cout << "{";
+        //    for (auto j : i.second) {
+        //        cout << "(" << j.first << ", " << j.second << "), ";
+        //    }
+        //    cout << "}, ";
+        //}
+        //cout << "]";
+
+        return islands;
+    }
+
+private:
+    void testInner() {
+        cout << "----------------------------" << endl;
+        ifstream in;
+        in.open("input.txt");
+        CountNumberOfIslands obj;
+        UnionFind* uf = new UnionFind(25);
+
+        auto res = obj.countIslands(in, uf);
+        cout << "Islands = " << res << endl;
+    }
+
+    void dfs(vector<vector<int>>& board, int i, int j, int marker) {
+        board[i][j] = marker;
+        for (auto& neighbour : getNeighbours(board, i, j)) {
+            dfs(board, neighbour.first, neighbour.second, marker);
         }
     }
 
-    vector<int> split(string str)
-    {
-        vector<int> res;
-        size_t pos = string::npos;
-        int start = 0;
-        do {
-            pos = str.find(' ');
-            string tmp = str.substr(start, pos);
-            res.push_back(stoi(tmp));
-            if (pos != string::npos) str = str.substr(pos + 1);
-        } while (pos != string::npos);
+    vector<pair<int, int>> getNeighbours(vector<vector<int>>& board, int i, int j) {
+        vector<pair<int, int>> result;
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x != y) {
+                    int dx = i + x;
+                    int dy = j + y;
+                    if (isValid(dx, dy, board) && board[dx][dy] == 1) result.push_back({ dx,dy });
+                }
+            }
+        }
+        return result;
+    }
 
-        return res;
+    bool isValid(int x, int y, vector<vector<int>>& board) {
+        return x >= 0 && y >= 0 && x < board.size() && y < board[x].size();
     }
 
     int countIslands(ifstream& in, UnionFind* uf)
@@ -171,53 +215,18 @@ public:
         return islands;
     }
 
-    int countIslands(vector<vector<int>> board, UnionFind* uf, int n, int m)
+    vector<int> split(string str)
     {
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                int k = i * n + j;
-                if (board[i][j] == 1)
-                {
-                    if (j - 1 >= 0 && board[i][j - 1] == 1) uf->Union(k, i * n + j - 1);
-                    if (i - 1 >= 0 && board[i - 1][j] == 1) uf->Union(k, (i - 1) * n + j);
-                    if (i - 1 >= 0 && j - 1 >= 0 && board[i - 1][j - 1] == 1) uf->Union(k, (i - 1) * n + j - 1);
-                    if (i - 1 >= 0 && j + 1 < m && board[i - 1][j + 1] == 1) uf->Union(k, (i - 1) * n + j + 1);
-                }
-            }
-        }
+        vector<int> res;
+        size_t pos = string::npos;
+        int start = 0;
+        do {
+            pos = str.find(' ');
+            string tmp = str.substr(start, pos);
+            res.push_back(stoi(tmp));
+            if (pos != string::npos) str = str.substr(pos + 1);
+        } while (pos != string::npos);
 
-        int islands = 0;
-        int* parent = new int[n * m];
-        memset(parent, 0, n * m * sizeof(int));
-        unordered_map<int, vector<pair<int, int>>> islandsList;
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                if (board[i][j] == 1)
-                {
-                    int x = uf->find(i * n + j);
-                    if (parent[x] == 0) {
-                        islands++;
-                    }
-                    islandsList[x].push_back({ i,j });
-                    parent[x]++;
-                }
-            }
-        }
-
-        cout << "[";
-        for (auto i : islandsList) {
-            cout << "{";
-            for (auto j : i.second) {
-                cout << "(" << j.first << ", " << j.second << "), ";
-            }
-            cout << "}, ";
-        }
-        cout << "]";
-
-        return islands;
+        return res;
     }
 };

@@ -46,7 +46,7 @@ public:
         string res = obj.str(root);
         cout << "List: " << res << endl;
 
-        Node* copy = obj.copyList(root);
+        Node* copy = obj.copyList2(root);
         res = obj.str(copy);
         cout << "Copy: " << res << endl;
     }
@@ -66,27 +66,57 @@ public:
 
     Node* copyList(Node* root)
     {
+        if (root == nullptr) return root;
         unordered_map<Node*, Node*> map;
-        Node* tmp = root;
-        Node* newtmp = new Node(root->val);
-        Node* newRoot = newtmp;
-        map[tmp] = newtmp;
+        Node* cur = root;
+        Node* newRoot = new Node(cur->val);
+        Node* newCur = newRoot;
+        map[cur] = newCur;
+        cur = cur->next;
 
-        while (tmp->next) {
-            newtmp->next = new Node(tmp->next->val);
-            map[tmp->next] = newtmp->next;
+        while (cur) {
+            newCur->next = new Node(cur->val);
+            newCur = newCur->next;
+            map[cur] = newCur;
 
-            tmp = tmp->next;
-            newtmp = newtmp->next;
+            cur = cur->next;
         }
 
-        tmp = root;
-        newtmp = newRoot;
+        cur = root;
+        newCur = newRoot;
+        while (cur) {
+            newCur->random = map[cur->random];
+            cur = cur->next;
+            newCur = newCur->next;
+        }
 
-        while (tmp) {
-            newtmp->random = map[tmp->random];
-            tmp = tmp->next;
-            newtmp = newtmp->next;
+        return newRoot;
+    }
+
+    Node* copyList2(Node* root)
+    {
+        if (root == nullptr) return root;
+        unordered_map<Node*, Node*> map;
+        Node* cur = root;
+        Node* newRoot = new Node(-1);
+        Node* newCur = newRoot;
+
+        while (cur) {
+            newCur->next = new Node(cur->val);
+            newCur = newCur->next;
+            map[cur] = newCur;
+
+            cur = cur->next;
+        }
+
+        cur = root;
+        newCur = newRoot->next;
+        delete newRoot;
+        newRoot = newCur;
+        while (cur) {
+            newCur->random = map[cur->random];
+            cur = cur->next;
+            newCur = newCur->next;
         }
 
         return newRoot;

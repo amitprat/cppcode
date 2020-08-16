@@ -570,17 +570,11 @@
     <ClInclude Include="array\LargestNumber.h">
       <Filter>Header Files\array</Filter>
     </ClInclude>
-    <ClInclude Include="string\LongestCommonPrefix.h">
-      <Filter>Header Files\string</Filter>
-    </ClInclude>
     <ClInclude Include="array\MajorityElement.h">
       <Filter>Header Files\array</Filter>
     </ClInclude>
     <ClInclude Include="array\PivotInSortedRotatedArray.h">
       <Filter>Header Files\array</Filter>
-    </ClInclude>
-    <ClInclude Include="string\MinWindowSubstring.h">
-      <Filter>Header Files\string</Filter>
     </ClInclude>
     <ClInclude Include="array\LongestConsecutiveSeq.h">
       <Filter>Header Files\array</Filter>
@@ -591,14 +585,68 @@
     <ClInclude Include="matrix\MinimumSumInTraingle.h">
       <Filter>Header Files\matrix</Filter>
     </ClInclude>
-    <ClInclude Include="string\LongestSubstrWithKUniqueChars.h">
+    <ClInclude Include="misc\UnionFind.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix\SurroundedRegions.h">
+      <Filter>Header Files\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\WordSearch.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="design/TicTacToe.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Sudoku.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\GFG_SudokuSolver.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\CloneUndirectedGraph.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\Graph2.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Set.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Stack.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\MultipleStack.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist\RemoveDuplicates.h">
+      <Filter>Header Files\linkedlist</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist\LRUCache2.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="string\PermutationOfPalin.h">
       <Filter>Header Files\string</Filter>
     </ClInclude>
-    <ClInclude Include="string\LongestSubstrWithoutRepeatingChars.h">
+    <ClInclude Include="string\CompressString.h">
       <Filter>Header Files\string</Filter>
     </ClInclude>
-    <ClInclude Include="string\SubstringWithConcatenationOfWords.h">
+    <ClInclude Include="string/LongestCommonPrefix.h">
       <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string/LongestSubstrWithKUniqueChars.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string/LongestSubstrWithoutRepeatingChars.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string/SubstringWithConcatenationOfWords.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string/MinWindowSubstring.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="misc/WordSearch2.h">
+      <Filter>Header Files\matrix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
