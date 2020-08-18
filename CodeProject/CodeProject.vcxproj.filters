@@ -648,6 +648,18 @@
     <ClInclude Include="misc/WordSearch2.h">
       <Filter>Header Files\matrix</Filter>
     </ClInclude>
+    <ClInclude Include="linkedlist\LinkedList.h">
+      <Filter>Header Files\linkedlist</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist\SumLinkedList.h">
+      <Filter>Header Files\linkedlist</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist\IsLinkedListPalin.h">
+      <Filter>Header Files\linkedlist</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\LeastCommonAncestor.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

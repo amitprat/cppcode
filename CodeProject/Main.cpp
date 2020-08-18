@@ -1,8 +1,8 @@
-#include "linkedlist/RemoveDuplicates.h"
+#include "tree/LeastCommonAncestor.h"
 
 int main()
 {
-    RemoveDuplicates::test();
+    LeastCommonAncestor::test();
 
     return 0;
 }

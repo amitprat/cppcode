@@ -208,8 +208,11 @@
     <ClInclude Include="graph\CloneUndirectedGraph.h" />
     <ClInclude Include="graph\Graph2.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="linkedlist\IsLinkedListPalin.h" />
+    <ClInclude Include="linkedlist\LinkedList.h" />
     <ClInclude Include="linkedlist\LRUCache2.h" />
     <ClInclude Include="linkedlist\RemoveDuplicates.h" />
+    <ClInclude Include="linkedlist\SumLinkedList.h" />
     <ClInclude Include="matrix\MinimumSumInTraingle.h" />
     <ClInclude Include="matrix\SurroundedRegions.h" />
     <ClInclude Include="misc/InsertIntervalInSortedIntervalSet.h" />
@@ -316,6 +319,7 @@
     <ClInclude Include="tree/ValidTree.h" />
     <ClInclude Include="graph/WordLadder_BiDirectionalBFS.h" />
     <ClInclude Include="misc/WordSearch2.h" />
+    <ClInclude Include="tree/LeastCommonAncestor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
