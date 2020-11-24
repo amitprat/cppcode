@@ -1,21 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <sstream>
-#include <unordered_map>
-#include <unordered_set>
-#include <cassert>
-#include <algorithm>
-#include <functional>
+#include "../header.h"
 using namespace std;
 
 template<class T>

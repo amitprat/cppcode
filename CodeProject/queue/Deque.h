@@ -1,19 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <chrono>
-#include <sstream>
-#include <unordered_map>
-#include <unordered_set>
+#include "../header.h"
 using namespace std;
 
 class IDeque

@@ -1,16 +1,4 @@
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
-#include <queue>
+#include "../header.h"
 using namespace std;
 
 const int N = 5;
@@ -35,6 +23,74 @@ public:
             cout << "{" << i.first << ", " << i.second << "}, ";
         }
         cout << endl;
+
+        pair<Point, int> dist = obj.minDistByTogglingCell(matrix, N, { 0,0 }, { 4,4 });
+        cout << "Point toggled = " << to_string(dist.first) << ", distance = " << dist.second << endl;
+    }
+
+    static string to_string(Point p) {
+        return "{" + std::to_string(p.first) + ", " + std::to_string(p.second) + "}";
+    }
+
+    pair<Point, int> minDistByTogglingCell(bool matrix[][N], int N, Point start, Point end) {
+        vector<vector<pair<int, int>>> distMatrix(N, vector<pair<int, int>>(N, { INT_MAX,INT_MAX }));
+        // distance to all nodes from start point
+        {
+            queue<pair<Point, int>> q;
+            q.push({ start,0 });
+            unordered_set<string> visited;
+            visited.insert(to_string(start));
+
+            while (!q.empty()) {
+                auto u = q.front(); q.pop();
+                for (auto v : getChildren(u.first)) {
+                    distMatrix[v.first][v.second].first = min(distMatrix[v.first][v.second].first, u.second + 1);
+                    if (visited.find(to_string(v)) == visited.end()) {
+                        visited.insert(to_string(v));
+
+                        if (matrix[v.first][v.second] == 1) {
+                            q.push({ v, u.second + 1 });
+                        }
+                    }
+                }
+            }
+        }
+        // distance to all nodes from end point
+        {
+            queue<pair<Point, int>> q;
+            q.push({ end,0 });
+            unordered_set<string> visited;
+            visited.insert(to_string(end));
+
+            while (!q.empty()) {
+                auto u = q.front(); q.pop();
+                for (auto v : getChildren(u.first)) {
+                    distMatrix[v.first][v.second].second = min(distMatrix[v.first][v.second].second, u.second + 1);
+                    if (visited.find(to_string(v)) == visited.end()) {
+                        visited.insert(to_string(v));
+
+                        if (matrix[v.first][v.second] == 1) {
+                            q.push({ v, u.second + 1 });
+                        }
+                    }
+                }
+            }
+        }
+
+        int shortest = INT_MAX;
+        Point shorted;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (distMatrix[i][j].first != INT_MAX &&
+                    distMatrix[i][j].second != INT_MAX &&
+                    distMatrix[i][j].first + distMatrix[i][j].second < shortest) {
+                    shortest = distMatrix[i][j].first + distMatrix[i][j].second;
+                    shorted = { i,j };
+                }
+            }
+        }
+
+        return { shorted,shortest };
     }
 
     struct hash_pair {

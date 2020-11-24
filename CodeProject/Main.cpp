@@ -1,8 +1,8 @@
-#include "tree/LeastCommonAncestor.h"
+#include "queue/PriorityQueue.h"
 
 int main()
 {
-    LeastCommonAncestor::test();
+    PriorityQueueTest::test();
 
     return 0;
 }

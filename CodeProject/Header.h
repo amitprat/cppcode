@@ -32,9 +32,20 @@ public:
     int start;
     int end;
     Interval(int start, int end) : start(start), end(end) {}
-    Interval() {}
     string to_string() {
         return "{" + std::to_string(start) + "," + std::to_string(end) + "}";
+    }
+
+    bool operator < (Interval other) {
+        return end < other.start;
+    }
+
+    bool operator > (Interval other) {
+        return start > other.end;
+    }
+
+    bool overlap(Interval other) {
+        return !(*this < other || *this > other);
     }
 };
 
@@ -105,6 +116,16 @@ void print(vector<vector<int>> v) {
         for (auto& j : i) cout << j << " ";
         cout << endl;
     }
+}
+
+string to_string(vector<double> arr) {
+    stringstream ss;
+    ss << "{";
+    for (auto d : arr) {
+        ss << d << " ";
+    }
+    ss << "}";
+    return ss.str();
 }
 
 class Position {

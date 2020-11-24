@@ -657,13 +657,156 @@
     <ClInclude Include="linkedlist\IsLinkedListPalin.h">
       <Filter>Header Files\linkedlist</Filter>
     </ClInclude>
-    <ClInclude Include="tree\LeastCommonAncestor.h">
+    <ClInclude Include="tree\PrintAllPathsWithGivenSum.h">
       <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\TreeNode.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="bits\GetNextPrevNumWithSameOnes.h">
+      <Filter>Header Files\bits</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Blackjack.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="tree/LeastCommonAncestor.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Logger.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\ParkingLot.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\TinyUrl.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\NewsFeed.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\LogSearch.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\TopTrendingTopic.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\8Queen.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\FinanceManager.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\Rank.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="design\PrintLastKLines.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\CircularQueue.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\CopyTree.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="design\SmartPointer.h">
+      <Filter>Header Files\dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="design\MyMalloc.h">
+      <Filter>Header Files\dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="design\XmlParser.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="design\MasterMind.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\Practice.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="design\XmlParser2.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\GraphPractice.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\GeneratePossibleStringForANumber.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="string\ReverseWordsInAString.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="array\MaxDiffInArray.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="string\ReverseStr.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\MergeIntervals.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="maths\PrintFactors.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="maths\IsNumber.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="design\BoundedTimedPriorityQueue.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\IsBipartite.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\BoundedBuffer.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\FunctionTime.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\test.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\Pubsub.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\MaxValueOfExpr.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\Calculator.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\KthSmallestElement.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\IsInterleaved.h">
+      <Filter>Header Files\recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\DetectCycleInDag.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\gfg_ds.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="stack\DynamicStack.h">
+      <Filter>Header Files\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="stack\MiddleElementAccessInStack.h">
+      <Filter>Header Files\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\LargestRectangle.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="queue\CircularQueue.h">
+      <Filter>Header Files\queue</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="graph\ValidTree.h">
+      <Filter>Header Files\graph</Filter>
+    </None>
   </ItemGroup>
 </Project>
