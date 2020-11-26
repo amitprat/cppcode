@@ -14,23 +14,7 @@ Inorder traversal:
 Iterator traversal:
 */
 #pragma once
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
-#include <queue>
-#include <bitset>
-#include <string>
-#include <sstream>
-#include <future>
+#include "../header.h"
 using namespace std;
 
 template <class T>

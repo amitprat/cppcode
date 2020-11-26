@@ -3,7 +3,7 @@
 
 /*
 * How will you design the news feed feature in Facebook ?
-* 
+*
 * think about database design, what all information you would store in addition to news message
 - news text
 - data & time

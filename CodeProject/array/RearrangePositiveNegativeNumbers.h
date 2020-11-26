@@ -1,19 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <set>
-#include <algorithm>
-#include <time.h>
-#include <stack>
-#include <tuple>
-#include <queue>
-#include <mutex>
-#include <unordered_map>
-#include <unordered_set>
+#include "../header.h"
 using namespace std;
 
 class RearrangePositiveNegativeNumbers

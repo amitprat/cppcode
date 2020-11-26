@@ -59,7 +59,7 @@ public:
                 if (matrix[i][j] == 0) {
                     int curMin = min(table[i - 1][j], table[i][j - 1]);
                     if (i < 3) curMin = min(curMin, table[i + 1][j]);
-                    if (j < 4) curMin = min(curMin, table[i][j+1]);
+                    if (j < 4) curMin = min(curMin, table[i][j + 1]);
                     table[i][j] = curMin == INT_MAX ? INT_MAX : 1 + curMin;
                 }
                 else {

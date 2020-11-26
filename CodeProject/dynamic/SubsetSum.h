@@ -51,7 +51,7 @@ public:
     {
         vector<vector<int>> subsets;
         bool* table = new bool[sum + 1];
-        memset(table, false, (sum + 1)*sizeof(bool));
+        memset(table, false, (sum + 1) * sizeof(bool));
         table[0] = true;
 
         for (int i = 0; i < n; i++) {

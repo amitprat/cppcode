@@ -798,15 +798,25 @@
     <ClInclude Include="queue\CircularQueue.h">
       <Filter>Header Files\queue</Filter>
     </ClInclude>
+    <ClInclude Include="tree\KthSmallestElement.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="array\RadixSort.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\HuffmanEncoding.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="array\MergeKSortedArr.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="graph\ValidTree.h">
-      <Filter>Header Files\graph</Filter>
-    </None>
+    <ClCompile Include="graph\ValidTree.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

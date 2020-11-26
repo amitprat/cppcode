@@ -56,7 +56,7 @@ private:
 class LRUCache2Test {
 public:
     static void test() {
-        LRUCache2<string,string> obj(fileName, cacheSize);
+        LRUCache2<string, string> obj(fileName, cacheSize);
         obj.put("str1", "val1");
         obj.put("str2", "val2");
         obj.put("str3", "val3");

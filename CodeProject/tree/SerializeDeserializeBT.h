@@ -87,7 +87,7 @@ public:
         if (items[index] == marker) return nullptr;
         Node* root = new Node(items[index]);
         root->left = deserialize(items, index + 1, marker);
-        root->right = deserialize(items, index + 1,marker);
+        root->right = deserialize(items, index + 1, marker);
 
         return root;
     }

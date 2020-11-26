@@ -1,12 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <algorithm>
+#include "../header.h"
 using namespace std;
 
 class CoinChange
@@ -44,10 +37,11 @@ public:
     int minCoinChange(vector<int> denom, int length, int amount)
     {
         if (amount <= 0) return 0;
-        if (length == 0) return 99999;
+        if (length == 0) return INT_MAX;
 
-        int including = 1 + minCoinChange(denom, length, amount - denom[length - 1]);
+        int including = minCoinChange(denom, length, amount - denom[length - 1]);
         int excluding = minCoinChange(denom, length - 1, amount);
+        if (including != INT_MAX) including += 1;
 
         return min(including, excluding);
     }
@@ -66,13 +60,15 @@ public:
     int minCoinChangeDP(vector<int> denom, int length, int amount)
     {
         int* table = new int[amount + 1];
-        for (int i = 1; i <= amount; i++) table[i] = 9999;
         table[0] = 0;
 
         for (int am = 1; am <= amount; am++)
         {
+            table[am] = INT_MAX;
             for (int d = 0; d < length; d++) {
-                if (denom[d] <= am) table[am] = min(table[am], 1 + table[am - denom[d]]);
+                int incl = table[am - denom[d]];
+                if (incl != INT_MAX) incl += 1;
+                if (denom[d] <= am) table[am] = min(table[am], incl);
             }
         }
         for (int i = 0; i <= amount; i++) cout << table[i] << " ";

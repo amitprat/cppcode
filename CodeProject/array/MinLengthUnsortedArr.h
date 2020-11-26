@@ -1,10 +1,5 @@
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <stack>
+#pragma once
+#include "../header.h"
 using namespace std;
 
 class IterativeQuickSort

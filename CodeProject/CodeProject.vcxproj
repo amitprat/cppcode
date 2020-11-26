@@ -149,8 +149,10 @@
     <ClInclude Include="array\LongestConsecutiveSeq.h" />
     <ClInclude Include="array\MajorityElement.h" />
     <ClInclude Include="array\MaxDiffInArray.h" />
+    <ClInclude Include="array\MergeKSortedArr.h" />
     <ClInclude Include="array\MinimumSizeSubArraySum.h" />
     <ClInclude Include="array\PivotInSortedRotatedArray.h" />
+    <ClInclude Include="array\RadixSort.h" />
     <ClInclude Include="bits/bitsapplication.h" />
     <ClInclude Include="bits/DivideWithoutDivisionOperator.h" />
     <ClInclude Include="bits/UpdateBits.h" />
@@ -292,6 +294,7 @@
     <ClInclude Include="misc\FunctionTime.h" />
     <ClInclude Include="misc\GeneratePossibleStringForANumber.h" />
     <ClInclude Include="misc\gfg_ds.h" />
+    <ClInclude Include="misc\HuffmanEncoding.h" />
     <ClInclude Include="misc\KthSmallestElement.h" />
     <ClInclude Include="misc\LargestRectangle.h" />
     <ClInclude Include="misc\LargestRectangleInHistogram.h" />
@@ -364,16 +367,15 @@
     <ClInclude Include="misc/WordSearch2.h" />
     <ClInclude Include="tree/LeastCommonAncestor.h" />
     <ClInclude Include="tree\CopyTree.h" />
+    <ClInclude Include="tree\KthSmallestElement.h" />
     <ClInclude Include="tree\PrintAllPathsWithGivenSum.h" />
     <ClInclude Include="tree\Rank.h" />
     <ClInclude Include="tree\TreeNode.h" />
     <ClInclude Include="graph\DetectCycleInDag.h" />
+    <ClCompile Include="graph\ValidTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="graph\ValidTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

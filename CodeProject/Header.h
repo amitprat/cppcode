@@ -118,6 +118,18 @@ void print(vector<vector<int>> v) {
     }
 }
 
+void print(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
+
+void print(vector<int> v) {
+    for (auto i : v) {
+        cout << i << " ";
+    }
+}
+
 string to_string(vector<double> arr) {
     stringstream ss;
     ss << "{";

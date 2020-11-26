@@ -7,14 +7,7 @@ Rearranged array is
 5 -5 2 -2 4 -8 7 1 8 0
 */
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
+#include "../header.h"
 using namespace std;
 
 class ArrangeNumbers

@@ -1,8 +1,8 @@
-#include "queue/PriorityQueue.h"
+#include "array/MergeKSortedArr.h"
 
 int main()
 {
-    PriorityQueueTest::test();
+    MergeKSortedArr::test();
 
     return 0;
 }
