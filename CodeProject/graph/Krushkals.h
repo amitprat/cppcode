@@ -1,20 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <unordered_set>
-#include <time.h>
-#include <fstream>
-#include <tuple>
-#include <queue>
-#include <unordered_map>
-#include <string>
-#include <sstream>
-#include <map>
+#include "../header.h"
 using namespace std;
 
 class Edge

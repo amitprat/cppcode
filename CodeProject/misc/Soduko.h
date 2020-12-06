@@ -1,20 +1,9 @@
 #pragma once
+#include "../header.h"
 
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <tuple>
-#include <queue>
-#include <unordered_map>
-#include <string>
 using namespace std;
 #define N 9
+#define M 3
 #define UNASSIGNED 0
 
 class SodokuSolver
@@ -31,6 +20,11 @@ public:
                    { 1, 3, 0, 0, 0, 0, 2, 5, 0 },
                    { 0, 0, 0, 0, 0, 0, 0, 7, 4 },
                    { 0, 0, 5, 2, 0, 6, 3, 0, 0 } };
+
+        cout << "Original Soduko:=>" << endl;
+        obj.printGrid(grid);
+
+        cout << "Solved Soduko:=>" << endl;
         if (obj.SolveSudoku(grid) == true)
             obj.printGrid(grid);
         else
@@ -40,7 +34,7 @@ public:
     bool SolveSudoku(int grid[N][N]) {
         int row = -1, col = -1;
         if (!findUnassignedLocation(grid, row, col)) return true;
-        for (int num = 1; num <= 9; num++) {
+        for (int num = 1; num <= N; num++) {
             if (isSafe(grid, row, col, num)) {
                 grid[row][col] = num;
                 if (SolveSudoku(grid)) return true;
@@ -55,18 +49,16 @@ private:
     {
         vector<string> str;
         for (int i = 0; i < N; i++) {
-            if (i % 3 == 0) {
-                for (int j = 0; j < N; j++) {
-                    cout << "_ ";
-                }
-                cout << endl;
-            }
+            drawHorizontal(i);
             for (int j = 0; j < N; j++) {
-                if (j % 3 == 0) cout << "|";
-                cout << grid[i][j] << " ";
+                if (j % M == 0) cout << setw(2) << "|";
+                string out = std::to_string(grid[i][j]);
+                out = out == "0" ? " " : out;
+                cout << setw(2) << out << " ";
             }
-            cout << endl;
+            cout << "|" << endl;
         }
+        drawHorizontal(N);
     }
 
     bool findUnassignedLocation(int grid[][N], int& row, int& col) {
@@ -94,10 +86,10 @@ private:
         }
 
         // check subsquare
-        int subrowstart = row - row % 3;
-        int subrowend = subrowstart + 3;
-        int subcolstart = col - col % 3;
-        int subcolend = subcolstart + 3;
+        int subrowstart = row - row % M;
+        int subrowend = subrowstart + M;
+        int subcolstart = col - col % M;
+        int subcolend = subcolstart + M;
 
         for (int i = subrowstart; i < subrowend; i++) {
             for (int j = subcolstart; j < subcolend; j++) {
@@ -106,5 +98,18 @@ private:
         }
 
         return true;
+    }
+
+    void drawHorizontal(int i) {
+        if (i % M == 0) {
+            cout << " ";
+            for (int j = 0; j < N; j++) {
+                cout << "---";
+            }
+            for (int j = 0; j < N - 3; j++) {
+                cout << "-";
+            }
+            cout << endl;
+        }
     }
 };

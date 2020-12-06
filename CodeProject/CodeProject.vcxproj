@@ -227,10 +227,14 @@
     <ClInclude Include="graph/PrimsAdj.h" />
     <ClInclude Include="graph/ShortestCycleInDAG.h" />
     <ClInclude Include="graph/SortedWordsInAlienDictionary.h" />
+    <ClInclude Include="graph\BellmanFord.h" />
     <ClInclude Include="graph\CloneUndirectedGraph.h" />
     <ClInclude Include="graph\Graph2.h" />
     <ClInclude Include="graph\GraphPractice.h" />
+    <ClInclude Include="graph\HamiltonianCycle.h" />
     <ClInclude Include="graph\IsBipartite.h" />
+    <ClInclude Include="graph\PrintAllPathsFromSrcToDst.h" />
+    <ClInclude Include="graph\TravellingSalesmanProblem.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="linkedlist\IsLinkedListPalin.h" />
     <ClInclude Include="linkedlist\LinkedList.h" />
@@ -300,6 +304,7 @@
     <ClInclude Include="misc\LargestRectangleInHistogram.h" />
     <ClInclude Include="misc\MaxValueOfExpr.h" />
     <ClInclude Include="misc\MergeIntervals.h" />
+    <ClInclude Include="misc\NumEmployees.h" />
     <ClInclude Include="misc\Practice.h" />
     <ClInclude Include="misc\Pubsub.h" />
     <ClInclude Include="misc\test.h" />
@@ -353,6 +358,11 @@
     <ClInclude Include="string\ReverseWordsInAString.h" />
     <ClInclude Include="threads/ThreadPrint3SubSeq.h" />
     <ClInclude Include="design/TicTacToe.h" />
+    <ClInclude Include="thread\PrintA1B1A2B2.h" />
+    <ClInclude Include="thread\PrintEvenOdd.h" />
+    <ClInclude Include="thread\PrintOneTwoThree.h" />
+    <ClInclude Include="thread\ReaderWriterProblem.h" />
+    <ClInclude Include="thread\Semaphore.h" />
     <ClInclude Include="tree/BinarySearchTreeIterator.h" />
     <ClInclude Include="tree/FindLongestBranchInBinaryTree.h" />
     <ClInclude Include="tree/FindNodesWithGivenSumInBST.h" />

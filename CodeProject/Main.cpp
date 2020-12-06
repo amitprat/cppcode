@@ -1,8 +1,8 @@
-#include "array/MergeKSortedArr.h"
+#include "thread/ReaderWriterProblem.h"
 
 int main()
 {
-    MergeKSortedArr::test();
+    ReaderWriter::test();
 
     return 0;
 }

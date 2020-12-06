@@ -22,6 +22,7 @@
 #include <random>
 #include <any>
 #include <future>
+#include <shared_mutex>
 using namespace std;
 
 using CBoard = vector<vector<char>>;

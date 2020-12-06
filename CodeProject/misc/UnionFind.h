@@ -36,12 +36,12 @@ public:
             if (rank[aRoot] < rank[bRoot]) {
                 indx[aRoot] = bRoot;
             }
-            else if (rank[aRoot] < rank[bRoot]) {
-                indx[aRoot] = bRoot;
+            else if (rank[bRoot] < rank[aRoot]) {
+                indx[bRoot] = aRoot;
             }
             else {
                 indx[aRoot] = bRoot;
-                rank[aRoot]++;
+                rank[bRoot]++;
             }
             return true;
         }
