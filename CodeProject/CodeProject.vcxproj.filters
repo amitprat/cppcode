@@ -67,6 +67,9 @@
     <Filter Include="Header Files\thread">
       <UniqueIdentifier>{cb96eea8-d16e-4b6b-a2dc-2281231ac099}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\careercup">
+      <UniqueIdentifier>{be06d1ad-f259-4f4c-b724-1f600c346b49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array/IntersectionOfSortedArrInterval.h">
@@ -839,6 +842,186 @@
     </ClInclude>
     <ClInclude Include="thread\ReaderWriterProblem.h">
       <Filter>Header Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\CountPathsWithKLength.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\CheckGrammer.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\SnakeLadder.h">
+      <Filter>Header Files\recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\ConnectRopes.h">
+      <Filter>Header Files\recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\StronglyConnected.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\ChainStrings.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\FindEdgeDisjointPaths.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\BipartiteMatching.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\MeetingScheduler.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\KthMultiple.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\WordDistance.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\BinarySearchTreeToDoublyLinkedList.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindAnagramInString.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaxProfitCarRental.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaxTimeCoveredByIntervals.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\WordTrie.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\HeightOrder.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaximumValueOfArray.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintKWordsFromList.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TopKUrlsInDistributedSystem.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CountIslands.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CountWaysToMakeChangeWithLimitedCount.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RepeatingSubsequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\Trie.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GetRepeatedStringPeriod.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MinimumStepsToReachTargetByKnight.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TopKSellingProductInSlidingWindow.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindMaxRepeatElementInRange.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SumOfNumberFormedBy1234.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindPairInBST.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SortNumbersInRange1To20000.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ProbabilityOfBeingAlive.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\Decode.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PersonOrder.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RearrangeNegativePositiveNumbers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CountTraingles.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\AnagramSubstringSearch.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindMaxSizeOfSubstring.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintMatricDiag.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaxProductSubseq.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ValuesGreaterThanN.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TaskAssignment.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindOrdersInRange.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TelephoneDirectory.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindRepeatingSubsequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FoodDelievery.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindLongestSeqWithEqualCharsAndDigits.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NameMapping.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\WordDistance.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\WordBreak.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestWordMadeOfOthers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ShortestSubseqContainingSubarray.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SquareSurroundedBy1s.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LargestRectangleSum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\DocumentSimilarity.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\Dijkastra.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\BellmanFord.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MinimumSpanningTree.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GraphColoring.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\EmployeeCount.h">
+      <Filter>Header Files\misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

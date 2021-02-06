@@ -15,7 +15,7 @@ public:
         int candidate = -1;
         int count = 0;
         for (int i = 0; i < input.size(); i++) {
-            if (count == 0) { candidate = input[i]; }
+            if (count == 0) candidate = input[i];
             if (input[i] == candidate) count++;
             else count--;
         }
@@ -31,29 +31,19 @@ public:
     }
 
     pair<int, int> majorityElementOneThird(vector<int>& input) {
-        pair<int, int> candidate1 = { -1,0 };
-        pair<int, int> candidate2 = { -1,0 };
+        pair<int, int> candidate1 = { -1,1 };
+        pair<int, int> candidate2 = { -1,1 };
         for (int i = 0; i < input.size(); i++) {
-            if (candidate1.second == 0) {
-                candidate1.first = input[i];
-                candidate1.second = 1;
-            }
-            else if (candidate2.second == 0) {
-                candidate2.first = input[i];
-                candidate2.second = 1;
-            }
-            else if (input[i] == candidate1.first) {
-                candidate1.second++;
-                candidate2.second--;
-            }
-            else if (input[i] == candidate2.first) {
-                candidate2.second++;
-                candidate1.second--;
-            }
+            if (input[i] == candidate1.first) candidate1.second++;
             else {
-                candidate2.second--;
                 candidate1.second--;
+
+                if (input[i] == candidate2.first) candidate2.second++;
+                else candidate2.second--;
             }
+
+            if (candidate1.second == 0) candidate1 = { input[i],1 };
+            if (candidate2.second == 0) candidate2 = { input[i],1 };
         }
 
         if (candidate1.second <= 0 && candidate2.second <= 0) return { -1,-1 };
@@ -68,6 +58,7 @@ public:
         pair<int, int> result = { -1,-1 };
         if (count1 > input.size() / 3) result.first = candidate1.first;
         if (count2 > input.size() / 3) result.second = candidate2.first;
+
         return result;
     }
 };

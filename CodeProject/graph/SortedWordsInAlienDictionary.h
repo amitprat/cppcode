@@ -1,22 +1,5 @@
 #pragma once
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
-#include <queue>
-#include <bitset>
-#include <string>
-#include <functional>
-#include <future>
-#include "AsyncState.h"
+#include "../Header.h"
 using namespace std;
 
 template <class T>
@@ -25,23 +8,19 @@ class Graph
 private:
     using AdjList = unordered_map<T, vector<T>>;
     AdjList adjList;
-
+    unordered_set<T> vertices;
 public:
-    int size() { return adjList.size(); }
-    vector<T> vertices() {
-        vector<T> v;
-        for (auto i : adjList) {
-            v.push_back(i.first);
-        }
-        return v;
-    }
+    int size() { return vertices.size(); }
     void addEdge(T from, T to)
     {
+        vertices.insert(from);
+        vertices.insert(to);
         adjList[from].push_back(to);
     }
 
     vector<T> topoSort()
     {
+        cout << "Doing topological sorting: " << endl;
         vector<T> res;
         unordered_set<T> visited;
         for (auto v : adjList) {
@@ -50,6 +29,7 @@ public:
             }
         }
 
+        cout << "Topological sort result = " << to_string(res) << endl;
         return res;
     }
 
@@ -62,6 +42,29 @@ public:
             }
         }
         res.insert(res.begin(), u);
+    }
+
+    string to_string(vector<T> res) {
+        stringstream ss;
+        ss << "{";
+        for (auto u : res) ss << (char)u << " ";
+        ss << "}";
+        return ss.str();
+    }
+
+    string to_string() {
+        stringstream ss;
+        ss << "{" << endl;
+        for (auto u : adjList) {
+            ss << setw(4) << u.first << ":";
+            for (auto v : u.second) {
+                ss << v << " ";
+            }
+            ss << endl;
+        }
+        ss << "}";
+
+        return ss.str();
     }
 };
 
@@ -89,10 +92,13 @@ public:
             int sl = s.length();
             for (int j = 0; j < min(fl, sl); j++) {
                 if (f[j] == s[j]) continue;
+                cout << "Adding ordering from " << f[j] << "->" << s[j] << endl;
                 g.addEdge(f[j], s[j]);
                 break;
             }
         }
+        cout << "Graph:" << endl;
+        cout << g.to_string() << endl;
 
         return g.topoSort();
     }

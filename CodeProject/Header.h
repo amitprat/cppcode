@@ -23,6 +23,7 @@
 #include <any>
 #include <future>
 #include <shared_mutex>
+#include <map>
 using namespace std;
 
 using CBoard = vector<vector<char>>;
@@ -50,6 +51,20 @@ public:
     }
 };
 
+template <class T>
+class Point {
+public:
+    T x, y;
+    Point(T x = default(T), T y = default(T)) :x(x), y(y) {}
+    Point operator +(const Point& other) {
+        Point result(x + other.x, y + other.y);
+        return result;
+    }
+    string to_string() {
+        return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+    }
+};
+
 string to_string(vector<Interval>& input) {
     stringstream ss;
     ss << "[";
@@ -59,6 +74,15 @@ string to_string(vector<Interval>& input) {
 }
 
 string to_string(vector<int>& input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << i << ", ";
+    ss << "]";
+    return ss.str();
+}
+
+template <typename T>
+string to_string(vector<T> input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i << ", ";
@@ -131,6 +155,23 @@ void print(vector<int> v) {
     }
 }
 
+template <typename T>
+void print(string message, vector<T> v) {
+    cout << message << " = ";
+    for (auto i : v) {
+        cout << i << " ";
+    }
+    cout << endl;
+}
+
+template <class K, class V>
+void print(string message, unordered_map<K, V> map) {
+    cout << message << ":" << endl;
+    for (auto i : map) {
+        cout << i.first << ":" << i.second << endl;
+    }
+    cout << endl;
+}
 string to_string(vector<double> arr) {
     stringstream ss;
     ss << "{";
@@ -139,6 +180,10 @@ string to_string(vector<double> arr) {
     }
     ss << "}";
     return ss.str();
+}
+
+string to_string(pair<int, int> p) {
+    return "(" + std::to_string(p.first) + "," + std::to_string(p.second) + ")";
 }
 
 class Position {

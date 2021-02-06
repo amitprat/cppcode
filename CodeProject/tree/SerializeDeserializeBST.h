@@ -1,21 +1,5 @@
 #pragma once
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
-#include <queue>
-#include <bitset>
-#include <string>
-#include <functional>
-#include <future>
+#include "../Header.h"
 using namespace std;
 
 class BST
@@ -60,19 +44,16 @@ public:
 
     string serialize(Node* node)
     {
-        if (node) {
-            string result;
-            result += ::to_string(node->val);
-            string left = serialize(node->left);
-            if (!left.empty()) result += " " + left;
+        if (!node) return "";
+        string result;
+        result += std::to_string(node->val);
+        string left = serialize(node->left);
+        if (!left.empty()) result += " " + left;
 
-            string right = serialize(node->right);
-            if (!right.empty()) result += " " + right;
+        string right = serialize(node->right);
+        if (!right.empty()) result += " " + right;
 
-            return result;
-        }
-
-        return "";
+        return result;
     }
 
     Node* deserialize(string serilized)

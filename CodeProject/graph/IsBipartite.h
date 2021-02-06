@@ -79,9 +79,8 @@ namespace Test {
                 if (colorSet[v] == -1) {
                     res &= isBipartite(g, v, colorSet, 1 - color);
                 }
-                else if (colorSet[v] != 1 - color) {
-                    res = false;
-                }
+
+                if (colorSet[v] == color)  res = false;
                 if (!res) return res;
             }
             return true;

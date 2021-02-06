@@ -1,21 +1,5 @@
 #pragma once
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
-#include <queue>
-#include <bitset>
-#include <string>
-#include <functional>
-#include <future>
+#include "../Header.h"
 using namespace std;
 
 class BT
@@ -60,34 +44,29 @@ public:
 
     string serialize(Node* node)
     {
-        if (node) {
-            string result;
-            result += ::to_string(node->val);
-            string left = serialize(node->left);
-            if (!left.empty()) result += " " + left;
+        if (!node) return "#";
+        string result;
+        result += std::to_string(node->val);
+        result += " " + serialize(node->left);
+        result += " " + serialize(node->right);
 
-            string right = serialize(node->right);
-            if (!right.empty()) result += " " + right;
-
-            return result;
-        }
-
-        return "#";
+        return result;
     }
 
     Node* deserialize(string serilized)
     {
         vector<int> items = split(serilized);
-        return deserialize(items, 0, INT_MIN);
+        int index = 0;
+        return deserialize(items, index, INT_MIN);
     }
 
-    Node* deserialize(vector<int> items, int index, int marker)
+    Node* deserialize(vector<int> items, int& index, int marker)
     {
         if (index >= items.size()) return nullptr;
         if (items[index] == marker) return nullptr;
-        Node* root = new Node(items[index]);
-        root->left = deserialize(items, index + 1, marker);
-        root->right = deserialize(items, index + 1, marker);
+        Node* root = new Node(items[index++]);
+        root->left = deserialize(items, index, marker);
+        root->right = deserialize(items, index, marker);
 
         return root;
     }

@@ -1,8 +1,7 @@
-#include "thread/ReaderWriterProblem.h"
+#include "graph/IsBipartite.h"
 
 int main()
 {
-    ReaderWriter::test();
-
+    Test::IsBipartite::test();
     return 0;
 }

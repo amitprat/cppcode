@@ -113,6 +113,43 @@ public:
             inorder(root->right, ss);
         }
     }
+
+
+    string to_string() {
+        if (!root) return "";
+        stringstream ss;
+        queue<pair<Node*, int>> q;
+        q.push({ root,20 });
+
+        while (!q.empty()) {
+            int sz = q.size();
+            stringstream cur;
+            stringstream next;
+            int prev = 0;
+            int nextprev = 0;
+            while (sz--) {
+                auto item = q.front(); q.pop();
+                cur << setw(item.second - prev) << item.first->val;
+                if (item.first->left) {
+                    next << setw(item.second - nextprev - 2) << "/";
+                    nextprev = item.second - nextprev - 2;
+                    q.push({ item.first->left,item.second - 4 });
+                }
+                if (item.first->right) {
+                    next << setw(item.second - nextprev + 2) << "\\";
+                    nextprev = item.second - nextprev + 2;
+                    q.push({ item.first->right,item.second + 4 });
+                }
+                prev = item.second;
+            }
+            cur << endl;
+            next << endl;
+            ss << cur.str();
+            ss << next.str();
+        }
+
+        return ss.str();
+    }
 };
 
 template <typename T>
@@ -143,6 +180,7 @@ public:
             bst.add(4);
             bst.add(2);
 
+            cout << bst.to_string() << endl;
             cout << "Inorder traversal:  " << bst.inorder() << endl;
 
             cout << "Iterator traversal: ";
