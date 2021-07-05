@@ -1,7 +1,7 @@
-#include "graph/IsBipartite.h"
+#include "gkg/SumOfFourNumbers.h"
 
 int main()
 {
-    Test::IsBipartite::test();
+    SumOfFourNumbers::test();
     return 0;
 }

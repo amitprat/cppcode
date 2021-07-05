@@ -24,6 +24,8 @@
 #include <future>
 #include <shared_mutex>
 #include <map>
+#include <exception>
+#include "prettyprint.h"
 using namespace std;
 
 using CBoard = vector<vector<char>>;
@@ -63,12 +65,17 @@ public:
     string to_string() {
         return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
     }
+
+    bool operator ==(const Point& other) {
+        return x == other.x && y == other.y;
+    }
 };
 
 string to_string(vector<Interval>& input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i.to_string() << ", ";
+    ss.seekp(-2, std::ios_base::end);
     ss << "]";
     return ss.str();
 }
@@ -77,6 +84,7 @@ string to_string(vector<int>& input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i << ", ";
+    ss.seekp(-2, std::ios_base::end);
     ss << "]";
     return ss.str();
 }
@@ -85,7 +93,27 @@ template <typename T>
 string to_string(vector<T> input) {
     stringstream ss;
     ss << "[";
-    for (auto& i : input) ss << i << ", ";
+    for (auto& i : input) ss << i.to_string() << ", ";
+    ss.seekp(-2, std::ios_base::end);
+    ss << "]";
+    return ss.str();
+}
+
+template <typename T>
+string to_string(vector<vector<T>> input) {
+    stringstream ss;
+    ss << "[";
+    ss << endl;
+    for (int i = 0; i < input.size(); i++) {
+        ss << setw(4);
+        ss << "{";
+        for (auto& j : input[i]) {
+            ss << j << ", ";
+        }
+        ss.seekp(-2, std::ios_base::end);
+        ss << "}";
+        ss << endl;
+    }
     ss << "]";
     return ss.str();
 }
@@ -94,6 +122,7 @@ string to_string(vector<string>& input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i << ", ";
+    if (!input.empty()) ss.seekp(-2, std::ios_base::end);
     ss << "]";
     return ss.str();
 }
@@ -141,18 +170,21 @@ void print(vector<vector<int>> v) {
         for (auto& j : i) cout << j << " ";
         cout << endl;
     }
+    cout << endl;
 }
 
 void print(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
+    cout << endl;
 }
 
 void print(vector<int> v) {
     for (auto i : v) {
         cout << i << " ";
     }
+    cout << endl;
 }
 
 template <typename T>
@@ -186,6 +218,118 @@ string to_string(pair<int, int> p) {
     return "(" + std::to_string(p.first) + "," + std::to_string(p.second) + ")";
 }
 
+template <class T>
+class BinaryTreeNode {
+public:
+    T val;
+    BinaryTreeNode* left, * right;
+    BinaryTreeNode(T val) :val(val), left(nullptr), right(nullptr) {}
+    string to_string() {
+        return std::to_string(val);
+    }
+};
+using ITNode = BinaryTreeNode<int>;
+
+template <typename T>
+string to_string(BinaryTreeNode<T>* root) {
+    if (!root) return "";
+    stringstream ss;
+    queue<pair<BinaryTreeNode<T>*, int>> q;
+    int offset = 20;
+    q.push({ root, offset });
+
+    while (!q.empty()) {
+        int sz = q.size();
+        stringstream cur;
+        stringstream next;
+        int prev = 0;
+        int nextprev = 0;
+        while (sz--) {
+            auto item = q.front(); q.pop();
+            cur << setw(item.second - prev) << item.first->val;
+            if (item.first->left) {
+                next << setw(item.second - nextprev - 2) << "/";
+                nextprev = item.second - nextprev - 2;
+                q.push({ item.first->left,item.second - 4 });
+            }
+            if (item.first->right) {
+                next << setw(item.second - nextprev + 2) << "\\";
+                nextprev = item.second - nextprev + 2;
+                q.push({ item.first->right,item.second + 4 });
+            }
+            prev = item.second;
+        }
+        cur << endl;
+        next << endl;
+        ss << cur.str();
+        ss << next.str();
+    }
+
+    return ss.str();
+}
+
+template <class T>
+class LinkedListNode {
+public:
+    T val;
+    LinkedListNode* next;
+    LinkedListNode(T val) :val(val), next(nullptr) {}
+    string to_string() {
+        return std::to_string(val);
+    }
+};
+
+template <class T>
+LinkedListNode<T>* Create(vector<T> v) {
+    LinkedListNode<T>* cur = nullptr, * tmp = nullptr;
+    for (auto i : v) {
+        if (!cur) cur = tmp = new LinkedListNode<T>(i);
+        else {
+            tmp->next = new LinkedListNode<T>(i);
+            tmp = tmp->next;
+        }
+    }
+    return cur;
+}
+
+template <typename T>
+int length(LinkedListNode<T>* node) {
+    int len = 0;
+    while (node) {
+        len++;
+        node = node->next;
+    }
+
+    return len;
+}
+
+template <typename T>
+string to_string(LinkedListNode<T>* node) {
+    stringstream ss;
+    if (node == nullptr) return ss.str();
+    while (node) {
+        ss << node->to_string() << " ";
+        node = node->next;
+    }
+
+    ss << endl;
+    return ss.str();
+}
+
+template <typename T>
+LinkedListNode<T>* Construct(vector<T> arr) {
+    LinkedListNode<T>* head = nullptr;
+    LinkedListNode<T>* l = head;
+    for (auto i : arr) {
+        if (!head) head = l = new LinkedListNode<T>(i);
+        else {
+            l->next = new LinkedListNode<T>(i);
+            l = l->next;
+        }
+    }
+    return head;
+}
+
 class Position {
 public:
     int x, y;
@@ -203,3 +347,60 @@ public:
         return ss.str();
     }
 };
+
+string to_bin(int num) {
+    string str;
+    while (num) {
+        if (num & 1) str += "1";
+        else str += "0";
+        num >>= 1;
+    }
+    str.append(8 - str.length(), '0');
+    std::reverse(str.begin(), str.end());
+    return str;
+}
+
+template <typename T>
+string to_string(pair<T, T> p) {
+    return "{" + std::to_string(p.first) + ", " + std::to_string(p.second) + "}";
+}
+
+int sum(vector<int> a) {
+    auto res = 0;
+    for (auto i : a) res += i;
+    return res;
+}
+
+int max(vector<int> a) {
+    if (a.empty()) throw exception("empty");
+    int mx = a[0];
+    for (int i = 1; i < a.size(); i++) mx = max(mx, a[i]);
+    return mx;
+}
+
+//template <class T>
+//class Set {
+//    static inline auto comparator = [](const T& f, const T& s) {
+//        return f <= s;
+//    };
+//    unordered_set<T, decltype(comparator)> s;
+//public:
+//    Set() {}
+//    Set(vector<T> v) {
+//        for (auto i : v) add(i);
+//    }
+//    Set(std::function<bool(const T& f, const T& s)> comparator) :comparator(comparator) {}
+//    bool add(T& item) {
+//        if (contains(item)) return false;
+//        s.insert(item);
+//        return true;
+//    }
+//    bool contains(T& item) {
+//        return s.find(item) != s.end();
+//    }
+//    bool remove(T& item) {
+//        if(!contains(item)) return false;
+//        s.erase(item);
+//        return true;
+//    }
+//};

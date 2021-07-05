@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "xlocale": "c",
+        "xstring": "c",
+        "xhash": "c",
+        "stack": "c",
+        "string": "c",
+        "vector": "c"
+    }
+}

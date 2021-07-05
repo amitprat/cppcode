@@ -110,57 +110,138 @@ namespace cq {
             start = end = 0;
         }
         static void test() {
-            ArrayCircularQueue<string> cq(10);
-            auto pushd = [&cq](auto item) mutable {
-                cout << "Push Item: " << item << endl;
-                cq.push(item);
+            ArrayCircularQueue<string> cq(100);
+            auto pushBackd = [&cq](auto item) mutable {
+                try {
+                    cout << "Push Back Item: " << item << endl;
+                    cq.pushBack(item);
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
             };
-            auto popd = [&cq]() mutable {
-                cout << "Pop Item: " << cq.pop() << endl;
+            auto popBackd = [&cq]() mutable {
+                try {
+                    cout << "Pop Back Item: " << cq.popBack() << endl;
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
             };
-            auto print = [&cq]() mutable {
-                cout << "Queue State: ";
-                while (!cq.empty()) cout << cq.pop() << " ";
-                cout << endl;
+            auto pushFrontd = [&cq](auto item) mutable {
+                try {
+                    cout << "Push Front Item: " << item << endl;
+                    cq.pushFront(item);
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
+            };
+            auto popFrontd = [&cq]() mutable {
+                try {
+                    cout << "Pop Front Item: " << cq.popFront() << endl;
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
+            };
+            auto printBack = [&cq]() mutable {
+                try {
+                    cout << "Queue State: ";
+                    while (!cq.empty()) cout << cq.popBack() << " ";
+                    cout << endl;
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
+            };
+            auto printFwd = [&cq]() mutable {
+                try {
+                    cout << "Queue State: ";
+                    while (!cq.empty()) cout << cq.popFront() << " ";
+                    cout << endl;
+                }
+                catch (exception e) {
+                    cout << e.what() << endl;
+                }
             };
 
-            try {
-                pushd("1");
-                pushd("2");
-                pushd("3");
-                pushd("4");
-                pushd("5");
-                pushd("6");
-                popd();
-                pushd("7");
-                pushd("8");
-                pushd("9");
-                pushd("10");
-                popd();
-                pushd("11");
-                popd();
-                popd();
-                pushd("12");
-                pushd("13");
-                popd();
-                pushd("14");
-                popd();
-                popd();
-                popd();
-                pushd("15");
-                pushd("16");
-                print();
-            }
-            catch (exception& e) {
-                cout << e.what() << endl;
-            }
+            popBackd();
+            popBackd();
+            popBackd();
+            popBackd();
+            popBackd();
+
+            pushBackd("1");
+            pushBackd("2");
+            pushBackd("3");
+            pushBackd("4");
+            pushBackd("5");
+            pushBackd("6");
+            popBackd();
+            pushBackd("7");
+            pushBackd("8");
+            pushBackd("9");
+            pushBackd("10");
+
+            popBackd();
+            popBackd();
+            popBackd();
+            popBackd();
+            popFrontd();
+            popFrontd();
+            popFrontd();
+            popFrontd();
+            popFrontd();
+            popBackd();
+            popBackd();
+            popBackd();
+            popFrontd();
+            popFrontd();
+            popFrontd();
+
+            pushFrontd("0");
+            pushFrontd("-1");
+            pushFrontd("-2");
+            popFrontd();
+            pushFrontd("-3");
+            pushFrontd("-4");
+            pushFrontd("-5");
+            pushFrontd("-6");
+            popFrontd();
+            pushFrontd("-7");
+            popFrontd();
+            popFrontd();
+            pushFrontd("-8");
+            pushFrontd("-9");
+
+            popBackd();
+            pushBackd("11");
+            popBackd();
+            popBackd();
+            pushBackd("12");
+            pushBackd("13");
+            popBackd();
+            pushBackd("14");
+            popBackd();
+            popBackd();
+            popBackd();
+            pushBackd("15");
+            pushBackd("16");
+
+            printFwd();
         }
-        void push(T item) {
+        void pushBack(T item) {
             if (isFull()) throw exception("Queue is full");
             arr[end] = item;
             end = index(end + 1);
         }
-        T pop() {
+        void pushFront(T item) {
+            if (isFull()) throw exception("Queue is full");
+            start = index(start - 1);
+            arr[start] = item;
+        }
+        T popFront() {
             if (empty()) throw exception("Queue is empty");
             auto item = arr[start];
             start = index(start + 1);
@@ -168,9 +249,22 @@ namespace cq {
 
             return item;
         }
+        T popBack() {
+            if (empty()) throw exception("Queue is empty");
+            end = index(end - 1);
+            auto item = arr[end];
+
+            if (empty()) reset();
+
+            return item;
+        }
         T front() {
             if (empty()) throw exception("Queue is empty");
             return arr[start];
+        }
+        T back() {
+            if (empty()) throw exception("Queue is empty");
+            return arr[end];
         }
         bool empty() {
             return start == end;
@@ -182,7 +276,7 @@ namespace cq {
             return start == index(end + 1);
         }
         int index(int cur) {
-            return cur % cap;
+            return (cur + cap) % cap;
         }
         void reset() {
             start = end = 0;

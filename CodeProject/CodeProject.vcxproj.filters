@@ -70,6 +70,15 @@
     <Filter Include="Header Files\careercup">
       <UniqueIdentifier>{be06d1ad-f259-4f4c-b724-1f600c346b49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gkg">
+      <UniqueIdentifier>{daa943b3-5d2d-4821-be4a-16922ca506b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\crackingcodinginterview">
+      <UniqueIdentifier>{b1b20643-de81-4431-b631-0ed57ce0c99f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\facebook">
+      <UniqueIdentifier>{7ad9c69d-9866-4e7a-bbfa-a3ad52860aa8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array/IntersectionOfSortedArrInterval.h">
@@ -1023,13 +1032,295 @@
     <ClInclude Include="misc\EmployeeCount.h">
       <Filter>Header Files\misc</Filter>
     </ClInclude>
+    <ClInclude Include="misc\LRU.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix\FindCommonElement.h">
+      <Filter>Header Files\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\InversionCount.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\BinaryTreeViews.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SwapKthNode.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\CelebrityProblem.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SerializeDeserializeTree.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\RemoveLoop.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\WordBreak.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\HamCycle.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\RobotMovement.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="crackingcodinginterview\TicTacToe.h">
+      <Filter>Header Files\crackingcodinginterview</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\NextHigherNumberWithSameBits.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaxProfitSellingAtMostTwice.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\ConflictingAppointments.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\ReverseEvenList.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\RegexMatch.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\CountInSortedArray.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\RearrangeList.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\AssignTaskToWorkers.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaxAreaRectangle.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Powerset.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PrintCoinsSumInOrder.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\StringToFloat.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Print4Sum.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\FlattenBinaryTreeToLinkedList.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\NumberToAlphabetMapping.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\GeneratePattern.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaximumDropInArray.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PrintStairs.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\AddBinary.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PrintPerfectSquare.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\TaskSequence.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaximumSumSubseq.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\KthLargestElementInBST.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\FindPeriod.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\CheckPalin.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SinkNodesinBinaryTree.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Singleton.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\ObserverPattern.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\FindTwoOddNumbers.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\CheckIfTwoBSTsSameFromArr.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MinimumAbsDiffIn3Arrays.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\TreeOffHeightsVsEvenHeightsDiff.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PlaceArrayElementsByItsValue.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="maths\MultiplyWithoutMultiplicationOperator.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="maths\FindElementInArray.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="stack\MergeIntervals.h">
+      <Filter>Header Files\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\RegexPatternMatching.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\ReplaceNodesValueWithSumOfGreaterNodes.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="string\LongestWordMadeOfOthers.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="design\Minesweeper.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\MergeIntervalArrays.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\AddLinkedLists.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\GenerateSeq.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\TrieWildCardSearch.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\ShortestCycle.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\PrintEvenOdd1.h">
+      <Filter>Header Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\Permute.h">
+      <Filter>Header Files\recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="string\PalindromeTransform.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="array\InversionCount.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\InMemorySocialNetwork.h">
+      <Filter>Header Files\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist\ReverseInGroups.h">
+      <Filter>Header Files\linkedlist</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix\UniquePaths.h">
+      <Filter>Header Files\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic\MinimumBookSelfHeight.h">
+      <Filter>Header Files\dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="stack\InfixToPostfix.h">
+      <Filter>Header Files\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="stack\KStack.h">
+      <Filter>Header Files\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\ConstructTree.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\BidirectionalWordLadder.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\MinimizeSum.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="bits\FindNumberOccursOnlyOnce.h">
+      <Filter>Header Files\bits</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\FindFirstUniqueUrl.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="array\MinimumLengthSeq.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="string\MakePalinFromGivenWords.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\RegexMatch.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion\GenerateCombinations.h">
+      <Filter>Header Files\recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="string\CheckRepeatedSubsequence.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\PatternMatch.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\CountPalindromes.h">
+      <Filter>Header Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\FlattenTree.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="array\FindSurpasser.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\Multimap.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="array\CoinCombination.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="bits\NextHigherLowerNumber.h">
+      <Filter>Header Files\bits</Filter>
+    </ClInclude>
+    <ClInclude Include="prettyprint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\PrintExtremeNodes.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="tree\NearestLeafNode.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="array\PrimeExtensible.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="array\LongestSeqOfZerosAndOnes.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\LRUCache.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MRUCache.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaximumOfSubarraysOfSizeK.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\LongestSubarrayWithZeroSum.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SumOfFourNumbers.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="graph\ValidTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\tree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
