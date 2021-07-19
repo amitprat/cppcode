@@ -1,7 +1,7 @@
-#include "gkg/SumOfFourNumbers.h"
+#include "gkg/HuffmanEncodingDecoding.h"
 
 int main()
 {
-    SumOfFourNumbers::test();
+    HuffmanEncodingDecoding::test();
     return 0;
 }

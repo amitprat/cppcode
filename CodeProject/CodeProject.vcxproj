@@ -168,6 +168,7 @@
     <ClInclude Include="bits\GetNextPrevNumWithSameOnes.h" />
     <ClInclude Include="bits\NextHigherLowerNumber.h" />
     <ClInclude Include="careercup\AnagramSubstringSearch.h" />
+    <ClInclude Include="careercup\ArrangeNumbersByTheirValue.h" />
     <ClInclude Include="careercup\BellmanFord.h" />
     <ClInclude Include="careercup\CountIslands.h" />
     <ClInclude Include="careercup\CountTraingles.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="careercup\FindLongestSeqWithEqualCharsAndDigits.h" />
     <ClInclude Include="careercup\FindMaxRepeatElementInRange.h" />
     <ClInclude Include="careercup\FindMaxSizeOfSubstring.h" />
+    <ClInclude Include="careercup\FindNearestBike.h" />
     <ClInclude Include="careercup\FindOrdersInRange.h" />
     <ClInclude Include="careercup\FindPairInBST.h" />
     <ClInclude Include="careercup\FindRepeatingSubsequence.h" />
@@ -290,6 +292,7 @@
     <ClInclude Include="gkg\FlattenBinaryTreeToLinkedList.h" />
     <ClInclude Include="gkg\GeneratePattern.h" />
     <ClInclude Include="gkg\HamCycle.h" />
+    <ClInclude Include="gkg\HuffmanEncodingDecoding.h" />
     <ClInclude Include="gkg\InversionCount.h" />
     <ClInclude Include="gkg\KthLargestElementInBST.h" />
     <ClInclude Include="gkg\LongestSubarrayWithZeroSum.h" />
@@ -316,6 +319,7 @@
     <ClInclude Include="gkg\ReverseEvenList.h" />
     <ClInclude Include="gkg\RobotMovement.h" />
     <ClInclude Include="gkg\SerializeDeserializeTree.h" />
+    <ClInclude Include="gkg\ShortestDistanceAndSpanningTreeAlgorithms.h" />
     <ClInclude Include="gkg\Singleton.h" />
     <ClInclude Include="gkg\SinkNodesinBinaryTree.h" />
     <ClInclude Include="gkg\StringToFloat.h" />

@@ -9,6 +9,7 @@
 #include <time.h>
 #include <stack>
 #include <string>
+#include <chrono>
 #include <tuple>
 #include <queue>
 #include <sstream>
@@ -53,11 +54,11 @@ public:
     }
 };
 
-template <class T>
 class Point {
 public:
-    T x, y;
-    Point(T x = default(T), T y = default(T)) :x(x), y(y) {}
+    int x, y;
+    Point() :x(0), y(0) {}
+    Point(int x, int y) :x(x), y(y) {}
     Point operator +(const Point& other) {
         Point result(x + other.x, y + other.y);
         return result;
@@ -376,6 +377,18 @@ int max(vector<int> a) {
     int mx = a[0];
     for (int i = 1; i < a.size(); i++) mx = max(mx, a[i]);
     return mx;
+}
+
+template <typename U, typename V>
+string to_string(unordered_map<U, V>& map) {
+    stringstream ss;
+    ss << "{";
+    for (auto e : map) {
+        ss << e.first << "=" << e.second << ", ";
+    }
+    ss << "}";
+
+    return ss.str();
 }
 
 //template <class T>

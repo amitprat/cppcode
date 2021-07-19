@@ -1314,6 +1314,18 @@
     <ClInclude Include="gkg\SumOfFourNumbers.h">
       <Filter>Header Files\gkg</Filter>
     </ClInclude>
+    <ClInclude Include="careercup\FindNearestBike.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ArrangeNumbersByTheirValue.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\ShortestDistanceAndSpanningTreeAlgorithms.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\HuffmanEncodingDecoding.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
