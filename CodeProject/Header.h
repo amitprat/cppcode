@@ -273,8 +273,9 @@ template <class T>
 class LinkedListNode {
 public:
     T val;
+    LinkedListNode* prev;
     LinkedListNode* next;
-    LinkedListNode(T val) :val(val), next(nullptr) {}
+    LinkedListNode(T val) :val(val), prev(nullptr), next(nullptr) {}
     string to_string() {
         return std::to_string(val);
     }
@@ -393,8 +394,10 @@ string to_string(unordered_map<U, V>& map) {
 
 //template <class T>
 //class Set {
-//    static inline auto comparator = [](const T& f, const T& s) {
-//        return f <= s;
+//    struct Compare {
+//        bool operator()(const T& first, const T& second) {
+//
+//        }
 //    };
 //    unordered_set<T, decltype(comparator)> s;
 //public:

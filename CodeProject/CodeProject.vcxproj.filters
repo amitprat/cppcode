@@ -1326,6 +1326,15 @@
     <ClInclude Include="gkg\HuffmanEncodingDecoding.h">
       <Filter>Header Files\gkg</Filter>
     </ClInclude>
+    <ClInclude Include="gkg\AllSort.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\FindKClosestPoints.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MergeSortDoublyLinkedList.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

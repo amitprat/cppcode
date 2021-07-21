@@ -280,6 +280,7 @@
     <ClInclude Include="facebook\ShortestCycle.h" />
     <ClInclude Include="facebook\TrieWildCardSearch.h" />
     <ClInclude Include="gkg\AddBinary.h" />
+    <ClInclude Include="gkg\AllSort.h" />
     <ClInclude Include="gkg\AssignTaskToWorkers.h" />
     <ClInclude Include="gkg\BinaryTreeViews.h" />
     <ClInclude Include="gkg\CelebrityProblem.h" />
@@ -287,6 +288,7 @@
     <ClInclude Include="gkg\CheckPalin.h" />
     <ClInclude Include="gkg\ConflictingAppointments.h" />
     <ClInclude Include="gkg\CountInSortedArray.h" />
+    <ClInclude Include="gkg\FindKClosestPoints.h" />
     <ClInclude Include="gkg\FindPeriod.h" />
     <ClInclude Include="gkg\FindTwoOddNumbers.h" />
     <ClInclude Include="gkg\FlattenBinaryTreeToLinkedList.h" />
@@ -302,6 +304,7 @@
     <ClInclude Include="gkg\MaximumOfSubarraysOfSizeK.h" />
     <ClInclude Include="gkg\MaximumSumSubseq.h" />
     <ClInclude Include="gkg\MaxProfitSellingAtMostTwice.h" />
+    <ClInclude Include="gkg\MergeSortDoublyLinkedList.h" />
     <ClInclude Include="gkg\MinimumAbsDiffIn3Arrays.h" />
     <ClInclude Include="gkg\MRUCache.h" />
     <ClInclude Include="gkg\NextHigherNumberWithSameBits.h" />

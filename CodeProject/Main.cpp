@@ -1,7 +1,7 @@
-#include "gkg/HuffmanEncodingDecoding.h"
+#include "gkg/MergeSortDoublyLinkedList.h"
 
 int main()
 {
-    HuffmanEncodingDecoding::test();
+    MergeSortDoublyLinkedList::test();
     return 0;
 }
