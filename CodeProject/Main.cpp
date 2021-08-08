@@ -1,7 +1,7 @@
-#include "gkg/MergeSortDoublyLinkedList.h"
+#include "gkg/InfixToPostfix.h"
 
 int main()
 {
-    MergeSortDoublyLinkedList::test();
+    InfixToPostfix::test();
     return 0;
 }

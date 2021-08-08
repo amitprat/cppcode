@@ -308,13 +308,15 @@ int length(LinkedListNode<T>* node) {
 template <typename T>
 string to_string(LinkedListNode<T>* node) {
     stringstream ss;
-    if (node == nullptr) return ss.str();
+    bool hasElem = false;
+    ss << "{";
     while (node) {
-        ss << node->to_string() << " ";
+        ss << node->to_string() << ", ";
         node = node->next;
+        hasElem = true;
     }
-
-    ss << endl;
+    if (hasElem) ss.seekp(-2, std::ios_base::end);
+    ss << "}";
     return ss.str();
 }
 

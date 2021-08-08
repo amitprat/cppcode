@@ -280,6 +280,7 @@
     <ClInclude Include="facebook\ShortestCycle.h" />
     <ClInclude Include="facebook\TrieWildCardSearch.h" />
     <ClInclude Include="gkg\AddBinary.h" />
+    <ClInclude Include="gkg\AddTwoNumbers.h" />
     <ClInclude Include="gkg\AllSort.h" />
     <ClInclude Include="gkg\AssignTaskToWorkers.h" />
     <ClInclude Include="gkg\BinaryTreeViews.h" />
@@ -288,6 +289,7 @@
     <ClInclude Include="gkg\CheckPalin.h" />
     <ClInclude Include="gkg\ConflictingAppointments.h" />
     <ClInclude Include="gkg\CountInSortedArray.h" />
+    <ClInclude Include="gkg\ExcelColumn.h" />
     <ClInclude Include="gkg\FindKClosestPoints.h" />
     <ClInclude Include="gkg\FindPeriod.h" />
     <ClInclude Include="gkg\FindTwoOddNumbers.h" />
@@ -295,8 +297,11 @@
     <ClInclude Include="gkg\GeneratePattern.h" />
     <ClInclude Include="gkg\HamCycle.h" />
     <ClInclude Include="gkg\HuffmanEncodingDecoding.h" />
+    <ClInclude Include="gkg\InfixToPostfix.h" />
     <ClInclude Include="gkg\InversionCount.h" />
+    <ClInclude Include="gkg\Knapsack.h" />
     <ClInclude Include="gkg\KthLargestElementInBST.h" />
+    <ClInclude Include="gkg\LongestPalinSubseq.h" />
     <ClInclude Include="gkg\LongestSubarrayWithZeroSum.h" />
     <ClInclude Include="gkg\LRUCache.h" />
     <ClInclude Include="gkg\MaxAreaRectangle.h" />
@@ -306,10 +311,13 @@
     <ClInclude Include="gkg\MaxProfitSellingAtMostTwice.h" />
     <ClInclude Include="gkg\MergeSortDoublyLinkedList.h" />
     <ClInclude Include="gkg\MinimumAbsDiffIn3Arrays.h" />
+    <ClInclude Include="gkg\MinLexographicalStr.h" />
+    <ClInclude Include="gkg\MinPlatforms.h" />
     <ClInclude Include="gkg\MRUCache.h" />
     <ClInclude Include="gkg\NextHigherNumberWithSameBits.h" />
     <ClInclude Include="gkg\NumberToAlphabetMapping.h" />
     <ClInclude Include="gkg\ObserverPattern.h" />
+    <ClInclude Include="gkg\Permute.h" />
     <ClInclude Include="gkg\PlaceArrayElementsByItsValue.h" />
     <ClInclude Include="gkg\Powerset.h" />
     <ClInclude Include="gkg\Print4Sum.h" />
@@ -330,6 +338,7 @@
     <ClInclude Include="gkg\SwapKthNode.h" />
     <ClInclude Include="gkg\TaskSequence.h" />
     <ClInclude Include="gkg\TreeOffHeightsVsEvenHeightsDiff.h" />
+    <ClInclude Include="gkg\UglyNumber.h" />
     <ClInclude Include="gkg\WordBreak.h" />
     <ClInclude Include="graph/BidirectionalBFS.h" />
     <ClInclude Include="graph/BuildOrder.h" />

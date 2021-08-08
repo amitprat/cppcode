@@ -1335,6 +1335,33 @@
     <ClInclude Include="gkg\MergeSortDoublyLinkedList.h">
       <Filter>Header Files\gkg</Filter>
     </ClInclude>
+    <ClInclude Include="gkg\MinPlatforms.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\UglyNumber.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\LongestPalinSubseq.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Knapsack.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Permute.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\ExcelColumn.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MinLexographicalStr.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\AddTwoNumbers.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\InfixToPostfix.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
