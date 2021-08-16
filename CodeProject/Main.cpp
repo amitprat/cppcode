@@ -1,7 +1,7 @@
-#include "gkg/InfixToPostfix.h"
+#include "gkg/CommonElementInRowwiseSortedMatrix.h"
 
 int main()
 {
-    InfixToPostfix::test();
+    CommonElementInRowwiseSortedMatrix::test();
     return 0;
 }

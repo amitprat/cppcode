@@ -1362,6 +1362,54 @@
     <ClInclude Include="gkg\InfixToPostfix.h">
       <Filter>Header Files\gkg</Filter>
     </ClInclude>
+    <ClInclude Include="gkg\SortStack.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\StackWithMiddleElementOperation.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\GenerateBinary.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\MaximumOfWindowOfSizeK.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PrintTour.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\KthSmallestElementInBst.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\TreeTraversal.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\FindIternerary.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\EmployessUnderEachManager.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\GraphQuestion.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SortNumbersOnDifferentMachines.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\PrintUniqueRows.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\Trie.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\IsBipartite.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\SnakeLadder.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="gkg\CommonElementInRowwiseSortedMatrix.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

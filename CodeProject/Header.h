@@ -12,7 +12,7 @@
 #include <chrono>
 #include <tuple>
 #include <queue>
-#include <sstream>
+#include <sstream>to_s
 #include <fstream>
 #include <string.h>
 #include <stdio.h>
@@ -81,7 +81,7 @@ string to_string(vector<Interval>& input) {
     return ss.str();
 }
 
-string to_string(vector<int>& input) {
+string to_string(const vector<int>& input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i << ", ";
@@ -422,3 +422,7 @@ string to_string(unordered_map<U, V>& map) {
 //        return true;
 //    }
 //};
+
+string to_string(bool res) {
+    return res ? "True" : "False";
+}
