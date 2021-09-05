@@ -275,6 +275,8 @@
     <ClInclude Include="dynamic/WordBreak.h" />
     <ClInclude Include="dynamic\MinimumBookSelfHeight.h" />
     <ClInclude Include="facebook\AddLinkedLists.h" />
+    <ClInclude Include="facebook\Consistency_Ch1.h" />
+    <ClInclude Include="facebook\Facebook_XsOs.h" />
     <ClInclude Include="facebook\GenerateSeq.h" />
     <ClInclude Include="facebook\MergeIntervalArrays.h" />
     <ClInclude Include="facebook\ShortestCycle.h" />
@@ -290,6 +292,7 @@
     <ClInclude Include="gkg\CommonElementInRowwiseSortedMatrix.h" />
     <ClInclude Include="gkg\ConflictingAppointments.h" />
     <ClInclude Include="gkg\CountInSortedArray.h" />
+    <ClInclude Include="gkg\CountIslands.h" />
     <ClInclude Include="gkg\EmployessUnderEachManager.h" />
     <ClInclude Include="gkg\ExcelColumn.h" />
     <ClInclude Include="gkg\FindIternerary.h" />

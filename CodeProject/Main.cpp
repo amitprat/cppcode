@@ -1,7 +1,7 @@
-#include "gkg/CommonElementInRowwiseSortedMatrix.h"
+#include "facebook/Facebook_XsOs.h"
 
 int main()
 {
-    CommonElementInRowwiseSortedMatrix::test();
+    Facebook_XsOs::test();
     return 0;
 }

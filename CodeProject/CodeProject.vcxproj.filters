@@ -1410,6 +1410,15 @@
     <ClInclude Include="gkg\CommonElementInRowwiseSortedMatrix.h">
       <Filter>Header Files\gkg</Filter>
     </ClInclude>
+    <ClInclude Include="gkg\CountIslands.h">
+      <Filter>Header Files\gkg</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\Consistency_Ch1.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
+    <ClInclude Include="facebook\Facebook_XsOs.h">
+      <Filter>Header Files\facebook</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
