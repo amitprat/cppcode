@@ -51,8 +51,9 @@ public:
 class MinPlatformRequired
 {
 public:
-    void test()
+    static void test()
     {
+        MinPlatformRequired obj;
         vector<vector<pair<int, int>>> v = {
             {{900,910}, {940,1200},{950,1120},{1100,1130},{1500,1900},{1800,2000}}
         };
@@ -64,7 +65,7 @@ public:
 
         for (auto chart : charts) {
             cout << "Processing: {" << chart.str() << "} :";
-            auto res = minPlatforms(chart);
+            auto res = obj.minPlatforms1(chart);
             cout << "Result = " << res << endl;
         }
     }
@@ -88,4 +89,61 @@ public:
 
         return result;
     }
+
+    int minPlatforms1(StationTimeChart chart)
+    {
+        int result = 0;
+        sort(chart.schedules.begin(), chart.schedules.end(), [](const auto& f, const auto& s) {return f.departure < s.departure; });
+        int prevEnd = chart.schedules[0].departure;
+        int cnt = 1;
+        for (auto i = 1; i < chart.schedules.size(); i++) {
+            if (chart.schedules[i].arrival <= prevEnd) cnt++;
+            else {
+                result = max(result, cnt);
+                if (cnt > 1) cnt--;
+            }
+            prevEnd = max(prevEnd, chart.schedules[i].departure);
+        }
+
+        return result;
+    }
+
+    /*
+    *
+    *
+    Given an array of meetings, find out the minimum number of conference rooms required.
+
+    class Meeting
+    {
+        long startTime;
+        long endTime;
+    };
+
+    Got 20 minutes to think through and write the code. Too short in my opinion, but well, it seemed like the interviewer didn't understand C++ either :-).
+    struct Meeting {
+        int start;
+        int end;
+        Meeting(int s, int e) {start=s; end=e;}
+    };
+
+    bool mysortfunc(Meeting a, Meeting b) { return a.end<b.end; }
+
+    int compute_min_confrooms(vector<Meeting>& meetings)
+    {
+        // sort meetings w.r.t. their end times
+        sort(meetings.begin(),meetings.end(),mysortfunc);
+
+        int peak = 0;
+        queue<Meeting> Q;
+        Q.push(meetings[0]);
+        for(int i=1; i<meetings.size(); i++) {
+            while(!Q.empty() && Q.front().end < meetings[i].start) { Q.pop(); }
+            Q.push(meetings[i]);
+            peak = max(peak, (int)Q.size());
+        }
+
+        return peak;
+    }
+
+    */
 };

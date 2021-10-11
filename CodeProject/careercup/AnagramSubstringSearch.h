@@ -5,10 +5,10 @@ class AnagramSubstringSearch {
 public:
     static void test() {
         AnagramSubstringSearch obj;
-        string a = "afdgzyxksldfm";
+        string a = "afdgzykxzyxdfyzm";
         string b = "xyz";
 
-        auto res = obj.isSubstr1(a, b);
+        auto res = obj.isSubstr2(a, b);
         cout << "Is substring = " << res << endl;
     }
 
@@ -62,6 +62,38 @@ public:
             srcCount[src[i - dst.size() + 1]]--;
         }
         return false;
+    }
+
+    bool isSubstr2(string src, string pat)
+    {
+        vector<int> srcCnt(256, 0);
+        vector<int> patCnt(256, 0);
+        int cnt = 0;
+        int n = src.length(), m = pat.length();
+
+        for (int i = 0; i < m; i++) patCnt[pat[i]]++;
+
+        bool found = false;
+        int i = 0;
+        for (int j = 0; j < n; j++)
+        {
+            srcCnt[src[j]]++;
+            if (srcCnt[src[j]] <= patCnt[src[j]]) cnt++;
+
+            if (cnt == m)
+            {
+                while (i <= j && srcCnt[src[i]] > patCnt[src[i]]) i++;
+                if (j - i + 1 == m) {
+                    cout << "Anagram found at " << i << " to " << j << " = " << src.substr(i, j - i + 1) << endl;
+                    found = true;
+                }
+                cnt--;
+                srcCnt[src[i]]--;
+                i++;
+            }
+        }
+
+        return found;
     }
 private:
     bool isSame(int a[], int b[]) {

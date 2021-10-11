@@ -1,7 +1,7 @@
-#include "facebook/Facebook_XsOs.h"
+#include "careercup/GetMaximumPossibleInteger.h"
 
 int main()
 {
-    Facebook_XsOs::test();
+    GetMaximumPossibleInteger::test();
     return 0;
 }

@@ -1419,6 +1419,111 @@
     <ClInclude Include="facebook\Facebook_XsOs.h">
       <Filter>Header Files\facebook</Filter>
     </ClInclude>
+    <ClInclude Include="careercup\StoryTelling.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\BinarySum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindRangeOfMaxElement.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MergeIntervals.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NumberOccurringOnlyOnce.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CompressString.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\EditDistanceBetwen2Arr.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RearrangePositiveNegatives.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PathInMatrix.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\WordBreakWithCount.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ReverseLevelOrderTraversal.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MyIterator.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MixedProblems.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RobotOrder.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\KPalindromeString.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintEvenOddNumbersUsing2Threads.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PainterPartitionProblem.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TurtleGrid.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PopulateNextRight.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestPalindromicSubstring.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestPalindromicSubsequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MedianOfTwoSortedArraysOfSameSize.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FlattenBinaryTree.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RotateImage.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MinPerfectSquares.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SerializeDeserializeTree.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CountStringMadeFromABC.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindOneDistantWordInDictionary.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\Practice.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindNumberOccurringMoreThanKTimes.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindSmallestRange.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\IsInterleaved.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LexographicalSmallestString.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GenerateAllStringByReplaceQuestionMarkWith01.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GetMaximumPossibleInteger.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -1426,6 +1531,9 @@
     </ClCompile>
     <ClCompile Include="graph\ValidTree.h">
       <Filter>Header Files\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\PrintA1B1A2B2.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
