@@ -1524,6 +1524,39 @@
     <ClInclude Include="careercup\GetMaximumPossibleInteger.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
+    <ClInclude Include="careercup\RemoveBAndAC.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LargestConcatenationOfInts.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NecessarilyConnectedDirectedGraph.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SeeIfAllTasksCanBeRescheduledOnGivenServers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestRepeatedSubstringAndSubsequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\JosephusProblem.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindFirstMissingPositive.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CheckIfWordIsValid.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FixMaxRepeatingElement.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PathToPrintWordInSetupBox.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NValuesEqualOrGreaterThanN.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

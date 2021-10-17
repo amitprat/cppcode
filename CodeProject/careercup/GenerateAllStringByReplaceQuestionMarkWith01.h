@@ -1,15 +1,42 @@
 #pragma once
 #include "../Header.h"
 
+// https://www.careercup.com/question?id=5192571630387200
 class GenerateAllStringByReplaceQuestionMarkWith01
 {
 public:
     static void test()
     {
         string str = "a?bc?def?g";
-        vector<string> result = generateRec(str);
+        vector<string> result = generateUsingBitSet(str);
 
         cout << to_string(result) << endl;
+    }
+
+    static vector<string> generateUsingBitSet(string str)
+    {
+        vector<string> result;
+        int qMarks = 0;
+        for (auto ch : str) {
+            if (ch == '?') qMarks++;
+        }
+        int limit = pow(2, qMarks);
+        for (int i = 0; i < limit; i++) {
+            string cur;
+            int cnt = qMarks - 1;
+            for (auto ch : str) {
+                if (ch == '?') {
+                    if (i & (1 << cnt)) cur += '1';
+                    else cur += '0';
+                }
+                else {
+                    cur += ch;
+                }
+            }
+            result.push_back(cur);
+        }
+
+        return result;
     }
 
     static vector<string> generateRec(string str)

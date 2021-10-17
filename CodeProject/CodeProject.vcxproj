@@ -172,6 +172,7 @@
     <ClInclude Include="careercup\ArrangeNumbersByTheirValue.h" />
     <ClInclude Include="careercup\BellmanFord.h" />
     <ClInclude Include="careercup\BinarySum.h" />
+    <ClInclude Include="careercup\CheckIfWordIsValid.h" />
     <ClInclude Include="careercup\CompressString.h" />
     <ClInclude Include="careercup\CountIslands.h" />
     <ClInclude Include="careercup\CountStringMadeFromABC.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="careercup\DocumentSimilarity.h" />
     <ClInclude Include="careercup\EditDistanceBetwen2Arr.h" />
     <ClInclude Include="careercup\FindAnagramInString.h" />
+    <ClInclude Include="careercup\FindFirstMissingPositive.h" />
     <ClInclude Include="careercup\FindLongestSeqWithEqualCharsAndDigits.h" />
     <ClInclude Include="careercup\FindMaxRepeatElementInRange.h" />
     <ClInclude Include="careercup\FindMaxSizeOfSubstring.h" />
@@ -193,6 +195,7 @@
     <ClInclude Include="careercup\FindRangeOfMaxElement.h" />
     <ClInclude Include="careercup\FindRepeatingSubsequence.h" />
     <ClInclude Include="careercup\FindSmallestRange.h" />
+    <ClInclude Include="careercup\FixMaxRepeatingElement.h" />
     <ClInclude Include="careercup\FlattenBinaryTree.h" />
     <ClInclude Include="careercup\FoodDelievery.h" />
     <ClInclude Include="careercup\GenerateAllStringByReplaceQuestionMarkWith01.h" />
@@ -201,11 +204,14 @@
     <ClInclude Include="careercup\GraphColoring.h" />
     <ClInclude Include="careercup\HeightOrder.h" />
     <ClInclude Include="careercup\IsInterleaved.h" />
+    <ClInclude Include="careercup\JosephusProblem.h" />
     <ClInclude Include="careercup\KPalindromeString.h" />
+    <ClInclude Include="careercup\LargestConcatenationOfInts.h" />
     <ClInclude Include="careercup\LargestRectangleSum.h" />
     <ClInclude Include="careercup\LexographicalSmallestString.h" />
     <ClInclude Include="careercup\LongestPalindromicSubsequence.h" />
     <ClInclude Include="careercup\LongestPalindromicSubstring.h" />
+    <ClInclude Include="careercup\LongestRepeatedSubstringAndSubsequence.h" />
     <ClInclude Include="careercup\LongestWordMadeOfOthers.h" />
     <ClInclude Include="careercup\MaximumValueOfArray.h" />
     <ClInclude Include="careercup\MaxProductSubseq.h" />
@@ -219,9 +225,12 @@
     <ClInclude Include="careercup\MixedProblems.h" />
     <ClInclude Include="careercup\MyIterator.h" />
     <ClInclude Include="careercup\NameMapping.h" />
+    <ClInclude Include="careercup\NecessarilyConnectedDirectedGraph.h" />
     <ClInclude Include="careercup\NumberOccurringOnlyOnce.h" />
+    <ClInclude Include="careercup\NValuesEqualOrGreaterThanN.h" />
     <ClInclude Include="careercup\PainterPartitionProblem.h" />
     <ClInclude Include="careercup\PathInMatrix.h" />
+    <ClInclude Include="careercup\PathToPrintWordInSetupBox.h" />
     <ClInclude Include="careercup\PersonOrder.h" />
     <ClInclude Include="careercup\PopulateNextRight.h" />
     <ClInclude Include="careercup\Practice.h" />
@@ -231,10 +240,12 @@
     <ClInclude Include="careercup\ProbabilityOfBeingAlive.h" />
     <ClInclude Include="careercup\RearrangeNegativePositiveNumbers.h" />
     <ClInclude Include="careercup\RearrangePositiveNegatives.h" />
+    <ClInclude Include="careercup\RemoveBAndAC.h" />
     <ClInclude Include="careercup\RepeatingSubsequence.h" />
     <ClInclude Include="careercup\ReverseLevelOrderTraversal.h" />
     <ClInclude Include="careercup\RobotOrder.h" />
     <ClInclude Include="careercup\RotateImage.h" />
+    <ClInclude Include="careercup\SeeIfAllTasksCanBeRescheduledOnGivenServers.h" />
     <ClInclude Include="careercup\SerializeDeserializeTree.h" />
     <ClInclude Include="careercup\ShortestSubseqContainingSubarray.h" />
     <ClInclude Include="careercup\SortNumbersInRange1To20000.h" />

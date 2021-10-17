@@ -1,7 +1,7 @@
-#include "careercup/GetMaximumPossibleInteger.h"
+#include "careercup/FindOneDistantWordInDictionary.h"
 
 int main()
 {
-    GetMaximumPossibleInteger::test();
+    FindOneDistantWordInDictionary::test();
     return 0;
 }

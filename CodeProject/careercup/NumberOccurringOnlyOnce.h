@@ -6,21 +6,35 @@ public:
     static void test() {
         int arr[] = { 2,1,4,5,1,4,2,2,4,1 };
         int n = sizeof(arr) / sizeof(int);
+
+        int res = numberOccurringOnlyOnceUsingMod3(arr, n);
+        cout << res << endl;
+
+        res = numberOccurringOnlyOnceUsingBitwiseOper(arr, n);
+        cout << res << endl;
+    }
+
+    static int numberOccurringOnlyOnceUsingMod3(int arr[], int n)
+    {
         int bitsize = 0;
         for (int i = 0; i < n; i++) {
             bitsize = max(bitsize, (int)log2(arr[i]) + 1);
         }
         auto res = addNumMod3(arr, n);
-        cout << res << endl;
+
+        return res;
     }
 
     static int addNumMod3(int arr[], int n) {
-        vector<int> result;
+        vector<int> mod3Res;
         for (int i = 0; i < n; i++) {
-            result = addMod3(result, toMod3(arr[i]));
+            vector<int> mod3Val = toMod3(arr[i]);
+            mod3Res = addMod3(mod3Res, mod3Val);
         }
-        std::reverse(result.begin(), result.end());
-        return toMod10(result);
+        std::reverse(mod3Res.begin(), mod3Res.end());
+        int mod10Res = toMod10(mod3Res);
+
+        return mod10Res;
     }
 
     static vector<int> addMod3(vector<int> num1, vector<int> num2) {
@@ -70,5 +84,22 @@ public:
         cur = s * pow(2, bitsize - 1) + cur;
 
         return cur;
+    }
+
+    static int numberOccurringOnlyOnceUsingBitwiseOper(int arr[], int n)
+    {
+        int ones = 0;
+        int twos = 0;
+        for (int i = 0; i < n; i++)
+        {
+            int x = arr[i];
+            twos |= ones & x;
+            ones ^= x;
+            int not_threes = ~(ones & twos);
+            ones &= not_threes;
+            twos &= not_threes;
+        }
+
+        return ones;
     }
 };
