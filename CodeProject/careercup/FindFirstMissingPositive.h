@@ -23,21 +23,43 @@ class FindFirstMissingPositive
 public:
     static void test()
     {
+        {
+            vector<int> arr = { 2, 3, -7, 6, 8, 1, -10, 15 };
+            int res = firstMissingPositive(arr);
+            cout << "Res: " << res << endl;
+        }
 
+        {
+            vector<int> arr = { 1,5,3,0 };
+            int res = firstMissingPositive(arr);
+            cout << "Res: " << res << endl;
+        }
+
+        {
+            vector<int> arr = { 10,50,30,0 };
+            int res = firstMissingPositive(arr);
+            cout << "Res: " << res << endl;
+        }
+
+        {
+            vector<int> arr = { 1,4,3,2 };
+            int res = firstMissingPositive(arr);
+            cout << "Res: " << res << endl;
+        }
     }
 
-    int firstMissingPositive(vector<int>& arr)
+    static int firstMissingPositive(vector<int>& arr)
     {
         for (int i = 0; i < arr.size();)
         {
-            if (i == arr[i]) i++;
-            else if (arr[i] <= 0 || arr[i] > arr.size()) continue;
-            else swap(arr[i+1], arr[arr[i]]);
+            if (i + 1 == arr[i]) i++;
+            else if (arr[i] <= 0 || arr[i] >= arr.size()) i++;
+            else swap(arr[i], arr[arr[i] - 1]);
         }
         for (int i = 0; i < arr.size(); i++) {
             if (i + 1 != arr[i]) return i + 1;
         }
 
-        return -1;
+        return arr.size() + 1;
     }
 };

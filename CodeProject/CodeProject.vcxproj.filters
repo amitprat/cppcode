@@ -1557,6 +1557,180 @@
     <ClInclude Include="careercup\NValuesEqualOrGreaterThanN.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
+    <ClInclude Include="careercup\LeastNumberOfPerfectSquaresToReachN.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MinmumSeqOfAdjValues.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\I18N.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FirstUniqueUrl.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindElementOccurringEvenNumberOfTimes.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TupleSort.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\AssignAOrBWithoutConditionalOperator.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SplitArrayInTwoPartsWithMinimumDiff.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GenerateAllSubstrings.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RepresentNumberAsSumOfCubeRoots.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ReconstructBstFromGivenPreorder.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ActivitySelectionProblem.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SnakeGame.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindTop10Urls.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GetMaxStringByPressingACtrlACtrlCCtrlV.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ConvertStringToPalindromeByAddingOneOrMoreCharactersToFront.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NearestLeafNodeFromGivenNode.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrimeExtensibleNumbers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\DataStructureWithAppendGetAndAddToAll.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaximumRectangleMadeOf1s.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SurpassersOfArray.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NumberOfWaysToSelectNIdenticalObjectsOutOfBucket.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindOrderInSortedWordsFromAlienDictionary.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintMultiplesOfUglyNumbers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindIJAndKInElementsOrder.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\NBy2DivisiblePairsByK.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindMissingNumbers.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\TrimSpaces.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindTwoNodesWithGivenSumInBST.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindStrings.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintCombinations.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\DivideArrayInto2PartsWithMinimumDifference.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindLongestAdjacentSequenceInMatrix.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ClosestValueInBST.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\RearrangeCharactersInString.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindTwoWordsThatCanBeJoinedTogetherToFormPalindrome.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MinimumSquareSum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\GenerateRandom.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindTwoNumbersAppearingOddNumberOfTimes.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CompareTwoBsts.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MaxIntervalOverlap.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\IdentifyRedundanctParenthesis.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ConvertTreeToBst.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CheckIfArrayIsInAP.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\DeleteEveryKthNode.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindContinuousSequenceWithGivenSum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintLevelOfFriendship.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindFourSum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindMinimumRange.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SetRowColumnToZero.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SwapKthNodesFromLinkedList.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindFreeIntervalInCalenderOfTwoPeople.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\AToF.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\PrintAllPathsWithGivenSumInBinaryTree.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestCommonSubstringAndSubsequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ShortestSuperSequence.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LongestIncreasingSequenceInMatrix.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\DijkastraMatrix.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -1568,5 +1742,10 @@
     <ClCompile Include="thread\PrintA1B1A2B2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="careercup\friendshipfile.txt">
+      <Filter>Header Files\careercup</Filter>
+    </Text>
   </ItemGroup>
 </Project>

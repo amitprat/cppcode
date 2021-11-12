@@ -1,7 +1,7 @@
-#include "careercup/FindOneDistantWordInDictionary.h"
+#include "careercup/DijkastraMatrix.h"
 
 int main()
 {
-    FindOneDistantWordInDictionary::test();
+    DijkastraMatrix::test();
     return 0;
 }

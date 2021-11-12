@@ -1,20 +1,5 @@
 #pragma once
-
-#include <time.h>
-#include <stdlib.h>
-#include <thread>
-#include <vector>
-#include <iostream>
-#include <atomic>
-#include <mutex>
-#include <time.h>
-#include <fstream>
-#include <tuple>
-#include <queue>
-#include <unordered_map>
-#include <string>
-#include <json/json.h>
-using namespace std;
+#include "../Header.h"
 
 class SubsetSum
 {
@@ -22,56 +7,83 @@ public:
     static void test()
     {
         SubsetSum obj;
-        int a[] = { 2,9 };
-        int k = 3, n = 9;
-        auto res = obj.findSubsetSum(a, k, n, sizeof(a) / sizeof(int));
+        vector<int> arr = { 6, 2, 5 };
 
-        stringstream ss;
-        for (auto i : res) {
-            ss << "{";
-            for (auto j : i) {
-                ss << j << ", ";
-            }
-            ss << "}, ";
+        for (int sum = 1; sum <= 15; sum++) {
+            cout << "Find sumbset with sum = " << sum << endl;
+            cout << "--------------------------------------" << endl;
+            auto res = obj.findSubsetSum(arr, sum);
+            cout << "Subset with given sum " << sum << " = " << to_string(res) << endl;
+
+            auto res1 = obj.findSubsetSumDP(arr, sum);
+            cout << "Subset with sum " << sum << " = " << res1 << endl;
+
+            auto res2 = obj.findSubsetSumDPMemoryOptimized(arr, sum);
+            cout << "Subset with sum " << sum << " = " << res2 << endl;
+
+            cout << "\n-----\n";
         }
-        cout << "Res =" << ss.str() << endl;
-
-        obj.findSubsetSumDP(a, k, n, sizeof(a) / sizeof(int));
     }
 
-    vector<vector<int>> findSubsetSum(int a[], int size, int sum, int n)
+    vector<vector<int>> findSubsetSum(vector<int> arr, int sum)
     {
         vector<vector<int>> subsets;
-        findSubsetSum(a, size, sum, n, subsets);
+        bool res = findSubsetSum(arr, arr.size(), sum, subsets, {});
+        cout << "Subset with sum " << sum << " = " << res << endl;
 
         return subsets;
     }
 
-    vector<vector<int>> findSubsetSumDP(int a[], int size, int sum, int n)
+    bool findSubsetSumDP(vector<int> arr, int sum)
     {
-        vector<vector<int>> subsets;
-        bool* table = new bool[sum + 1];
-        memset(table, false, (sum + 1) * sizeof(bool));
-        table[0] = true;
+        int n = arr.size();
+        vector<vector<bool>> memo(sum + 1, vector<bool>(n + 1));
+
+        for (int s = 0; s <= sum; s++) {
+            for (int i = 0; i <= n; i++) {
+                if (s == 0) memo[s][i] = true;
+                else if (i == 0) memo[s][i] = false;
+                else {
+                    memo[s][i] = memo[s][i - 1];
+                    if (arr[i - 1] <= s) {
+                        memo[s][i] = memo[s][i] || memo[s - arr[i - 1]][i - 1];
+                    }
+                }
+            }
+        }
+
+        return memo[sum][n];
+    }
+
+    bool findSubsetSumDPMemoryOptimized(vector<int> arr, int sum)
+    {
+        int n = arr.size();
+        vector<bool> memo(sum + 1, false);
+        memo[0] = true;
 
         for (int i = 0; i < n; i++) {
-            for (int s = a[i]; s < sum + 1; s++) {
-                table[s] |= table[s - a[i]];
+            for (int s = sum; s >= arr[i]; s--) {
+                memo[s] = memo[s] || memo[s - arr[i]];
             }
         }
-        for (auto i = 0; i < sum + 1; i++) cout << (bool)table[i] << " ";
-        cout << endl;
-        return subsets;
+
+        return memo[sum];
     }
 
 private:
-    void findSubsetSum(int a[], int size, int sum, int n, vector<vector<int>>& subsets, vector<int> curset = {})
+    bool findSubsetSum(vector<int> arr, int n, int sum, vector<vector<int>>& subsets, vector<int> curset)
     {
-        if (size == 0 && sum == 0) { subsets.push_back(curset); }
-        if (size == 0 || n <= 0) return;
-        findSubsetSum(a, size, sum, n - 1, subsets, curset);
-        curset.push_back(a[n - 1]);
-        findSubsetSum(a, size - 1, sum - a[n - 1], n - 1, subsets, curset);
+        if (sum == 0) {
+            subsets.push_back(curset);
+            return true;
+        }
+        if (n <= 0 || sum < 0) return false;
+
+        bool cur1 = findSubsetSum(arr, n - 1, sum, subsets, curset);
+        curset.push_back(arr[n - 1]);
+        bool cur2 = findSubsetSum(arr, n - 1, sum - arr[n - 1], subsets, curset);
         curset.pop_back();
+
+        return cur1 || cur2;
     }
 };

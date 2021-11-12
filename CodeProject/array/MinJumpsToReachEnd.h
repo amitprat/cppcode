@@ -2,6 +2,14 @@
 #include "../header.h"
 using namespace std;
 
+/*
+https://www.careercup.com/question?id=24669663
+
+given an input array of integers where each integer represent the maximum amount of jump a frog can take.Frog has to reach the end of the array in minimum number of jumps.
+Example:[1 5 4 6 9 3 0 0 1 3] answer is 3 for this.
+[2 8 3 6 9 3 0 0 1 3] answer is 2 for this.
+Any DP solution for this?
+*/
 class FindMimJumpsToReachEndOfArray {
 public:
     static void test() {

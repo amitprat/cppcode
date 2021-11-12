@@ -29,7 +29,7 @@ public:
     }
     pair<string, int> findPeriod(string str) {
         int n = str.length();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n / 2; i++) {
             if (n % i == 0) {
                 string period = str.substr(0, i);
                 int j = i;

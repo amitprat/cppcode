@@ -26,6 +26,8 @@
 #include <shared_mutex>
 #include <map>
 #include <exception>
+#include <bitset>
+#include <numeric>
 #include "prettyprint.h"
 using namespace std;
 
@@ -36,6 +38,7 @@ class Interval {
 public:
     int start;
     int end;
+    Interval() :start(INT_MAX), end(INT_MIN) {}
     Interval(int start, int end) : start(start), end(end) {}
     string to_string() {
         return "{" + std::to_string(start) + "," + std::to_string(end) + "}";
@@ -81,7 +84,17 @@ string to_string(vector<Interval>& input) {
     return ss.str();
 }
 
-string to_string(const vector<int>& input) {
+template <typename T>
+string to_string(vector<T>& input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << std::to_string(i) << ", ";
+    if (ss.str().size() > 2) { ss.seekp(-2, std::ios_base::end); }
+    ss << "]";
+    return ss.str();
+}
+
+string to_string(vector<char>& input) {
     stringstream ss;
     ss << "[";
     for (auto& i : input) ss << i << ", ";
@@ -90,11 +103,20 @@ string to_string(const vector<int>& input) {
     return ss.str();
 }
 
-template <typename T>
-string to_string(vector<T> input) {
+string to_string(vector<string>& input) {
     stringstream ss;
     ss << "[";
-    for (auto& i : input) ss << i.to_string() << ", ";
+    for (auto& i : input) ss << i << ", ";
+    ss.seekp(-2, std::ios_base::end);
+    ss << "]";
+    return ss.str();
+}
+
+template <typename T, typename U>
+string to_string(vector<pair<T, U>> input) {
+    stringstream ss;
+    ss << "[";
+    for (auto& i : input) ss << "{" << i.first << ", " << i.second << "}" << ", ";
     ss.seekp(-2, std::ios_base::end);
     ss << "]";
     return ss.str();
@@ -106,12 +128,14 @@ string to_string(vector<vector<T>> input) {
     ss << "[";
     ss << endl;
     for (int i = 0; i < input.size(); i++) {
+        bool added = false;
         ss << setw(4);
         ss << "{";
         for (auto& j : input[i]) {
             ss << j << ", ";
+            added = true;
         }
-        ss.seekp(-2, std::ios_base::end);
+        if (!added) ss.seekp(-2, std::ios_base::end);
         ss << "}";
         ss << endl;
     }
@@ -119,27 +143,7 @@ string to_string(vector<vector<T>> input) {
     return ss.str();
 }
 
-string to_string(vector<string>& input) {
-    stringstream ss;
-    ss << "[";
-    for (auto& i : input) ss << i << ", ";
-    if (!input.empty()) ss.seekp(-2, std::ios_base::end);
-    ss << "]";
-    return ss.str();
-}
-
-string to_string(CBoard& board) {
-    stringstream ss;
-    for (int i = 0; i < board.size(); i++) {
-        for (int j = 0; j < board[i].size(); j++) {
-            ss << setw(4) << board[i][j] << "\t";
-        }
-        ss << endl;
-    }
-    return ss.str();
-}
-
-string to_string(IBoard& board) {
+string to_sudoku_string(IBoard& board) {
     stringstream ss;
     ss << "----------------------" << endl;
     for (int i = 0; i < board.size(); i++) {
