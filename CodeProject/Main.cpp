@@ -1,7 +1,7 @@
-#include "careercup/DijkastraMatrix.h"
+#include "careercup/LRUCache.h"
 
 int main()
 {
-    DijkastraMatrix::test();
+    LRUCache::test();
     return 0;
 }

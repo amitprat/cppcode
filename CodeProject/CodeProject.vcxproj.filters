@@ -1731,6 +1731,15 @@
     <ClInclude Include="careercup\DijkastraMatrix.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
+    <ClInclude Include="careercup\ChainOfStrings.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\HuffmanEncodingDecoding.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\LRUCache.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -1738,9 +1747,6 @@
     </ClCompile>
     <ClCompile Include="graph\ValidTree.h">
       <Filter>Header Files\tree</Filter>
-    </ClCompile>
-    <ClCompile Include="thread\PrintA1B1A2B2.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

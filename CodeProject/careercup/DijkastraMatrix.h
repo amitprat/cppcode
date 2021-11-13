@@ -16,11 +16,13 @@ public:
                         { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
                         { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
 
-        int s = 0;
-        vector<int> distance = dijkastra(graph, s);
+        for (int s = 0; s < V; s++) {
+            vector<int> distance = dijkastra(graph, s);
 
-        for (int i = 0; i < V; i++) {
-            cout << "Distance from " << s << " to " << i << " = " << distance[i] << endl;
+            for (int i = 0; i < V; i++) {
+                cout << "Distance from " << s << " to " << i << " = " << distance[i] << endl;
+            }
+            cout << endl;
         }
     }
 

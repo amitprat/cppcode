@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="thread\PrintA1B1A2B2.cpp" />
     <ClInclude Include="array/ArrangePositiveNegativeNumbers.h" />
     <ClInclude Include="array/BinaryArrSort.h" />
     <ClInclude Include="array/FindInsertPositionInSortedArr.h" />
@@ -175,6 +174,7 @@
     <ClInclude Include="careercup\AToF.h" />
     <ClInclude Include="careercup\BellmanFord.h" />
     <ClInclude Include="careercup\BinarySum.h" />
+    <ClInclude Include="careercup\ChainOfStrings.h" />
     <ClInclude Include="careercup\CheckIfArrayIsInAP.h" />
     <ClInclude Include="careercup\CheckIfWordIsValid.h" />
     <ClInclude Include="careercup\ClosestValueInBST.h" />
@@ -233,6 +233,7 @@
     <ClInclude Include="careercup\GetRepeatedStringPeriod.h" />
     <ClInclude Include="careercup\GraphColoring.h" />
     <ClInclude Include="careercup\HeightOrder.h" />
+    <ClInclude Include="careercup\HuffmanEncodingDecoding.h" />
     <ClInclude Include="careercup\I18N.h" />
     <ClInclude Include="careercup\IdentifyRedundanctParenthesis.h" />
     <ClInclude Include="careercup\IsInterleaved.h" />
@@ -248,6 +249,7 @@
     <ClInclude Include="careercup\LongestPalindromicSubstring.h" />
     <ClInclude Include="careercup\LongestRepeatedSubstringAndSubsequence.h" />
     <ClInclude Include="careercup\LongestWordMadeOfOthers.h" />
+    <ClInclude Include="careercup\LRUCache.h" />
     <ClInclude Include="careercup\MaximumRectangleMadeOf1s.h" />
     <ClInclude Include="careercup\MaximumValueOfArray.h" />
     <ClInclude Include="careercup\MaxIntervalOverlap.h" />
