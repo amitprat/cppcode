@@ -16,7 +16,7 @@ public:
         cout << "List : ";
         obj.print(head);
 
-        auto newHead = obj.removeLoop(head);
+        auto newHead = obj.removeLoopInLinkedList(head);
         cout << "List : ";
         obj.print(newHead);
     }
@@ -58,5 +58,35 @@ public:
         prev->next = nullptr;
 
         return node;
+    }
+
+    LinkedListNode<int>* removeLoopInLinkedList(LinkedListNode<int>* head)
+    {
+        LinkedListNode<int>* intersection = nullptr;
+        bool res = hasLoop(head, intersection);
+        if (!res) return head;
+
+        cout << "Loop found at " << intersection->val << endl;
+        LinkedListNode<int>* tmp = head;
+        while (tmp && intersection && tmp->next != intersection->next) {
+            tmp = tmp->next;
+            intersection = intersection->next;
+        }
+
+        cout << "Removing loop at prev to loop node " << intersection->val << endl;
+        intersection->next = nullptr;
+
+        return head;
+    }
+
+    bool hasLoop(LinkedListNode<int>* head, LinkedListNode<int>*& intersection) {
+        LinkedListNode<int>* slow = head, * fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) { intersection = slow; return true; }
+        }
+
+        return false;
     }
 };

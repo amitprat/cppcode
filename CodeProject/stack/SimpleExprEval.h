@@ -22,7 +22,8 @@ public:
     static void test(vector<string> expressions)
     {
         SimpleExprEval obj;
-        for (auto expr : expressions) {
+        for (auto expr : expressions)
+        {
             cout << "Expression: " << expr << ", ";
             cout << "Result: " << obj.evaluate(expr) << endl;
         }
@@ -32,10 +33,12 @@ public:
     {
         vector<string> additives = tokenize(expr, '+');
         int res = 0;
-        for (auto i : additives) {
+        for (auto i : additives)
+        {
             vector<string> multiplicatives = tokenize(i, '*');
             int mul = 1;
-            for (auto j : multiplicatives) {
+            for (auto j : multiplicatives)
+            {
                 mul *= stoi(j);
             }
             res += mul;
@@ -46,15 +49,18 @@ public:
 
     vector<string> tokenize(string str, char ch)
     {
+        vector<string> res;
+
         int start = 0;
         size_t pos = str.find(ch, start);
-        vector<string> res;
-        while (pos != string::npos) {
+        while (pos != string::npos)
+        {
             res.push_back(str.substr(start, pos - start));
             start = pos + 1;
             pos = str.find(ch, start);
         }
-        res.push_back(str.substr(start, pos - start));
+        if (start != str.length())
+            res.push_back(str.substr(start));
 
         return res;
     }

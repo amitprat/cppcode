@@ -1,7 +1,7 @@
-#include "careercup/LRUCache.h"
+#include "tree/ConstructTree.h"
 
 int main()
 {
-    LRUCache::test();
-    return 0;
+	ConstructTree::test();
+	return 0;
 }

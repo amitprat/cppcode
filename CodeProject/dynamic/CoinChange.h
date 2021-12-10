@@ -66,9 +66,9 @@ public:
         {
             table[am] = INT_MAX;
             for (int d = 0; d < length; d++) {
-                int incl = table[am - denom[d]];
-                if (incl != INT_MAX) incl += 1;
-                if (denom[d] <= am) table[am] = min(table[am], incl);
+                if (denom[d] <= am && table[am - denom[d]] != INT_MAX) {
+                    table[am] = min(table[am], 1+table[am - denom[d]]);
+                }
             }
         }
         for (int i = 0; i <= amount; i++) cout << table[i] << " ";

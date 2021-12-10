@@ -214,6 +214,32 @@ public:
         }
     }
 
+    void countSort(vector<int>& arr) {
+        int mx = *max_element(arr.begin(), arr.end());
+        int mn = *min_element(arr.begin(), arr.end());
+        int range = mx - mn + 1;
+
+        int* count = new int[range];
+        memset(count, 0, sizeof(int) * range);
+        for (int i = 0; i < arr.size(); i++) {
+            count[arr[i]-mn]++;
+        }
+
+        for (int i = 1; i <= mx; i++) {
+            count[i] += count[i - 1];
+        }
+
+        int* out = new int[arr.size()];
+        for (int i = arr.size() - 1; i >= 0; i--) {
+            out[count[arr[i]] - 1] = arr[i];
+            count[arr[i]]--;
+        }
+
+        for (int i = 0; i < arr.size(); i++) {
+            arr[i] = out[i];
+        }
+    }
+
     void radixSort(vector<string>& arr) {
 
     }

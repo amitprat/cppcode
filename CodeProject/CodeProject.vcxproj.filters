@@ -573,7 +573,7 @@
     <ClInclude Include="graph/Huffman.h">
       <Filter>Header Files\graph</Filter>
     </ClInclude>
-    <ClInclude Include="threads/ThreadPrint3SubSeq.h">
+    <ClInclude Include="thread/ThreadPrint3SubSeq.h">
       <Filter>Header Files\thread</Filter>
     </ClInclude>
     <ClInclude Include="stack/SimplifyPath.h">
@@ -1739,6 +1739,30 @@
     </ClInclude>
     <ClInclude Include="careercup\LRUCache.h">
       <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\WeightedJobScheduling.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SnakeLadderGame.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\CombinationSum.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\SpecialKeyboard.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\MultiThreading.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="design\2DArray.h">
+      <Filter>Header Files\design</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\ReverseBits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\FindMissingNumber.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

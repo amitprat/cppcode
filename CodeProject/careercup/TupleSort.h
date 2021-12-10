@@ -1,7 +1,6 @@
 #pragma once
 #include "../Header.h"
 
-
 /*
 https://www.careercup.com/question?id=5078393905217536
 
@@ -16,8 +15,9 @@ Assume such algorithm exists. Then for any N integers x1,x2,....xn. I construct 
 class TupleSort
 {
 public:
-    static void test() {
-        vector<tuple<char, int, int>> values = { {'a',1,5},{'b',2,4},{'c',7,8} };
+    static void test()
+    {
+        vector<tuple<char, int, int>> values = {{'a', 1, 5}, {'b', 2, 4}, {'c', 7, 8}};
 
         vector<pair<char, int>> sortedPair = generateSortedPair(values);
         cout << to_string(sortedPair) << endl;
@@ -29,17 +29,23 @@ public:
         vector<pair<char, int>> tmp1;
         vector<pair<char, int>> tmp2;
 
-        for (auto e : values) {
-            tmp1.push_back({ get<0>(e),get<1>(e) });
-            tmp2.push_back({ get<0>(e),get<2>(e) });
+        for (auto e : values)
+        {
+            tmp1.push_back({get<0>(e), get<1>(e)});
+            tmp2.push_back({get<0>(e), get<2>(e)});
         }
 
         int i = 0, j = 0;
-        while (i < tmp1.size() || j < tmp2.size()) {
-            if (i == tmp1.size()) result.push_back(tmp2[j++]);
-            else if (j == tmp2.size()) result.push_back(tmp1[i++]);
-            else if (tmp1[i].second <= tmp2[j].second) result.push_back(tmp1[i++]);
-            else result.push_back(tmp2[j++]);
+        while (i < tmp1.size() || j < tmp2.size())
+        {
+            if (i == tmp1.size())
+                result.push_back(tmp2[j++]);
+            else if (j == tmp2.size())
+                result.push_back(tmp1[i++]);
+            else if (tmp1[i].second <= tmp2[j].second)
+                result.push_back(tmp1[i++]);
+            else
+                result.push_back(tmp2[j++]);
         }
 
         return result;

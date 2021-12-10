@@ -5,21 +5,27 @@
 class TrimSpaces
 {
 public:
-    static void test() {
+    static void test()
+    {
         string str = "___Hello___World___Hello_World_________";
         {
             int i = 0;
             bool prevCh = false;
             bool putGap = false;
-            for (int j = 0; j < str.length(); j++) {
-                if (str[j] != '_') {
-                    if (putGap) str[i++] = '_';
+            for (int j = 0; j < str.length(); j++)
+            {
+                if (str[j] != '_')
+                {
+                    if (putGap)
+                        str[i++] = '_';
                     str[i++] = str[j];
                     prevCh = true;
                     putGap = false;
                 }
-                else {
-                    if (prevCh) putGap = true;
+                else
+                {
+                    if (prevCh)
+                        putGap = true;
                     prevCh = false;
                 }
             }
@@ -29,18 +35,22 @@ public:
 
         {
             str = "___Hello___World___Hello_World_________";
-            char* prev = const_cast<char*>(str.c_str());
-            const char* cur = str.c_str();
+            char *prev = const_cast<char *>(str.c_str());
+            const char *cur = str.c_str();
             bool prevCh = false;
             bool putSpace = false;
             while (*cur != '\0')
             {
-                if (*cur == '_') {
-                    if (prevCh) putSpace = true;
+                if (*cur == '_')
+                {
+                    if (prevCh)
+                        putSpace = true;
                     prevCh = false;
                 }
-                else {
-                    if (putSpace) *prev++ = '_';
+                else
+                {
+                    if (putSpace)
+                        *prev++ = '_';
                     *prev++ = *cur;
                     putSpace = false;
                     prevCh = true;

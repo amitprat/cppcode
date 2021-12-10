@@ -20,15 +20,15 @@ List<String> FindAnagrams(String needle, String haystack)
 
     HashSet<String> h = new HashSet<String>();
     int hashKey = PrimeProduct(needle);
-  int key = PrimeProduct(hayStack.subString(0, m-1);
-  if(key == hashKey)
-    h.add(hayStack.subString(0, m-1));
-  
-  for(int i = m, i<= n - 1 - m; i++){
-        int key = UpdatePrimeProduct(haystack.charAt[i + m - 1], haystack.charAt[i], key);
-        if (key == hashKey)
-            h.add(haystack.subString(i, i + m - 1));
-  }
+    int key = PrimeProduct(hayStack.subString(0, m-1);
+    if(key == hashKey)
+      h.add(hayStack.subString(0, m-1));
+    
+    for(int i = m, i<= n - 1 - m; i++){
+          int key = UpdatePrimeProduct(haystack.charAt[i + m - 1], haystack.charAt[i], key);
+          if (key == hashKey)
+              h.add(haystack.subString(i, i + m - 1));
+    }
 }
 
 UpdatePrimeProduct(char add, char remove)

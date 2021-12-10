@@ -15,7 +15,7 @@ class LongestWordMadeOfOthers {
 
         vector<string> traverse(string str) {
             vector<string> result;
-            traverse(root, str)
+            traverse(root, str);
         }
 
     private:

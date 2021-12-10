@@ -178,6 +178,7 @@
     <ClInclude Include="careercup\CheckIfArrayIsInAP.h" />
     <ClInclude Include="careercup\CheckIfWordIsValid.h" />
     <ClInclude Include="careercup\ClosestValueInBST.h" />
+    <ClInclude Include="careercup\CombinationSum.h" />
     <ClInclude Include="careercup\CompareTwoBsts.h" />
     <ClInclude Include="careercup\CompressString.h" />
     <ClInclude Include="careercup\ConvertStringToPalindromeByAddingOneOrMoreCharactersToFront.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="careercup\FindMaxRepeatElementInRange.h" />
     <ClInclude Include="careercup\FindMaxSizeOfSubstring.h" />
     <ClInclude Include="careercup\FindMinimumRange.h" />
+    <ClInclude Include="careercup\FindMissingNumber.h" />
     <ClInclude Include="careercup\FindMissingNumbers.h" />
     <ClInclude Include="careercup\FindNearestBike.h" />
     <ClInclude Include="careercup\FindNumberOccurringMoreThanKTimes.h" />
@@ -264,6 +266,7 @@
     <ClInclude Include="careercup\MinmumSeqOfAdjValues.h" />
     <ClInclude Include="careercup\MinPerfectSquares.h" />
     <ClInclude Include="careercup\MixedProblems.h" />
+    <ClInclude Include="careercup\MultiThreading.h" />
     <ClInclude Include="careercup\MyIterator.h" />
     <ClInclude Include="careercup\NameMapping.h" />
     <ClInclude Include="careercup\NBy2DivisiblePairsByK.h" />
@@ -294,6 +297,7 @@
     <ClInclude Include="careercup\RemoveBAndAC.h" />
     <ClInclude Include="careercup\RepeatingSubsequence.h" />
     <ClInclude Include="careercup\RepresentNumberAsSumOfCubeRoots.h" />
+    <ClInclude Include="careercup\ReverseBits.h" />
     <ClInclude Include="careercup\ReverseLevelOrderTraversal.h" />
     <ClInclude Include="careercup\RobotOrder.h" />
     <ClInclude Include="careercup\RotateImage.h" />
@@ -303,7 +307,9 @@
     <ClInclude Include="careercup\ShortestSubseqContainingSubarray.h" />
     <ClInclude Include="careercup\ShortestSuperSequence.h" />
     <ClInclude Include="careercup\SnakeGame.h" />
+    <ClInclude Include="careercup\SnakeLadderGame.h" />
     <ClInclude Include="careercup\SortNumbersInRange1To20000.h" />
+    <ClInclude Include="careercup\SpecialKeyboard.h" />
     <ClInclude Include="careercup\SplitArrayInTwoPartsWithMinimumDiff.h" />
     <ClInclude Include="careercup\SquareSurroundedBy1s.h" />
     <ClInclude Include="careercup\StoryTelling.h" />
@@ -319,11 +325,13 @@
     <ClInclude Include="careercup\TupleSort.h" />
     <ClInclude Include="careercup\TurtleGrid.h" />
     <ClInclude Include="careercup\ValuesGreaterThanN.h" />
+    <ClInclude Include="careercup\WeightedJobScheduling.h" />
     <ClInclude Include="careercup\WordBreak.h" />
     <ClInclude Include="careercup\WordBreakWithCount.h" />
     <ClInclude Include="careercup\WordDistance.h" />
     <ClInclude Include="careercup\WordTrie.h" />
     <ClInclude Include="crackingcodinginterview\TicTacToe.h" />
+    <ClInclude Include="design\2DArray.h" />
     <ClInclude Include="design\Blackjack.h" />
     <ClInclude Include="design\BoundedTimedPriorityQueue.h" />
     <ClInclude Include="design\CircularQueue.h" />
@@ -647,7 +655,7 @@
     <ClInclude Include="string\RegexMatch.h" />
     <ClInclude Include="string\ReverseStr.h" />
     <ClInclude Include="string\ReverseWordsInAString.h" />
-    <ClInclude Include="threads/ThreadPrint3SubSeq.h" />
+    <ClInclude Include="thread/ThreadPrint3SubSeq.h" />
     <ClInclude Include="design/TicTacToe.h" />
     <ClInclude Include="thread\PrintA1B1A2B2.h" />
     <ClInclude Include="thread\PrintEvenOdd.h" />

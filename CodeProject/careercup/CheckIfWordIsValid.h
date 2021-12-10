@@ -5,7 +5,7 @@
 https://www.careercup.com/question?id=4774716350922752
 
 
-In a language, there are only 4 characters ‘h’, ‘i’,’r’, ‘e’. and we have to write a function which takes a string as input and returns whether the given input string is a “valid word” or not.
+In a language, there are only 4 characters ï¿½hï¿½, ï¿½iï¿½,ï¿½rï¿½, ï¿½eï¿½. and we have to write a function which takes a string as input and returns whether the given input string is a ï¿½valid wordï¿½ or not.
 
 Definition of valid word :
 1. A given word is a valid word if it is of the form h^n i^n r^n e^n where n >=1. (eg: hhiirree)
@@ -21,8 +21,8 @@ idea:
 
 
 for(t=0,i = 0,count=0; i < str.length ; i++)
-    if( str[i] == alpha[t %M] ) count++;
-    else if( str[i] == alpha[++t %M] && count > 1) count=1;
+    if( str[i] == alpha[t % M] ) count++;
+    else if( str[i] == alpha[++t % M] && count > 1) count=1;
     else return false;
 
 return ( count >;1 && t==M-1) ? true : false;

@@ -67,6 +67,8 @@ public:
         cout << "Total cost for connecting ropes is "
             << obj.minCost(len);
     }
+    //4, 3, 2, 6 - [3+2 = 5+4 = 9 +6 = 15]
+    // [4+3=7+2=9+6=15]
 
     int minCost(vector<int> len) {
         Minheap<int> heap;

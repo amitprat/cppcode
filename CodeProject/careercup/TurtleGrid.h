@@ -1,8 +1,10 @@
 #pragma once
 #include "../Header.h"
 
-class TurtleGrid {
-    enum class Direction {
+class TurtleGrid
+{
+    enum class Direction
+    {
         North = 1,
         East = 2,
         South = 3,
@@ -16,11 +18,13 @@ class TurtleGrid {
     }
 
 public:
-    TurtleGrid() {
-        DirectionStrs = { "North", "East", "South","West" };
+    TurtleGrid()
+    {
+        DirectionStrs = {"North", "East", "South", "West"};
     }
 
-    static void test() {
+    static void test()
+    {
         TurtleGrid obj;
         Point pos(1, 1);
         Direction dir = Direction::North;
@@ -29,12 +33,15 @@ public:
         cout << "final pos: " << finalPos.first.to_string() << ", Direction: " << obj.getTextForEnum(finalPos.second) << endl;
     }
 
-    pair<Point, Direction> getPosition(string input, Point startPos, Direction startDir) {
+    pair<Point, Direction> getPosition(string input, Point startPos, Direction startDir)
+    {
         Point pos = startPos;
         Direction dir = startDir;
 
-        for (auto ch : input) {
-            switch (ch) {
+        for (auto ch : input)
+        {
+            switch (ch)
+            {
             case 'F':
                 pos = moveForward(pos, dir);
                 cout << "Pos: " << pos.to_string() << ", dir: " << getTextForEnum(dir) << endl;
@@ -50,11 +57,13 @@ public:
             }
         }
 
-        return { pos,dir };
+        return {pos, dir};
     }
 
-    Point moveForward(Point pos, Direction dir) {
-        switch (dir) {
+    Point moveForward(Point pos, Direction dir)
+    {
+        switch (dir)
+        {
         case Direction::West:
             pos.x -= 1;
             break;
@@ -72,8 +81,10 @@ public:
         return pos;
     }
 
-    Direction next(Direction cur, Direction change) {
-        switch (change) {
+    Direction next(Direction cur, Direction change)
+    {
+        switch (change)
+        {
         case Direction::West:
             cur = (Direction)((4 + (int)cur - 1) % 4);
             break;
