@@ -22,14 +22,15 @@ public:
 
     int distance(string s, string w1, string w2) {
         vector<string> parts = split(s);
+        
         pair<int, int> mnDist = { -999, 999 };
         pair<int, int> cur = { -1, -1 };
+        
         int index = 0;
-        for (auto word : parts) {
+        for (auto& word : parts) {
             if (word == w1) cur.first = index;
             if (word == w2) cur.second = index;
-            if (cur.first != -1 && cur.second != -1
-                && abs(cur.second - cur.first) < abs(mnDist.second - mnDist.first)) {
+            if (cur.first != -1 && cur.second != -1 && abs(cur.second - cur.first) < abs(mnDist.second - mnDist.first)) {
                 mnDist = cur;
             }
             index++;
@@ -44,10 +45,10 @@ public:
 
     vector<string> split(string s) {
         string delimiter = " ";
-        size_t pos = string::npos;
         vector<string> result;
-        while (s.find(delimiter) != string::npos) {
-            pos = s.find(delimiter);
+
+        size_t pos = string::npos;
+        while ((pos=s.find(delimiter)) != string::npos) {
             result.push_back(s.substr(0, pos));
             s = s.substr(pos + 1);
         }

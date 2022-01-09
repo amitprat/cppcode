@@ -1,6 +1,5 @@
 /*
-Given a string S1, convert it to another string S2 (Anagram) by swapping only adjacent elements. Print all the intermediate
- strings formed.
+Given a string S1, convert it to another string S2 (Anagram) by swapping only adjacent elements. Print all the intermediate strings formed.
 
 eg: s1: abcde
 s2: bcdae
@@ -16,7 +15,7 @@ convert s1 to a array of number according to the labels,
 s1: abcde
 n1: 41235
 
-the next is to sort 41235 using bubble sort （冒泡排序）:
+the next is to sort 41235 using bubble sort:
 41235
 14235
 12435

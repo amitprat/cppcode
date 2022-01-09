@@ -21,126 +21,171 @@ In the sense, it should be checked for every pair of characters in the string.
 class LongestRepeatedSubstringAndSubsequence
 {
 public:
-    static void test()
-    {
-        string s = "aabaabaabaabaabaabaab";
-        LongestRepeatedSubstringAndSubsequence obj;
+	static void test()
+	{
+		LongestRepeatedSubstringAndSubsequence obj;
 
-        auto res = obj.isPeriod(s);
-        cout << "Is Periodic = " << res << endl;
-        if (res) {
-            auto p = obj.getPeriod(s);
-            cout << "Period = " << p << endl;
-        }
+		{
+			string s = "aabaabaabaabaabaabaab";
+			auto res = obj.longestRepeatedSubstring(s);
+			cout << format("Longest repeated substring for input={} is {}", s, res) << endl;
+		}
 
-        {
-            string s = "abab";
-            auto res = obj.getLongestRepeatedSubseqDP(s);
-            cout << "longest subsequence: " << res << endl;
-        }
+		{
+			string s = "aabaabaabaabaabaabaabaab";
+			auto res = obj.longestRepeatedSubstring(s);
+			cout << format("Longest repeated substring for input={} is {}", s, res) << endl;
+		}
 
-        {
-            string s = "abba";
-            auto res = obj.getLongestRepeatedSubseqDP(s);
-            cout << "longest subsequence: " << res << endl;
-        }
+		{
+			string s = "a";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-        {
-            string s = "acbdaghfb";
-            auto res = obj.getLongestRepeatedSubseqDP(s);
-            cout << "longest subsequence: " << res << endl;
-        }
+		{
+			string s = "aa";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-        {
-            string s = "abcdacb";
-            auto res = obj.getLongestRepeatedSubseqDP(s);
-            cout << "longest subsequence: " << res << endl;
-        }
-    }
+		{
+			string s = "ab";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-    bool isPeriod(string s)
-    {
-        string rep = s + s;
-        string part = s.substr(1, s.length() - 2);
+		{
+			string s = "abc";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-        return rep.find(part) != string::npos;
-    }
+		{
+			string s = "abab";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-    string getPeriod(string s)
-    {
-        int l = s.length();
-        for (int i = l / 2; i > 0; i--)
-        {
-            if (l % i == 0 && isRepeat(s, i, l)) return s.substr(0, i);
-        }
+		{
+			string s = "abba";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-        return "";
-    }
+		{
+			string s = "acbdaghfb";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-    bool isRepeat(string s, int patLen, int totalLen)
-    {
-        string period = s.substr(0, patLen);
-        int j = patLen;
+		{
+			string s = "abcdacb";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
 
-        while (j + patLen <= totalLen)
-        {
-            if (period != s.substr(j, patLen)) return false;
-            j += patLen;
-        }
+		{
+			string s = "abacdbdecdfd";
+			auto res = obj.getLongestRepeatedSubseq(s);
+			cout << format("Longest repeated subsequence for input={} is {}", s, res) << endl;
+		}
+	}
 
-        return true;
-    }
+	string longestRepeatedSubstring(string str) {
+		if (!isPeriod(str)) return "";
 
-    string getLongestRepeatedSubseq(string s)
-    {
-        return getLongestRepeatedSubseqRec(s);
-    }
+		return getPeriod(str);
+	}
 
-    string getLongestRepeatedSubseqRec(string s)
-    {
-        string res;
+	bool isPeriod(string s)
+	{
+		string rep = s + s;
+		string part = s.substr(1, s.length() - 2);
 
-        auto len = longestRepeatedSubseq(s, s, 0, 0, "", res);
-        cout << "Len: " << len << endl;
+		return rep.find(part) != string::npos;
+	}
 
-        return res;
-    }
+	string getPeriod(string s)
+	{
+		int l = s.length();
+		for (int i = l / 2; i > 0; i--)
+		{
+			if (l % i == 0 && isRepeat(s, i, l)) return s.substr(0, i);
+		}
 
-    int longestRepeatedSubseq(string s1, string s2, int i, int j, string cur, string& res)
-    {
-        if (i >= s1.length() || j >= s2.length()) {
-            if (cur.length() > res.length()) res = cur;
-            return 0;
-        }
+		return "";
+	}
 
-        if (i != j && s1[i] == s2[j]) return 1 + longestRepeatedSubseq(s1, s2, i + 1, j + 1, cur + s1[i], res);
-        else return max(longestRepeatedSubseq(s1, s2, i + 1, j, cur, res), longestRepeatedSubseq(s1, s2, i, j + 1, cur, res));
-    }
+	bool isRepeat(string s, int patLen, int totalLen)
+	{
+		string period = s.substr(0, patLen);
+		int j = patLen;
 
-    bool getLongestRepeatedSubseqDP(string s)
-    {
-        int l = lps(s, s);
-        return (l > 1) ? true : false;
-    }
+		while (j + patLen <= totalLen)
+		{
+			if (period != s.substr(j, patLen)) return false;
+			j += patLen;
+		}
 
-    int lps(string s1, string s2)
-    {
-        int n = s1.length();
-        int m = s2.length();
-        vector<vector<int>> memo(n + 1, vector<int>(m + 1, 0));
+		return true;
+	}
 
-        for (int i = 0; i <= n; i++)
-        {
-            for (int j = 0; j <= m; j++)
-            {
-                if (i == 0 || j == 0) memo[i][j] = 0;
-                else if (i != j && s1[i - 1] == s2[j - 1]) memo[i][j] = 1 + memo[i - 1][j - 1];
-                else memo[i][j] = max(memo[i - 1][j], memo[i][j - 1]);
-            }
-        }
+	string getLongestRepeatedSubseq(string s)
+	{
+		auto res1 = getLongestRepeatedSubseqRec(s);
+		auto res2 = getLongestRepeatedSubseqDP(s);
 
-        //cout << to_string(memo) << endl;
+		assert(res1.length() == res2.second);
 
-        return memo[n][m];
-    }
+		return res1;
+	}
+
+	string getLongestRepeatedSubseqRec(string s)
+	{
+		string res;
+
+		auto len = longestRepeatedSubseqRec(s, s, 0, 0, "", res);
+
+		return res;
+	}
+
+	int longestRepeatedSubseqRec(string s1, string s2, int i, int j, string cur, string& res)
+	{
+		if (i >= s1.length() || j >= s2.length()) {
+			if (cur.length() > res.length()) res = cur;
+			return 0;
+		}
+
+		if (i != j && s1[i] == s2[j]) return 1 + longestRepeatedSubseqRec(s1, s2, i + 1, j + 1, cur + s1[i], res);
+		else return max(longestRepeatedSubseqRec(s1, s2, i + 1, j, cur, res), longestRepeatedSubseqRec(s1, s2, i, j + 1, cur, res));
+	}
+
+	pair<bool, int> getLongestRepeatedSubseqDP(string s)
+	{
+		int l = lps(s, s);
+		pair<bool, int> res = { l > 1, l };
+		return res;
+	}
+
+	int lps(string s1, string s2)
+	{
+		int n = s1.length();
+		int m = s2.length();
+		vector<vector<int>> memo(n + 1, vector<int>(m + 1));
+
+		for (int i = 0; i <= n; i++)
+		{
+			for (int j = 0; j <= m; j++)
+			{
+				if (i == 0 || j == 0) memo[i][j] = 0;
+				else if (i != j && s1[i - 1] == s2[j - 1]) memo[i][j] = 1 + memo[i - 1][j - 1];
+				else memo[i][j] = max(memo[i - 1][j], memo[i][j - 1]);
+			}
+		}
+
+		//cout << to_string(memo) << endl;
+
+		return memo[n][m];
+	}
 };

@@ -8,51 +8,53 @@ There are many sorted arrays. Find a minimum range, so that in each array there'
 */
 class FindMinimumRange {
 public:
-    static void test() {
-        vector<vector<int>> arrs = {
-            {1,2,4,5,9},
-            {3,4,5,6,7},
-            {2,3,5,6,7},
-            {1,5,8,9,9},
-            {10,20,50,60,70}
-        };
+	static void test() {
+		vector<vector<int>> arrs = {
+			{1,2,4,5,9},
+			{3,4,5,6,7},
+			{2,3,5,6,7},
+			{1,5,8,9,9},
+			{10,20,50,60,70}
+		};
 
-        pair<int, int> res = smallestRange(arrs);
-        cout << to_string(res) << endl;
-    }
+		pair<int, int> res = smallestRange(arrs);
+		cout << to_string(res) << endl;
+	}
 
-    static pair<int, int> smallestRange(vector<vector<int>> arrs) {
-        using  p = pair<int, pair<int, int>>;
-        using v = vector<pair<int, pair<int, int>>>;
-        priority_queue<p, v, std::greater<p>> pq;
-        int mn = INT_MAX, mx = INT_MIN;
+	static pair<int, int> smallestRange(vector<vector<int>> arrs) {
+		using  p = pair<int, pair<int, int>>;
+		using v = vector<pair<int, pair<int, int>>>;
+		priority_queue<p, v, std::greater<p>> pq;
+		int mn = INT_MAX, mx = INT_MIN;
 
-        for (int i = 0; i < arrs.size(); i++) {
-            pq.push({ arrs[i][0], {i,0} });
-            mn = min(mn, arrs[i][0]);
-            mx = max(mx, arrs[i][0]);
-        }
+		for (int i = 0; i < arrs.size(); i++) {
+			pq.push({ arrs[i][0], {i,0} });
+			mn = min(mn, arrs[i][0]);
+			mx = max(mx, arrs[i][0]);
+		}
 
-        pair<int, int> result = { mn, mx };
+		pair<int, int> result = { mn, mx };
 
-        while (true) {
-            auto f = pq.top(); pq.pop();
-            mn = f.first;
-            mx = max(f.first, mx);
+		while (true) {
+			auto f = pq.top(); pq.pop();
+			mn = f.first;
+			mx = max(f.first, mx);
 
-            if (mx - mn < result.second - result.first) {
-                result = { mn, mx };
-            }
+			if (mx - mn < result.second - result.first) {
+				result = { mn, mx };
+			}
 
-            if (f.second.second < arrs[f.second.first].size() - 1) {
-                f.second.second++;
-                pq.push({ arrs[f.second.first][f.second.second], {f.second.first, f.second.second} });
-            }
-            else {
-                break;
-            }
-        }
+			int arrIdx = f.second.first;
+			int arrPos = f.second.second;
+			if (arrPos < arrs[arrIdx].size() - 1) {
+				arrPos++;
+				pq.push({ arrs[arrIdx][arrPos], {arrIdx, arrPos} });
+			}
+			else {
+				break;
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 };

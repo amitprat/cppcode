@@ -31,49 +31,73 @@ print LMin[i],i,RMax[i]
 class FindIJAndKInElementsOrder
 {
 public:
-    static void test() {
-        printOrder1();
-        printOrder2();
-    }
+	static void test() {
+		printOrder1();
+		printOrder2();
+		printOrder3();
+	}
 
-    static void printOrder1()
-    {
-        vector<int> arr = { 4, 7, 5, 1, 3, 8, 9, 6, 2 };
-        int n = arr.size();
-        vector<int> left(arr.size());
-        vector<int> right(arr.size());
+	static void printOrder1()
+	{
+		vector<int> arr = { 4, 7, 5, 1, 3, 8, 9, 6, 2 };
+		int n = arr.size();
+		vector<int> left(arr.size());
+		vector<int> right(arr.size());
 
-        left[0] = arr[0];
-        for (int i = 1; i < arr.size(); i++) left[i] = min(left[i - 1], arr[i]);
+		left[0] = arr[0];
+		for (int i = 1; i < arr.size(); i++) left[i] = min(left[i - 1], arr[i]);
 
-        right[n - 1] = arr[n - 1];
-        for (int i = arr.size() - 2; i >= 0; i--) right[i] = max(right[i + 1], arr[i]);
+		right[n - 1] = arr[n - 1];
+		for (int i = arr.size() - 2; i >= 0; i--) right[i] = max(right[i + 1], arr[i]);
 
-        for (int i = 1; i < n - 1; i++) {
-            if (left[i] < arr[i] && arr[i] < right[i]) {
-                cout << left[i] << ", " << arr[i] << ", " << right[i] << endl;
-            }
-        }
-        cout << endl << endl;
-    }
+		for (int i = 1; i < n - 1; i++) {
+			if (left[i] < arr[i] && arr[i] < right[i]) {
+				cout << left[i] << ", " << arr[i] << ", " << right[i] << endl;
+			}
+		}
+		cout << endl << endl;
+	}
 
-    static void printOrder2()
-    {
-        vector<int> arr = { 4, 7, 5, 1, 3, 8, 9, 6, 2 };
-        int n = arr.size();
-        vector<int> left(arr.size());
-        int rightMax = arr[n - 1];
+	static void printOrder2()
+	{
+		vector<int> arr = { 4, 7, 5, 1, 3, 8, 9, 6, 2 };
+		int n = arr.size();
+		vector<int> left(arr.size());
+		int rightMax = arr[n - 1];
 
-        left[0] = arr[0];
-        for (int i = 1; i < arr.size(); i++) left[i] = min(left[i - 1], arr[i]);
+		left[0] = arr[0];
+		for (int i = 1; i < arr.size(); i++) left[i] = min(left[i - 1], arr[i]);
 
-        for (int i = n - 2; i >= 0; i--) {
-            if (left[i] < arr[i] && arr[i] < rightMax) {
-                cout << left[i] << ", " << arr[i] << ", " << rightMax << endl;
-            }
-            rightMax = max(rightMax, arr[i]);
-        }
+		for (int i = n - 2; i >= 0; i--) {
+			if (left[i] < arr[i] && arr[i] < rightMax) {
+				cout << left[i] << ", " << arr[i] << ", " << rightMax << endl;
+			}
+			rightMax = max(rightMax, arr[i]);
+		}
 
-        cout << endl << endl;
-    }
+		cout << endl << endl;
+	}
+
+	static void printOrder3()
+	{
+		vector<int> arr = { 4, 7, 5, 1, 3, 8, 9, 6, 2 };
+		int n = arr.size();
+		vector<int> left(arr.size());
+		int rightMax = n - 1;
+
+		left[0] = 0;
+		for (int i = 1; i < arr.size(); i++) {
+			if (arr[i] < arr[left[i - 1]]) left[i] = i;
+		}
+
+		for (int i = n - 2; i >= 0; i--) {
+			if (arr[left[i]] < arr[i] && arr[i] < arr[rightMax]) {
+				cout << left[i] << ", " << i << ", " << rightMax << endl;
+				cout << arr[left[i]] << ", " << arr[i] << ", " << arr[rightMax] << endl;
+			}
+			if (arr[i] > arr[i + 1]) rightMax = i;
+		}
+
+		cout << endl << endl;
+	}
 };

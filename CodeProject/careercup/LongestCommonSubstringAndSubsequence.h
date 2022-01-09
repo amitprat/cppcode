@@ -3,77 +3,143 @@
 
 class LongestCommonSubstringAndSubsequence {
 public:
-    static void test() {
-        {
-            string str1 = "AGGTAB";
-            string str2 = "GXTXAYB";
+	static void test() {
+		{
+			string str1 = "AGGTAB";
+			string str2 = "GXTXAYB";
 
-            int l1 = longestSubsequence(str1, str1.length(), str2, str2.length());
-            int l2 = longestSubsequenceDP(str1, str1.length(), str2, str2.length());
+			{
+				int l1 = longestCommonSubsequenceRec(str1, str1.length(), str2, str2.length());
+				string l2 = longestCommonSubsequenceDP(str1, str1.length(), str2, str2.length());
 
-            assert(l1 == l2);
+				assert(l1 == l2.length());
 
-            cout << "Longest subsequence = " << l1 << endl;
-        }
+				cout << format("Longest common subsequence for str1={} and str2={} is length={}, str={}", str1, str2, l1, l2) << endl;
+			}
 
-        {
-            string str1 = "AGGTAB";
-            string str2 = "GXTXAYB";
+			{
+				int l1 = longestCommonSubstringRec(str1, str1.length(), str2, str2.length(), 0);
+				int l2 = longestCommonSubstringDP(str1, str1.length(), str2, str2.length());
 
-            int l1 = longestSubstring(str1, str1.length(), str2, str2.length(), 0);
-            int l2 = longestSubstringDP(str1, str1.length(), str2, str2.length());
+				assert(l1 == l2);
 
-            assert(l1 == l2);
+				cout << format("Longest common substring for str1={} and str2={} is length={}", str1, str2, l1) << endl;
+			}
+		}
 
-            cout << "Longest substring = " << l1 << endl;
-        }
-    }
+		{
+			string str1 = "abc";
+			string str2 = "abc";
 
-    static int longestSubsequence(string a, int n, string b, int m) {
-        if (n == 0 || m == 0) return 0;
+			int l1 = longestCommonSubsequenceRec(str1, str1.length(), str2, str2.length());
+			string l2 = longestCommonSubsequenceDP(str1, str1.length(), str2, str2.length());
 
-        if (a[n - 1] == b[m - 1])
-            return 1 + longestSubsequence(a, n - 1, b, m - 1);
+			assert(l1 == l2.length());
 
-        return max(longestSubsequence(a, n - 1, b, m), longestSubsequence(a, n, b, m - 1));
-    }
+			cout << format("Longest common subsequence for str1={} and str2={} is length={}, str={}", str1, str2, l1, l2) << endl;
+		}
 
-    static int longestSubstring(string a, int n, string b, int m, int cnt) {
-        if (n == 0 || m == 0) return cnt;
+		{
+			string str1 = "abc";
+			string str2 = "cba";
 
-        if (a[n - 1] == b[m - 1])
-            return longestSubstring(a, n - 1, b, m - 1, cnt + 1);
+			int l1 = longestCommonSubsequenceRec(str1, str1.length(), str2, str2.length());
+			string l2 = longestCommonSubsequenceDP(str1, str1.length(), str2, str2.length());
 
-        return max(longestSubstring(a, n - 1, b, m, 0), longestSubstring(a, n, b, m - 1, 0));
-    }
+			assert(l1 == l2.length());
 
-    static int longestSubsequenceDP(string a, int n, string b, int m) {
-        vector<vector<int>> table(n + 1, vector<int>(m + 1));
+			cout << format("Longest common subsequence for str1={} and str2={} is length={}, str={}", str1, str2, l1, l2) << endl;
+		}
 
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= m; j++) {
-                if (i == 0 || j == 0) table[i][j] = 0;
-                else if (a[i - 1] == b[j - 1]) table[i][j] = 1 + table[i - 1][j - 1];
-                else table[i][j] = max(table[i - 1][j], table[i][j - 1]);
-            }
-        }
+		{
+			string str1 = "abcdec";
+			string str2 = "acecfg";
 
-        return table[n][m];
-    }
+			int l1 = longestCommonSubsequenceRec(str1, str1.length(), str2, str2.length());
+			string l2 = longestCommonSubsequenceDP(str1, str1.length(), str2, str2.length());
 
-    static int longestSubstringDP(string a, int n, string b, int m) {
-        vector<vector<int>> table(n + 1, vector<int>(m + 1));
+			assert(l1 == l2.length());
 
-        int result = 0;
+			cout << format("Longest common subsequence for str1={} and str2={} is length={}, str={}", str1, str2, l1, l2) << endl;
+		}
 
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= m; j++) {
-                table[i][j] = 0;
-                if (i > 0 && j > 0 && a[i - 1] == b[j - 1]) table[i][j] = 1 + table[i - 1][j - 1];
-                result = max(result, table[i][j]);
-            }
-        }
+		{
+			string str1 = "AGGTAB";
+			string str2 = "GXTXAYB";
 
-        return result;
-    }
+			int l1 = longestCommonSubstringRec(str1, str1.length(), str2, str2.length(), 0);
+			int l2 = longestCommonSubstringDP(str1, str1.length(), str2, str2.length());
+
+			assert(l1 == l2);
+
+			cout << format("Longest common substring for str1={} and str2={} is length={}", str1, str2, l1) << endl;
+		}
+	}
+
+	static int longestCommonSubsequenceRec(string a, int n, string b, int m) {
+		if (n == 0 || m == 0) return 0;
+
+		if (a[n - 1] == b[m - 1]) return 1 + longestCommonSubsequenceRec(a, n - 1, b, m - 1);
+
+		return max(longestCommonSubsequenceRec(a, n - 1, b, m), longestCommonSubsequenceRec(a, n, b, m - 1));
+	}
+
+	static string longestCommonSubsequenceDP(string a, int n, string b, int m) {
+		vector<vector<int>> table(n + 1, vector<int>(m + 1));
+
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= m; j++) {
+				if (i == 0 || j == 0) table[i][j] = 0;
+				else if (a[i - 1] == b[j - 1]) table[i][j] = 1 + table[i - 1][j - 1];
+				else table[i][j] = max(table[i - 1][j], table[i][j - 1]);
+			}
+		}
+
+		string res;
+		int i = n, j = m;
+		while (table[i][j] > 0) {
+			if (i == 0) {
+				j--;
+			}
+			else if (j == 0) {
+				i--;
+			}
+			else if (a[i - 1] == b[j - 1]) {
+				res += a[i - 1]; i--; j--;
+			}
+			else if (table[i - 1][j] > table[i][j - 1]) {
+				i--;
+			}
+			else {
+				j--;
+			}
+		}
+		reverse(res.begin(), res.end());
+
+		return res;
+	}
+
+	static int longestCommonSubstringRec(string a, int n, string b, int m, int len) {
+		if (n == 0 || m == 0) return len;
+
+		if (a[n - 1] == b[m - 1]) return longestCommonSubstringRec(a, n - 1, b, m - 1, len + 1);
+
+		return max(longestCommonSubstringRec(a, n - 1, b, m, 0), longestCommonSubstringRec(a, n, b, m - 1, 0));
+	}
+
+	static int longestCommonSubstringDP(string a, int n, string b, int m) {
+		vector<vector<int>> table(n + 1, vector<int>(m + 1));
+
+		int result = 0;
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= m; j++) {
+				table[i][j] = 0;
+				if (i == 0 || j == 0) table[i][j] = 0;
+				else if (a[i - 1] == b[j - 1]) table[i][j] = 1 + table[i - 1][j - 1];
+				result = max(result, table[i][j]);
+			}
+		}
+
+		return result;
+	}
 };

@@ -2,107 +2,107 @@
 #include "../Header.h"
 
 
-class TopKUrls {
-    struct Machine {
-        string id;
-        unordered_map<string, int> urls;
-        vector<pair<string, int>> getLocalTopKUrls(int k) {
-            vector<pair<string, int>> result;
-            for (auto url : urls) {
-                result.push_back({ url.first,url.second });
-            }
-            sort(result.begin(), result.end(), [](auto& f, auto& s) {return f.second >= s.second; });
-            return { result.begin(),result.begin() + k };
-        }
+class TopKUrlsInDistributedSystem {
+	struct Machine {
+		string id;
+		unordered_map<string, int> urls;
+		vector<pair<string, int>> getLocalTopKUrlsInDistributedSystem(int k) {
+			vector<pair<string, int>> result;
+			for (auto url : urls) {
+				result.push_back({ url.first,url.second });
+			}
+			sort(result.begin(), result.end(), [](auto& f, auto& s) {return f.second > s.second; });
+			return { result.begin(),result.begin() + k };
+		}
 
-        vector<pair<string, int>> getHigherRankUrls(int cutoff) {
-            vector<pair<string, int>> result;
-            for (auto url : urls) {
-                if (url.second > cutoff) result.push_back({ url.first,url.second });
-            }
-            sort(result.begin(), result.end(), [](auto& f, auto& s) {return f.second >= s.second; });
-            return result;
-        }
+		vector<pair<string, int>> getHigherRankUrls(int cutoff) {
+			vector<pair<string, int>> result;
+			for (auto url : urls) {
+				if (url.second > cutoff) result.push_back({ url.first,url.second });
+			}
+			sort(result.begin(), result.end(), [](auto& f, auto& s) {return f.second > s.second; });
+			return result;
+		}
 
-        int get(string id) {
-            return urls[id];
-        }
-    };
+		int get(string id) {
+			return urls[id];
+		}
+	};
 public:
-    static void test() {
-        TopKUrls obj;
-        vector<Machine> machines;
-        machines.push_back({ "M1",{{"1",100},{"2",96},{"7",94}} });
-        machines.push_back({ "M2",{{"3",99},{"5",97},{"7",4}} });
-        machines.push_back({ "M3",{{"4",98},{"6",95},{"7",4}} });
+	static void test() {
+		TopKUrlsInDistributedSystem obj;
+		vector<Machine> machines;
+		machines.push_back({ "M1",{{"1",100},{"2",96},{"7",94},{"3",99},{"5",97}} });
+		machines.push_back({ "M2",{{"3",99},{"5",97},{"7",4},{"1",100},{"2",96}} });
+		machines.push_back({ "M3",{{"4",98},{"6",95},{"1",100},{"2",96},{"7",4}} });
 
-        vector<pair<string, int>> res = obj.getTopKUrls(machines, 2);
-        to_string(res);
-    }
+		vector<pair<string, int>> res = obj.getTopKUrlsInDistributedSystem(machines, 3);
+		to_string(res);
+	}
 
-    static void to_string(vector<pair<string, int>> res) {
-        cout << "Top Urls: " << endl;
-        for (auto url : res) {
-            cout << url.first << ": " << url.second << endl;
-        }
-        cout << endl;
-    }
+	static void to_string(vector<pair<string, int>> res) {
+		cout << "Top Urls: " << endl;
+		for (auto url : res) {
+			cout << url.first << ": " << url.second << endl;
+		}
+		cout << endl;
+	}
 
-    vector<pair<string, int>> getTopKUrls(vector<Machine>& machines, int k) {
-        // first pass
-        vector<pair<string, int>> firstPassResult;
-        for (auto machine : machines) {
-            auto res = machine.getLocalTopKUrls(k);
-            firstPassResult.insert(firstPassResult.end(), res.begin(), res.end());
-        }
+	vector<pair<string, int>> getTopKUrlsInDistributedSystem(vector<Machine>& machines, int k) {
+		// first pass
+		vector<pair<string, int>> firstPassResult;
+		for (auto machine : machines) {
+			auto res = machine.getLocalTopKUrlsInDistributedSystem(k);
+			firstPassResult.insert(firstPassResult.end(), res.begin(), res.end());
+		}
 
-        // merge results
-        vector<pair<string, int>> intermediateResult;
-        mergeResults(firstPassResult, intermediateResult, machines, k);
+		// merge results
+		vector<pair<string, int>> intermediateResult;
+		mergeResults(firstPassResult, intermediateResult, machines, k);
 
-        // get threshold
-        auto t = getThreshold(intermediateResult, k);
+		// get threshold
+		auto t = getThreshold(intermediateResult, k);
 
-        // get cutoff threshold
-        auto s = t / machines.size();
+		// get cutoff threshold
+		auto s = t / machines.size();
 
-        // second pass
-        vector<pair<string, int>> secondPassResult;
-        for (auto machine : machines) {
-            auto res = machine.getHigherRankUrls(s);
-            secondPassResult.insert(secondPassResult.end(), res.begin(), res.end());
-        }
+		// second pass
+		vector<pair<string, int>> secondPassResult;
+		for (auto machine : machines) {
+			auto res = machine.getHigherRankUrls(s);
+			secondPassResult.insert(secondPassResult.end(), res.begin(), res.end());
+		}
 
-        // merge results
-        mergeResults(secondPassResult, intermediateResult, machines, k);
+		// merge results
+		mergeResults(secondPassResult, intermediateResult, machines, k);
 
-        return intermediateResult;
-    }
+		return intermediateResult;
+	}
 
 private:
-    void mergeResults(vector<pair<string, int>>& firstPassResult,
-        vector<pair<string, int>>& intermediateResult,
-        vector<Machine>& machines, int k) {
-        unordered_map<string, int> res;
-        for (auto partial : firstPassResult) {
-            for (auto machine : machines) {
-                res[partial.first] += machine.get(partial.first);
-            }
-        }
-        vector<pair<string, int>> result;
-        for (auto r : res) result.push_back({ r.first, r.second });
-        sort(result.begin(), result.end(), [](auto& f, auto& s) {return f.second >= s.second; });
-        intermediateResult = { result.begin(),result.begin() + k };
-    }
+	void mergeResults(vector<pair<string, int>>& firstPassResult,
+		vector<pair<string, int>>& intermediateResult,
+		vector<Machine>& machines, int k) {
+		unordered_map<string, int> res;
+		for (auto partial : firstPassResult) {
+			for (auto machine : machines) {
+				res[partial.first] += machine.get(partial.first);
+			}
+		}
 
-    int getThreshold(vector<pair<string, int>>& intermediateResult, int k) {
-        return intermediateResult[k - 1].second;
-    }
+		for (auto r : res) intermediateResult.push_back({ r.first, r.second });
+		sort(intermediateResult.begin(), intermediateResult.end(), [](auto& f, auto& s) {return f.second > s.second; });
+		intermediateResult = { intermediateResult.begin(),intermediateResult.begin() + k };
+	}
 
-    vector<pair<string, int>> getTopK(vector<pair<string, int>>& intermediateResult, int k) {
-        sort(intermediateResult.begin(), intermediateResult.end(), [](auto& f, auto& s) {return f.second >= s.second; });
-        return { intermediateResult.begin(),intermediateResult.begin() + k };
-    }
+	int getThreshold(vector<pair<string, int>>& intermediateResult, int k) {
+		return intermediateResult[k - 1].second;
+	}
+
+	vector<pair<string, int>> getTopK(vector<pair<string, int>>& intermediateResult, int k) {
+		sort(intermediateResult.begin(), intermediateResult.end(), [](auto& f, auto& s) {return f.second > s.second; });
+		return { intermediateResult.begin(),intermediateResult.begin() + k };
+	}
 };
 
 /*

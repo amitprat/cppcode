@@ -13,75 +13,76 @@ Given string S, find out the P (repetitive pattern) of S.
 */
 class GetPeriod {
 public:
-    static void test() {
-        string s = "waterwater";
-        GetPeriod obj;
+	static void test() {
+		vector<string> strs = { "waterwater", "ababab", "xxxxxx", "aabbaaabba", "abcd", "dbcasdssddbcasds" };
+		GetPeriod obj;
 
-        auto res = obj.isPeriod(s);
-        cout << "Is Periodic = " << res << endl;
-        if (res) {
-            auto p = obj.getPeriod(s);
-            cout << "Period = " << p.first << ", " << p.second << endl;
-        }
-    }
+		for (auto str : strs) {
+			auto res = obj.isPeriod(str);
+			cout << "Is string='" << str << "' periodic: " << res << endl;
 
-    bool isPeriod(string s) {
-        string tmp = s + s;
-        tmp = tmp.substr(1, tmp.length() - 2);
-        return (tmp.find(s) != string::npos);
-    }
+			if (res) {
+				auto p = obj.getPeriod(str);
+				cout << "Period = " << p.first << ", " << p.second << endl;
+			}
+		}
+	}
 
-    pair<string, int> getPeriod(string s) {
-        int n = s.length();
-        for (int len = 1; len <= n / 2; len++) {
-            if (n % len == 0 && isRepeat(s, len, n)) {
-                return { s.substr(0,len),n / len };
-            }
-        }
-        return { "",-1 };
-    }
+	bool isPeriod(string s) {
+		string tmp = s + s;
+		tmp = tmp.substr(1, tmp.length() - 2);
+		return (tmp.find(s) != string::npos);
+	}
 
-    bool isRepeat(string s, int periodLen, int totalLen) {
-        vector<int> indices;
-        for (int i = periodLen; i < totalLen; i += periodLen) indices.push_back(i);
-        for (auto i = 0; i < periodLen; i++) {
-            for (auto j : indices) {
-                if (s[i] != s[j + i]) return false;
-            }
-        }
-        return true;
-    }
+	pair<string, int> getPeriod(string s) {
+		int n = s.length();
+		for (int len = 1; len <= n / 2; len++) {
+			if (n % len == 0 && isRepeat(s, len, n)) {
+				return { s.substr(0,len),n / len };
+			}
+		}
+		return { "",-1 };
+	}
+
+	bool isRepeat(string s, int periodLen, int totalLen) {
+		for (auto i = 0; i < periodLen; i++) {
+			for (int j = periodLen + i; j < totalLen; j += periodLen) {
+			    if (s[i] != s[j]) return false;
+			}
+		}
+		return true;
+	}
 };
 
 /*
 boolean isPeriod(String s) {
-        StringBuilder str = new StringBuilder(s   s);
-        str.deleteCharAt(0);
-        str.deleteCharAt(str.length() - 1);
-        return strStr(str.toString(), s); //KMP strStr(T, S) to find if T has S in it.
-    }
+		StringBuilder str = new StringBuilder(s   s);
+		str.deleteCharAt(0);
+		str.deleteCharAt(str.length() - 1);
+		return strStr(str.toString(), s); //KMP strStr(T, S) to find if T has S in it.
+	}
 
-    //Solution to follow-up
-    //This method looks for the repeating pattern in string
-    private static String getPeriod(String string) { // O(n * n)
-        //for every possible period size i, check if it's valid
-        for (int i = 1; i <= string.length() / 2; i  ) {
-            if (string.length() % i == 0) {
-                String period = string.substring(0, i);
-                int j = i;
-                while(j + i <= string.length()) {
-                    if (period.equals(string.substring(j, j   i))) {
-                        j = j + i;
-                        if(j == string.length()) { //period valid through entire string
-                            return period;
-                        }
-                    } else {
-                        break;
-                    }
-                }
-            }
+	//Solution to follow-up
+	//This method looks for the repeating pattern in string
+	private static String getPeriod(String string) { // O(n * n)
+		//for every possible period size i, check if it's valid
+		for (int i = 1; i <= string.length() / 2; i  ) {
+			if (string.length() % i == 0) {
+				String period = string.substring(0, i);
+				int j = i;
+				while(j + i <= string.length()) {
+					if (period.equals(string.substring(j, j   i))) {
+						j = j + i;
+						if(j == string.length()) { //period valid through entire string
+							return period;
+						}
+					} else {
+						break;
+					}
+				}
+			}
 
-        }
-        return null; //string is not periodic
-    }
+		}
+		return null; //string is not periodic
+	}
 */

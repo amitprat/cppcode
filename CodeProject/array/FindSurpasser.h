@@ -3,60 +3,73 @@
 
 class FindSurpasser {
 public:
-    static void test() {
-        FindSurpasser obj;
-        vector<int> arr = { 2, 7, 5, 3, 0, 8, 1 };
-        auto res = obj.findSurpasser(arr);
-        cout << to_string(res) << endl;
-    }
+	static void test() {
+		FindSurpasser obj;
+		{
+			vector<int> arr = { 2, 7, 5, 3, 0, 8, 1 };
+			auto res = obj.findSurpassers(arr);
+			cout << to_string(res) << endl;
+		}
 
-    vector<int> findSurpasser(vector<int>& arr) {
-        vector<int> result;
-        unordered_map<int, int> map;
-        vector<int> dup = arr;
+		{
+			vector<int> arr = { 1,2,3,4 };
+			auto res = obj.findSurpassers(arr);
+			cout << to_string(res) << endl;
+		}
 
-        int n = arr.size();
-        vector<int> tmp(n);
-        mergeSort(dup, 0, n - 1, tmp, map);
+		{
+			vector<int> arr = { 4,3,2,1 };
+			auto res = obj.findSurpassers(arr);
+			cout << to_string(res) << endl;
+		}
+	}
 
-        for (int i = 0; i < n; i++) {
-            result.push_back(n - i - 1 - map[arr[i]]);
-        }
+	vector<int> findSurpassers(vector<int>& arr) {
+		vector<int> result;
+		unordered_map<int, int> map;
+		vector<int> dup = arr;
 
-        return result;
-    }
+		int n = arr.size();
+		vector<int> tmp(n);
+		mergeSort(dup, 0, n - 1, tmp, map);
 
-    void mergeSort(vector<int>& dup, int l, int r, vector<int>& tmp, unordered_map<int, int>& map) {
-        if (l >= r) return;
+		for (int i = 0; i < n; i++) {
+			result.push_back(n - i - 1 - map[arr[i]]);
+		}
 
-        int m = (l + r) / 2;
-        mergeSort(dup, l, m, tmp, map);
-        mergeSort(dup, m + 1, r, tmp, map);
-        merge(dup, l, m, r, tmp, map);
-    }
+		return result;
+	}
 
-    void merge(vector<int>& dup, int l, int m, int r, vector<int>& tmp, unordered_map<int, int>& map) {
-        for (int i = l; i <= m; i++) tmp[i] = dup[i];
-        for (int i = m + 1; i <= r; i++) tmp[i] = dup[i];
+	void mergeSort(vector<int>& dup, int l, int r, vector<int>& tmp, unordered_map<int, int>& map) {
+		if (l >= r) return;
 
-        int i = l, j = m + 1, k = l;
-        int c = 0;
-        while (i <= m && j <= r) {
-            if (tmp[i] <= tmp[j]) {
-                map[tmp[i]] += c;
-                dup[k++] = tmp[i++];
-            }
-            else {
-                c++;
-                dup[k++] = tmp[j++];
-            }
-        }
+		int m = (l + r) / 2;
+		mergeSort(dup, l, m, tmp, map);
+		mergeSort(dup, m + 1, r, tmp, map);
+		merge(dup, l, m, r, tmp, map);
+	}
 
-        while (i <= m) {
-            map[tmp[i]] += c;
-            dup[k++] = tmp[i++];
-        }
+	void merge(vector<int>& dup, int l, int m, int r, vector<int>& tmp, unordered_map<int, int>& map) {
+		int i = l, j = m + 1, k = l;
+		int inversions = 0;
+		while (i <= m && j <= r) {
+			if (dup[i] <= dup[j]) {
+				map[dup[i]] += inversions;
+				tmp[k++] = dup[i++];
+			}
+			else {
+				inversions++; // count larger elements on left, (inversions)
+				tmp[k++] = dup[j++];
+			}
+		}
 
-        while (j <= r) dup[k++] = tmp[j++];
-    }
+		while (i <= m) {
+			map[dup[i]] += inversions;
+			tmp[k++] = dup[i++];
+		}
+
+		while (j <= r) tmp[k++] = dup[j++];
+
+		for (i = l; i <= r; i++) dup[i] = tmp[i]; // copy back the tmp array
+	}
 };

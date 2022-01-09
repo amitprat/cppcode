@@ -1,7 +1,6 @@
 #pragma once
 #include "../Header.h"
 
-
 /*
 https://www.careercup.com/question?id=5725584103571456
 
@@ -14,108 +13,122 @@ n = 6, return 3 (4 + 1 + 1) = (2^2 + 1^2 + 1^2)
 class LeastNumberOfPerfectSquaresToReachN
 {
 public:
-    static void test() {
-        {
-            int n = 12;
-            int res = leastNumberOfPerfectSquares(n);
-            cout << res << endl;
-        }
+	static void test() {
+		{
+			int n = 12;
+			int res = leastNumberOfPerfectSquares2(n);
+			cout << format("Least of perfect squares={} to reach to {}", res, n) << endl;
+		}
 
-        {
-            int n = 6;
-            int res = leastNumberOfPerfectSquares(n);
-            cout << res << endl;
-        }
+		{
+			int n = 6;
+			int res = leastNumberOfPerfectSquares2(n);
+			cout << format("Least of perfect squares={} to reach to {}", res, n) << endl;
+		}
 
-        {
-            int n = 12;
-            auto res = leastNumberOfPerfectSquaresWithValues(n);
-            cout << res.to_string() << endl;
-        }
+		{
+			int n = 12;
+			auto res = leastNumberOfPerfectSquaresWithValues(n);
+			cout << res.to_string() << endl;
+		}
 
-        {
-            int n = 6;
-            auto res = leastNumberOfPerfectSquaresWithValues(n);
-            cout << res.to_string() << endl;
-        }
-    }
+		{
+			int n = 6;
+			auto res = leastNumberOfPerfectSquaresWithValues(n);
+			cout << res.to_string() << endl;
+		}
+	}
 
-    static int leastNumberOfPerfectSquares(int n)
-    {
-        int* table = new int[n + 1];
+	static int leastNumberOfPerfectSquares(int n)
+	{
+		int* table = new int[n + 1];
 
-        // for k = 1
-        for (int i = 0; i <= n; i++) table[i] = i;
+		// for k = 1
+		for (int i = 0; i <= n; i++) table[i] = i;
 
-        // for k >= 2
-        for (int k = 2; k * k <= n; k++)
-        {
-            int  p = pow(k, 2);
-            for (int j = p; j <= n; j++) {
-                table[j] = min(table[j], table[j - p] + 1);
-            }
-        }
+		// for k >= 2
+		for (int k = 2; k * k <= n; k++)
+		{
+			int  p = pow(k, 2);
+			for (int j = p; j <= n; j++) {
+				table[j] = min(table[j], table[j - p] + 1);
+			}
+		}
 
-        return table[n];
-    }
+		return table[n];
+	}
 
-    struct PerfectSquare {
-        int cnt = 0;
-        vector<vector<int>> perfSquares;
-        PerfectSquare() {}
-        PerfectSquare(int cnt, int elem) : cnt(cnt) {
-            perfSquares.push_back({ });
-            for (int i = 0; i < cnt; i++) perfSquares.back().push_back(elem);
-        }
+	static int leastNumberOfPerfectSquares2(int n) {
+		vector<int> table(n + 1);
+		for (int i = 0; i <= n; i++) table[i] = i;
 
-        bool operator <=(const PerfectSquare& other)
-        {
-            return this->cnt <= other.cnt;
-        }
+		for (int i = 2; i * i <= n; i++) {
+			int p = pow(i, 2);
+			for (int j = p; j <= n; j++) {
+				table[j] = min(table[j], 1 + table[j - p]);
+			}
+		}
 
-        void update(int cnt, vector<vector<int>> perfSq, int newPerfSq)
-        {
-            this->cnt = cnt;
-            for (auto old : perfSq)
-            {
-                old.push_back(newPerfSq);
-                perfSquares.push_back(old);
-            }
-        }
+		return table[n];
+	}
 
-        string to_string() {
-            stringstream ss;
-            ss << "Cnt: " << cnt << endl;
-            for (auto e : perfSquares) {
-                for (auto i : e) ss << i << " ";
-                ss << endl;
-            }
+	struct PerfectSquare {
+		int cnt = 0;
+		vector<vector<int>> perfSquares;
+		PerfectSquare() {}
+		PerfectSquare(int cnt, int elem) : cnt(cnt) {
+			perfSquares.push_back({ });
+			for (int i = 0; i < cnt; i++) perfSquares.back().push_back(elem);
+		}
 
-            ss << endl;
+		bool operator <=(const PerfectSquare& other)
+		{
+			return this->cnt <= other.cnt;
+		}
 
-            return ss.str();
-        }
-    };
+		void update(int cnt, vector<vector<int>> perfSq, int newPerfSq)
+		{
+			this->cnt = cnt;
+			for (auto old : perfSq)
+			{
+				old.push_back(newPerfSq);
+				perfSquares.push_back(old);
+			}
+		}
 
-    static PerfectSquare leastNumberOfPerfectSquaresWithValues(int n)
-    {
-        vector<PerfectSquare> perfectSquares(n + 1);
+		string to_string() {
+			stringstream ss;
+			ss << "Cnt: " << cnt << endl;
+			for (auto e : perfSquares) {
+				for (auto i : e) ss << i << " ";
+				ss << endl;
+			}
 
-        // for k = 1
-        for (int i = 0; i <= n; i++) perfectSquares[i] = PerfectSquare(i, 1);
+			ss << endl;
 
-        // for k >= 2
-        for (int k = 2; k * k <= n; k++)
-        {
-            int  p = pow(k, 2);
-            for (int j = p; j <= n; j++) {
-                if (perfectSquares[j - p].cnt + 1 < perfectSquares[j].cnt)
-                {
-                    perfectSquares[j].update(perfectSquares[j - p].cnt + 1, perfectSquares[j - p].perfSquares, p);
-                }
-            }
-        }
+			return ss.str();
+		}
+	};
 
-        return perfectSquares[n];
-    }
+	static PerfectSquare leastNumberOfPerfectSquaresWithValues(int n)
+	{
+		vector<PerfectSquare> perfectSquares(n + 1);
+
+		// for k = 1
+		for (int i = 0; i <= n; i++) perfectSquares[i] = PerfectSquare(i, 1);
+
+		// for k >= 2
+		for (int k = 2; k * k <= n; k++)
+		{
+			int  p = pow(k, 2);
+			for (int j = p; j <= n; j++) {
+				if (perfectSquares[j - p].cnt + 1 < perfectSquares[j].cnt)
+				{
+					perfectSquares[j].update(perfectSquares[j - p].cnt + 1, perfectSquares[j - p].perfSquares, p);
+				}
+			}
+		}
+
+		return perfectSquares[n];
+	}
 };

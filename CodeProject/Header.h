@@ -52,6 +52,10 @@ public:
 		return start > other.end;
 	}
 
+	bool operator == (Interval other) {
+		return start == other.start && end == other.end;
+	}
+
 	bool overlap(Interval other) {
 		return !(*this < other || *this > other);
 	}
@@ -79,7 +83,7 @@ string to_string(vector<Interval>& input) {
 	stringstream ss;
 	ss << "[";
 	for (auto& i : input) ss << i.to_string() << ", ";
-	ss.seekp(-2, std::ios_base::end);
+	if (!input.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "]";
 	return ss.str();
 }
@@ -94,11 +98,31 @@ string to_string(vector<T>& input) {
 	return ss.str();
 }
 
+template <typename T>
+string to_string(vector<T>& input, int l, int r) {
+	stringstream ss;
+	ss << "[";
+	for (int i = l; i <= r; i++) ss << input[i] << ", ";
+	if (ss.str().size() > 2) { ss.seekp(-2, std::ios_base::end); }
+	ss << "]";
+	return ss.str();
+}
+
+template <class T>
+string to_string(T input[], int n) {
+	stringstream ss;
+	ss << "[";
+	for (int i = 0; i < n; i++) ss << input[i] << ", ";
+	if (n != 0) ss.seekp(-2, std::ios_base::end);
+	ss << "]";
+	return ss.str();
+}
+
 string to_string(vector<int>& input) {
 	stringstream ss;
 	ss << "[";
 	for (auto& i : input) ss << i << ", ";
-	ss.seekp(-2, std::ios_base::end);
+	if (!input.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "]";
 	return ss.str();
 }
@@ -107,7 +131,7 @@ string to_string(vector<char>& input) {
 	stringstream ss;
 	ss << "[";
 	for (auto& i : input) ss << i << ", ";
-	ss.seekp(-2, std::ios_base::end);
+	if (!input.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "]";
 	return ss.str();
 }
@@ -116,7 +140,7 @@ string to_string(vector<string>& input) {
 	stringstream ss;
 	ss << "[";
 	for (auto& i : input) ss << i << ", ";
-	ss.seekp(-2, std::ios_base::end);
+	if (!input.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "]";
 	return ss.str();
 }
@@ -126,7 +150,7 @@ string to_string(vector<pair<T, U>> input) {
 	stringstream ss;
 	ss << "[";
 	for (auto& i : input) ss << "{" << i.first << ", " << i.second << "}" << ", ";
-	ss.seekp(-2, std::ios_base::end);
+	if (!input.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "]";
 	return ss.str();
 }
@@ -141,7 +165,28 @@ string to_string(vector<vector<T>> input) {
 		ss << setw(4);
 		ss << "{";
 		for (auto& j : input[i]) {
-			ss << j << ", ";
+			ss << setw(3) << j << ", ";
+			added = true;
+		}
+		if (added) ss.seekp(-2, std::ios_base::end);
+		ss << "}";
+		ss << endl;
+	}
+	ss << "]";
+	return ss.str();
+}
+
+template <typename T>
+string to_string(vector<vector<T>> input, int l, int r, int t, int b) {
+	stringstream ss;
+	ss << "[";
+	ss << endl;
+	for (int i = t; i <= b; i++) {
+		bool added = false;
+		ss << setw(4);
+		ss << "{";
+		for (int j = l; j <= r; j++) {
+			ss << setw(3) << input[i][j] << ", ";
 			added = true;
 		}
 		if (!added) ss.seekp(-2, std::ios_base::end);
@@ -175,7 +220,9 @@ string to_string(vector<pair<int, int>> v) {
 		ss << "(" << i.first << "," << i.second << ")";
 		ss << " ";
 	}
+	if (!v.empty()) ss.seekp(-1, std::ios_base::end);
 	ss << "}";
+
 	return ss.str();
 }
 
@@ -257,18 +304,18 @@ string to_string(BinaryTreeNode<T>* root) {
 		stringstream cur;
 		stringstream next;
 		int prev = 0;
-		int nextprev = 0;
+		int prevSlash = 0;
 		while (sz--) {
 			auto item = q.front(); q.pop();
 			cur << setw(item.second - prev) << item.first->val;
 			if (item.first->left) {
-				next << setw(item.second - nextprev - 2) << "/";
-				nextprev = item.second - nextprev - 2;
+				next << setw(item.second - prevSlash - 2) << "/";
+				prevSlash = item.second - 2;
 				q.push({ item.first->left,item.second - 4 });
 			}
 			if (item.first->right) {
-				next << setw(item.second - nextprev + 2) << "\\";
-				nextprev = item.second - nextprev + 2;
+				next << setw(item.second - prevSlash + 2) << "\\";
+				prevSlash = item.second + 2;
 				q.push({ item.first->right,item.second + 4 });
 			}
 			prev = item.second;
@@ -403,9 +450,19 @@ string to_string(unordered_map<U, V>& map) {
 	for (auto e : map) {
 		ss << e.first << "=" << e.second << ", ";
 	}
+	if (!map.empty()) ss.seekp(-2, std::ios_base::end);
 	ss << "}";
 
 	return ss.str();
+}
+
+template <typename T>
+bool isEqual(vector<T>& arr1, vector<T>& arr2) {
+	if (arr1.size() != arr2.size()) return false;
+	for (auto i = 0; i < arr1.size(); i++) {
+		if (arr1[i] != arr2[i]) return false;
+	}
+	return true;
 }
 
 //template <class T>

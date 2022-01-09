@@ -3,7 +3,7 @@
 
 class TopSellingProducts {
 private:
-    using Deque = deque < pair<int, unordered_map<string, int>>>;
+    using Deque = deque<pair<int, unordered_map<string, int>>>;
     using Node = pair<string, int>;
     class Compare
     {

@@ -1,7 +1,7 @@
-#include "tree/ConstructTree.h"
+#include "array/MinLengthUnsortedArr.h"
 
 int main()
 {
-	ConstructTree::test();
+	MinLengthUnsortedArr::test();
 	return 0;
 }

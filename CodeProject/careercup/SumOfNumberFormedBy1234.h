@@ -2,7 +2,7 @@
 #include "../Header.h"
 
 /*
-find the sum of all 4 digit numbers formed from 1 , 2, 3, 4 whithout rep .
+find the sum of all 4 digit numbers formed from 1, 2, 3, 4 whithout rep .
 */
 
 /*

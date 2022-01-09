@@ -5,7 +5,7 @@
 https://www.careercup.com/question?id=4774716350922752
 
 
-In a language, there are only 4 characters �h�, �i�,�r�, �e�. and we have to write a function which takes a string as input and returns whether the given input string is a �valid word� or not.
+In a language, there are only 4 characters h,i,r,e. and we have to write a function which takes a string as input and returns whether the given input string is a �valid word� or not.
 
 Definition of valid word :
 1. A given word is a valid word if it is of the form h^n i^n r^n e^n where n >=1. (eg: hhiirree)

@@ -3,73 +3,82 @@
 
 class ReverseLevelOrderTraversal {
 public:
-    static void test() {
-        ITNode* root = new ITNode(3);
-        root->left = new ITNode(9);
-        root->right = new ITNode(20);
-        root->right->left = new ITNode(15);
-        root->right->right = new ITNode(7);
+	static void test() {
+		ITNode* root = new ITNode(3);
+		root->left = new ITNode(9);
+		root->right = new ITNode(20);
+		root->right->left = new ITNode(15);
+		root->right->right = new ITNode(7);
 
-        vector<vector<int>> result = doReverseLevelOrderUsingStack(root);
+		vector<vector<int>> result = doReverseLevelOrderUsingRecursion(root);
 
-        print(result);
-    }
+		print(result);
+	}
 
-    static void doReverseLevelOrderUsingRecursion(ITNode* root, vector<vector<int>>& result, int level) {
-        if (!root) return;
+	static vector<vector<int>> doReverseLevelOrderUsingRecursion(ITNode* root) {
+		vector<vector<int>> result;
 
-        if (level >= result.size()) result.push_back({});
-        result[level].push_back(root->val);
+		doReverseLevelOrderUsingRecursion(root, result, 0);
+		reverse(result.begin(), result.end());
 
-        doReverseLevelOrderUsingRecursion(root->left, result, level + 1);
-        doReverseLevelOrderUsingRecursion(root->right, result, level + 1);
-    }
+		return result;
+	}
 
-    static vector<vector<int>> doReverseLevelOrderUsingQueue(ITNode* root) {
-        queue<ITNode*> q;
-        q.push(root);
-        vector<vector<int>> result;
-        int level = 0;
+	static void doReverseLevelOrderUsingRecursion(ITNode* root, vector<vector<int>>& result, int level) {
+		if (!root) return;
 
-        while (!q.empty()) {
-            int n = q.size();
-            if (level >= result.size()) result.push_back({});
-            while (n--) {
-                auto f = q.front(); q.pop();
-                result[level].push_back(f->val);
+		if (level >= result.size()) result.push_back({});
+		result[level].push_back(root->val);
 
-                if (f->left) q.push(f->left);
-                if (f->right) q.push(f->right);
-            }
-            level++;
-        }
+		doReverseLevelOrderUsingRecursion(root->left, result, level + 1);
+		doReverseLevelOrderUsingRecursion(root->right, result, level + 1);
+	}
 
-        std::reverse(result.begin(), result.end());
+	static vector<vector<int>> doReverseLevelOrderUsingQueue(ITNode* root) {
+		queue<ITNode*> q;
+		q.push(root);
+		vector<vector<int>> result;
+		int level = 0;
 
-        return result;
-    }
+		while (!q.empty()) {
+			int n = q.size();
+			if (level >= result.size()) result.push_back({});
+			while (n--) {
+				auto f = q.front(); q.pop();
+				result[level].push_back(f->val);
 
-    static vector<vector<int>> doReverseLevelOrderUsingStack(ITNode* root) {
-        stack<ITNode*> st;
-        st.push(root);
-        vector<vector<int>> result;
-        int level = 0;
+				if (f->left) q.push(f->left);
+				if (f->right) q.push(f->right);
+			}
+			level++;
+		}
 
-        while (!st.empty()) {
-            int n = st.size();
-            if (level >= result.size()) result.push_back({});
-            while (n--) {
-                auto f = st.top(); st.pop();
-                result[level].push_back(f->val);
+		std::reverse(result.begin(), result.end());
 
-                if (f->right) st.push(f->right);
-                if (f->left) st.push(f->left);
-            }
-            level++;
-        }
+		return result;
+	}
 
-        std::reverse(result.begin(), result.end());
+	static vector<vector<int>> doReverseLevelOrderUsingStack(ITNode* root) {
+		stack<ITNode*> st;
+		st.push(root);
+		vector<vector<int>> result;
+		int level = 0;
 
-        return result;
-    }
+		while (!st.empty()) {
+			int n = st.size();
+			if (level >= result.size()) result.push_back({});
+			while (n--) {
+				auto f = st.top(); st.pop();
+				result[level].push_back(f->val);
+
+				if (f->right) st.push(f->right);
+				if (f->left) st.push(f->left);
+			}
+			level++;
+		}
+
+		std::reverse(result.begin(), result.end());
+
+		return result;
+	}
 };

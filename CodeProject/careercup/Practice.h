@@ -7,37 +7,116 @@ public:
 		srand(time(nullptr));
 	}
 	static void test() {
-		cout << rand7() << endl;
-		cout << numWaysToMakeChange(10, { 2,3,5 }) << endl;
-		cout << numWaysToMakeChangeDP(10, { 2,3,5 }) << endl;
-		cout << putCommas(1010503) << endl;
-		cout << putCommas("1010503") << endl;
 		{
-			vector<int> input = { 1, 2, 3, 4, 5, 6, 7 };
-			reverse(input, 3);
-			cout << input << endl;
+			cout << format("Generate rand7={}", rand7()) << endl;
 		}
-
-		cout << reverseBits3(11) << endl;
-
-		cout << multiply(5, 9) << endl;
-
-		//printNumsInLexographicalOrder1(125, 1);
-
-		KMP("ABABDABACDABABCABAB", "ABABCABAB");
-
-		friendSuggestionTest();
-
-		printTasksWithCoolDown({ "A","A","A","B","B","B","A","A" }, 2);
 		cout << endl;
 
-		cout << consecutive1s(11, 1) << endl;
+		{
+			vector<int> arr = { 2,3,5 };
+			int sum = 10;
+			int ways1 = numWaysToMakeChange(sum, arr);
+			int ways2 = numWaysToMakeChangeDP(sum, arr);
+			assert(ways1 == ways2);
+
+			cout << format("Number of ways to make change in arr={}, sum={} are {}", to_string(arr), sum, ways1) << endl;
+		}
+		cout << endl;
+
+		{
+			{
+				string res1 = putCommas(1010503);
+				string res2 = putCommas("1010503");
+				cout << format("Put commas in '1010503', res={}", res1) << endl;
+			}
+
+			{
+				string res1 = putCommas(1012);
+				string res2 = putCommas("1012");
+				cout << format("Put commas in '1012', res={}", res1) << endl;
+			}
+		}
+		cout << endl;
+
+		{
+			vector<int> input = { 1, 2, 3, 4, 5, 6, 7 };
+			vector<int> output = input;
+			int k = 3;
+			reverseArrayInGroupOfSizeK(output, k);
+			cout << format("Reverse input={} in group of k={}, output={}", to_string(input), k, to_string(output)) << endl;
+		}
+		cout << endl;
+
+		//{
+		//	int rev1 = reverseBits1(11);
+		//	int rev2 = reverseBits2(11);
+		//	int rev3 = reverseBits3(11);
+		//	assert(rev1 == rev2);
+		//	assert(rev1 == rev3);
+
+		//	cout << format("Reverse bits in number={}, resultant number={}", 11, rev1) << endl;
+		//}
+
+		{
+			int res = multiply(5, 9);
+			cout << format("Multiply numbers bitwise, a={}, b={}, result={}", 5, 9, res) << endl;
+		}
+		cout << endl;
+
+		//{
+		//	stringstream ss1, ss2;
+		//	printNumsInLexographicalOrder1(125, 1, ss1);
+		//	printNumsInLexographicalOrder2(125, 1, ss2);
+		//	assert(ss1.str() == ss2.str());
+		//	cout << format("Number {} in lexographical order {}", 125, ss1.str()) << endl;
+		//}
+
+		{
+			string txt = "ABABDABACDABABCABAB";
+			string pat = "ABABCABAB";
+			cout << format("Substring search, txt={}, pat={}", txt, pat) << endl;
+			KMP(txt, pat);
+		}
+		cout << endl;
+
+		{
+			cout << "Friend suggestions:" << endl;
+			friendSuggestionTest();
+		}
+		cout << endl;
+
+		// TODO
+		{
+			vector<string> tasks = { "A","A","A","B","B","B","A","A" };
+			for (int k = 1; k <= 5; k++) {
+				string res = arrangeTasksWithCooldownInSameOrder(tasks, k);
+				cout << format("Prints tasks={} with cooldown period of k={}, result={}", to_string(tasks), k, res) << endl;
+			}
+		}
+		cout << endl;
+
+		// TODO - not sure what it is doing
+		{
+			cout << consecutive1s(11, 3) << endl;
+		}
+		cout << endl;
 
 		{
 			vector<int> num = { 9,9,9 };
-			addNum(num, 9, 0);
-			cout << to_string(num) << endl;
+			vector<int> res = num;
+			addNum(res, 9, 0);
+			cout << format("{} + {} = {}", to_string(num), 9, to_string(res)) << endl;
 		}
+		cout << endl;
+
+		{
+			vector<int> num1 = { 9,9,9 };
+			vector<int> num2 = { 9,9,9,9,9 };
+			auto res = add2NumsOfDifferentSize(num1, num2);
+
+			cout << format("{} + {} = {}", to_string(num1), to_string(num2), to_string(res)) << endl;
+		}
+		cout << endl;
 
 		{
 			string str = "ababab";
@@ -46,6 +125,7 @@ public:
 			getPeriod(str, period, cnt);
 			cout << period << " " << cnt << endl;
 		}
+		cout << endl;
 
 		cout << "LCS: " << lcs("abcd", "cdac") << endl;
 
@@ -53,15 +133,84 @@ public:
 
 		cout << isRepeat("abcd", "dabcdabc") << endl;
 
+		cout<<"Cancel out list: "<<endl;
 		cancelOutList();
+		cout<<endl;
 
+		cout<<"Largest subset:"<<endl;
 		printLargestSubset();
+		cout<<endl;
 
+		cout<<"Longest positive subarray:"<<endl;
 		printLongestPositiveSequence();
+		cout<<endl;
 
+		cout<<"Minimize product:"<<endl;
 		minimizeProduct();
+		cout<<endl;
+
+		cout<<"Merge Intervals:"<<endl;
+		vector<Interval> intervals = { {1,3},{2,5},{3,6},{7,10},{11,19},{12,15},{13,21} };
+		vector<Interval> result = intervals;
+		mergeIntervals(result);
+		cout << format("Merge interval, input={}, output={}", to_string(intervals), to_string(result)) << endl;
 	}
 
+#pragma region Rand7
+	static int rand7() {
+		int val;
+		do {
+			val = rand5() * 5 + rand5();
+		} while (val >= 21);
+		return val % 7 + 1;
+	}
+
+	static int rand5() {
+		return rand() % 5;
+	}
+#pragma endregion Rand7
+
+#pragma region NumberOfWaysToMakeChange
+	static int numWaysToMakeChange(int amount, vector<int> coins, int index = 0) {
+		if (amount == 0) return 1;
+		if (index >= coins.size() || amount < 0) return 0;
+
+		return numWaysToMakeChange(amount, coins, index + 1) + numWaysToMakeChange(amount - coins[index], coins, index);
+	}
+
+	static int numWaysToMakeChangeDP(int amount, vector<int> coins) {
+		int* dp = new int[amount + 1];
+		memset(dp, 0, sizeof(int) * (amount + 1));
+		dp[0] = 1;
+
+		for (auto coin : coins) {
+			for (int am = coin; am <= amount; am++) {
+				dp[am] += dp[am - coin];
+			}
+		}
+
+		return dp[amount];
+	}
+#pragma endregion NumberOfWaysToMakeChange
+
+#pragma region PutCommas
+	static string putCommas(string num) {
+		if (num.size() < 3) return num;
+		auto cur = putCommas(num.substr(0, num.size() - 3));
+		return cur + "," + num.substr(num.size() - 3);
+	}
+
+	static string putCommas(int num) {
+		if (num == 0) return "";
+		if (num < 1000) return to_string(num);
+		auto cur = putCommas(num / 1000);
+		string formatted(5, '\0');
+		sprintf_s(const_cast<char*>(formatted.c_str()), 5, ",%03d", num % 1000);
+		return cur + formatted;
+	}
+#pragma endregion PutCommas
+
+#pragma region FriendSuggestions
 	struct GraphNode {
 		string id;
 		unordered_map<string, GraphNode*> friends;
@@ -116,49 +265,92 @@ public:
 		g.addFriend("B", "C");
 		g.addFriend("B", "D");
 
-		// suggest friends for 'A'
-		auto friends = g.getFriends("A");
-		vector<string> result;
-		unordered_map<string, int> freq;
-		for (auto f : friends) {
-			auto f1 = g.getFriends(f->id);
-			for (auto e : f1) if (e->id != "A") freq[e->id]++;
-		}
-		priority_queue<pair<int, string>> pq;
-		for (auto e : freq) pq.push({ e.second,e.first });
+		vector<string> persons = { "A","B","C","D" };
+		for (auto person : persons) {
+			cout << format("Get friend suggestion for {}", person) << endl;
+			auto friends = g.getFriends(person);
+			vector<string> result;
+			unordered_map<string, int> freq;
+			for (auto f : friends) {
+				auto f1 = g.getFriends(f->id);
+				for (auto e : f1) if (e->id != person) freq[e->id]++;
+			}
+			priority_queue<pair<int, string>> pq;
+			for (auto e : freq) pq.push({ e.second,e.first }); // {id, count of mutual friends}
 
-		while (!pq.empty()) {
-			cout << pq.top().second << " " << pq.top().first << endl;
-			pq.pop();
+			while (!pq.empty()) {
+				cout << pq.top().second << ":" << pq.top().first << endl;
+				pq.pop();
+			}
 		}
-		cout << endl;
+	}
+#pragma endregion FriendSuggestions
+
+	/*
+	* https://www.careercup.com/question?id=5435425459011584
+	*
+	Given a list of input tasks to run, and the cooldown interval, output the minimum number of time slots required to run them.
+	// Tasks: 1, 1, 2, 1, 2
+	// Recovery interval (cooldown): 2
+	// Output: 8 (order is 1 _ _ 1 2 _ 1 2 )
+	Whats the time and space complexity ? What's the ideal case of space complexity ?
+	*/
+	static string arrangeTasksWithCooldownInSameOrder(vector<string> tasks, int cooldown) {
+		int currentPos = 0;
+		unordered_map<string, int> map;
+		string res;
+
+		for (int i = 0; i < tasks.size(); i++) {
+			if (map.find(tasks[i]) != map.end()) { // if this task already exists then print according to its previos position
+				int prevPos = map[tasks[i]];
+				if (currentPos - prevPos - 1 < cooldown) { // number of characters inbetween current and previous position of current character are less than cooldown period
+					int diff = cooldown - (currentPos - prevPos - 1);
+					for (int k = 1; k <= diff; k++) { // place that many cooldown spaces
+						res += "_";
+						currentPos++;
+					}
+				}
+			}
+			res += tasks[i];
+			currentPos++;
+			map[tasks[i]] = currentPos;
+		}
+
+		return res;
 	}
 
-	static void printTasksWithCoolDown(vector<string> tasks, int k) {
+	static string printTasksWithCoolDown(vector<string> tasks, int k) {
 		int n = tasks.size();
-		deque<pair<int, string>> coolDownList;
+
 		unordered_map<string, int> freq;
-		for (auto task : tasks) freq[task]++;
+		for (auto& task : tasks) freq[task]++;
+
+		deque<pair<int, string>> coolDownList;
 		priority_queue<pair<int, string>> pq;
-		for (auto e : freq) pq.push({ e.second, e.first });
+
+		for (auto& e : freq) pq.push({ e.second, e.first });
 		pq.push({ 0,"_" });
 
+		string res;
 		int i = 0;
-		while (pq.size() > 1 || !coolDownList.empty()) {
+		while (pq.size() > 1 || coolDownList.size() > 1) {
 			auto f = pq.top();
-			if (f.first > 1) coolDownList.push_back(f);
+			coolDownList.push_back(f);
 			if (f.second != "_") pq.pop();
-			cout << f.second;
-			if (i >= k && !coolDownList.empty()) {
+			res += f.second;
+			if (i >= k && coolDownList.size() > k) {
 				auto x = coolDownList.front();
-				if (x.second != "_") pq.push({ x.first - 1,x.second });
+				if (x.second != "_" && x.first - 1 > 0) pq.push({ x.first - 1,x.second });
 				coolDownList.pop_front();
 			}
 
 			i++;
 		}
+
+		return res;
 	}
 
+#pragma region SubstringSearch(Knuth Morriss Prat(KMP))
 	static void KMP(string txt, string pat) {
 		vector<int> lps = computeLPS(pat);
 		int i = 0, j = 0;
@@ -168,10 +360,10 @@ public:
 			}
 			else {
 				if (j != 0) j = lps[j - 1];
-				else i += 1;
+				else i++;
 			}
 			if (j == pat.length()) {
-				cout << "Found at " << i - j << endl;
+				cout << format("Pattern={} found in Text={} at position={}", pat, txt, i - j) << endl;
 				j = lps[j - 1];
 			}
 		}
@@ -183,22 +375,19 @@ public:
 		while (j < pat.length()) {
 			if (pat[j] == pat[len]) {
 				len++;
-				lps[j] = len;
-				j++;
+				lps[j++] = len;
 			}
 			else {
 				if (len != 0) len = lps[len - 1];
-				else {
-					lps[j] = 0;
-					j++;
-				}
+				else lps[j++] = 0;
 			}
 		}
 
 		return lps;
 	}
+#pragma endregion SubstringSearch(Knuth Morriss Prat(KMP))
 
-	static void printNumsInLexographicalOrder(int N, int k)
+	static void printNumsInLexographicalOrder1(int N, int k, stringstream& res)
 	{
 		if (k > N) { return; }
 
@@ -206,10 +395,10 @@ public:
 		{
 			if (k <= N)
 			{
-				cout << k << " ";
+				res << k << " ";
 
 				k *= 10;
-				printNumsInLexographicalOrder(N, k);
+				printNumsInLexographicalOrder1(N, k, res);
 				k /= 10;
 				k++;
 				if (k % 10 == 0) return;
@@ -217,15 +406,16 @@ public:
 		}
 	}
 
-	static void printNumsInLexographicalOrder1(int N, int k)
+	static void printNumsInLexographicalOrder2(int N, int k, stringstream& res)
 	{
 		if (k > N) return;
 
-		cout << k << ", ";
-		printNumsInLexographicalOrder1(N, k * 10);
-		if (k % 10 != 9) printNumsInLexographicalOrder1(N, k + 1);
+		res << k << ", ";
+		printNumsInLexographicalOrder2(N, k * 10, res);
+		if (k % 10 != 9) printNumsInLexographicalOrder2(N, k + 1, res);
 	}
 
+#pragma region MultiplyBitwise
 	static int multiply(int a, int b) {
 		int sign = (a ^ b) >> 31;
 		a = abs(a);
@@ -251,8 +441,10 @@ public:
 
 		return a;
 	}
+#pragma endregion MultiplyBitwise
 
-	static int reverseBits(int n) {
+#pragma region ReverseBits
+	static int reverseBits1(int n) {
 		int rev = 0;
 		int offset = 32 - 1;
 
@@ -290,8 +482,10 @@ public:
 
 		return rev;
 	}
+#pragma endregion ReverseBits
 
-	static void reverse(vector<int>& input, int n) {
+#pragma region ReverseInGroup
+	static void reverseArrayInGroupOfSizeK(vector<int>& input, int n) {
 		int len = input.size();
 		for (int i = 0; i < input.size(); i += n) {
 			reverse(input, i, min(i + n - 1, len - 1));
@@ -303,68 +497,7 @@ public:
 			swap(cur[l++], cur[r--]);
 		}
 	}
-
-	static string putCommas(string num) {
-		if (num.size() < 3) return num;
-		auto cur = putCommas(num.substr(0, num.size() - 3));
-		return cur + "," + num.substr(num.size() - 3);
-	}
-
-	static string putCommas(int num) {
-		if (num == 0) return "";
-		if (num < 1000) return to_string(num);
-		auto cur = putCommas(num / 1000);
-		string formatted(5, '\0');
-		sprintf_s(const_cast<char*>(formatted.c_str()), 5, ",%03d", num % 1000);
-		return cur + formatted;
-	}
-
-	static int rand7() {
-		int val;
-		do {
-			val = rand5() * 5 + rand5();
-		} while (val >= 21);
-		return val % 7 + 1;
-	}
-
-	static int rand5() {
-		return rand() % 5;
-	}
-
-	static int numWaysToMakeChange(int amount, vector<int> coins, int index = 0) {
-		if (amount == 0) return 1;
-		if (index >= coins.size() || amount < 0) return 0;
-
-		return numWaysToMakeChange(amount, coins, index + 1) + numWaysToMakeChange(amount - coins[index], coins, index);
-	}
-
-	static int numWaysToMakeChangeDP(int amount, vector<int> coins) {
-		int* dp = new int[amount + 1];
-		memset(dp, 0, sizeof(int) * (amount + 1));
-		dp[0] = 1;
-
-		for (auto coin : coins) {
-			for (int am = coin; am <= amount; am++) {
-				dp[am] += dp[am - coin];
-			}
-		}
-
-		return dp[amount];
-	}
-
-	class TernarySearchTree {
-	public:
-		struct Node {
-			char ch;
-			Node* left = nullptr;
-			Node* right = nullptr;
-			Node* eq = nullptr;
-			bool end = false;
-			Node(char ch) : ch(ch) {}
-		};
-
-		Node* root = nullptr;
-	};
+#pragma endregion ReverseInGroup
 
 	static int consecutive1s(int n, int k) {
 		int l = 0;
@@ -414,6 +547,22 @@ public:
 		}
 
 		return val / 10;
+	}
+
+	static vector<int> add2NumsOfDifferentSize(vector<int>& num1, vector<int>& num2) {
+		int n = num1.size(), m = num2.size();
+		if (n < m) return add2NumsOfDifferentSize(num2, num1);
+
+		int carry = 0;
+		int l = n;
+		vector<int> res(n + 1);
+		for (int i = n - 1, j = m - 1; i >= 0 || j >= 0 || carry; i--, j--) {
+			int val = (i >= 0 ? num1[i] : 0) + (j >= 0 ? num2[j] : 0) + carry;
+			res[l--] = val % 10;
+			carry = val / 10;
+		}
+
+		return res;
 	}
 
 	static bool getPeriod(string& str, string& period, int& cnt) {
@@ -493,6 +642,7 @@ public:
 		return -1;
 	}
 
+#pragma region CancelOutResourcesWithSumZero
 	/*
 	* https://careercup.com/question?id=5717797377146880
 		Given some resources in the form of linked list you have to canceled out all the resources whose sum up to 0(Zero) and return the remaining list.
@@ -517,7 +667,6 @@ public:
 		node->next->next->next->next->next->next = new LinkedListNode<int>(8);
 		node->next->next->next->next->next->next->next = new LinkedListNode<int>(-8);
 
-		LinkedListNode<int>* prev = nullptr;
 		LinkedListNode<int>* newHead = node;
 		unordered_set<int> visited;
 		stack<LinkedListNode<int>*> st;
@@ -541,15 +690,15 @@ public:
 				} while (tmp != curSum);
 				if (st.empty()) newHead = node->next;
 				else st.top()->next = node->next;
-
-				prev = st.empty() ? nullptr : st.top();
 			}
 			node = node->next;
 		}
 
 		cout << to_string(newHead) << endl;
 	}
+#pragma endregion CancelOutResourcesWithSumZero
 
+#pragma region LagestContiguousSubsequence
 	static void printLargestSubset() {
 		vector<int> arr = { 1, 6, 10, 4, 7, 9, 5 };
 		unordered_map<int, int> map;
@@ -570,7 +719,9 @@ public:
 		for (int i = mxBeg; i <= mxEnd; i++) cout << i << " ";
 		cout << endl;
 	}
+#pragma endregion LagestContiguousSubsequence
 
+#pragma region LongestPositiveSequence
 	static void printLongestPositiveSequence() {
 		vector<int> arr = { 1,2,-3,2,3,4,-6,1,2,3,4,5,-8,5,6 };
 
@@ -596,27 +747,29 @@ public:
 		for (int i = mxStartIndex; i < mxStartIndex + mxLength; i++) cout << arr[i] << " ";
 		cout << endl;
 	}
+#pragma endregion LongestPositiveSequence
 
+#pragma region MergeIntervals
 	static void mergeIntervals(vector<Interval>& intervals) {
 		if (intervals.empty()) return;
-		auto& prev = intervals[0];
-		int i = 0;
-		for (int j = 1; j < intervals.size(); j++) {
-			auto cur = intervals[j];
+
+		int i = 0, n = intervals.size();
+		for (int j = 1; j < n; j++) {
+			auto& prev = intervals[i];
+			auto& cur = intervals[j];
 			if (overlap(prev, cur)) prev = { min(prev.start,cur.start),max(prev.end,cur.end) };
-			else i++;
+			else intervals[++i] = cur;
 		}
 
-		i++;
-		for (; i < intervals.size(); i++) {
-			intervals.erase(intervals.begin() + i);
-		}
+		intervals.erase(intervals.begin() + i + 1, intervals.end());
 	}
 
 	static bool overlap(Interval& it1, Interval& it2) {
 		return it1.end >= it2.start && it2.end >= it1.start;
 	}
+#pragma endregion MergeIntervals
 
+#pragma region MinimizeProduct
 	static void minimizeProduct()
 	{
 		vector<int> arr1 = { 1,-1 };
@@ -654,4 +807,5 @@ public:
 
 		return dp[n][m];
 	}
+#pragma endregion MinimizeProduct
 };

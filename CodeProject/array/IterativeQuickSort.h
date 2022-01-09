@@ -20,7 +20,7 @@ public:
 		for (auto& arr : v) {
 			cout << "Before: " << to_string(arr) << endl;
 
-			obj.quickSort(arr);
+			obj.quickSort2(arr);
 			cout << "After : " << to_string(arr) << endl;
 		}
 	}
@@ -38,6 +38,22 @@ public:
 			int p = partition(v, l, r);
 			if (p > l) st.push({ l, p - 1 });
 			if (p < r) st.push({ p + 1, r });
+		}
+	}
+
+	void quickSort2(vector<int>& v)
+	{
+		stack<pair<int, int>> st;
+		st.push({ 0,v.size() - 1 });
+
+		while (!st.empty()) {
+			auto tmp = st.top(); st.pop();
+			int l = tmp.first;
+			int r = tmp.second;
+
+			int p = partition(v, l, r);
+			if (p < r) st.push({ p + 1, r });
+			if (p > l) st.push({ l, p - 1 });
 		}
 	}
 

@@ -19,8 +19,8 @@ public:
         int count = 0;
         for (int i = 0; i < input.size(); i++)
         {
-            if (count == 0)
-                candidate = input[i];
+            if (count == 0) candidate = input[i];
+            
             if (input[i] == candidate)
                 count++;
             else

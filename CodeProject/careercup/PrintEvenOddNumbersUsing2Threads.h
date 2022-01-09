@@ -2,59 +2,53 @@
 #include "../Header.h"
 
 class PrintEvenOddNumbersUsing2Threads {
-    mutex m;
-    condition_variable cv1, cv2;
-    int pos = 0;
+	mutex m;
+	condition_variable cv;
+	int pos = 0;
 
 public:
-    static void test() {
-        PrintEvenOddNumbersUsing2Threads obj;
+	static void test() {
+		PrintEvenOddNumbersUsing2Threads obj;
 
-        int arr[] = { 3,1 ,2, 5, 6, 7, 8, 10, 9 };
-        int n = sizeof(arr) / sizeof(int);
+		int arr[] = { 3,1 ,2, 5, 6, 7, 8, 10, 9 };
+		int n = sizeof(arr) / sizeof(int);
 
-        obj.printNumbers(arr, n);
-    }
+		obj.printNumbers(arr, n);
+	}
 
-    void printNumbers(int arr[], int n) {
-        thread t1([arr, n, this]() {printEvenNumbers(arr, n); });
-        thread t2([arr, n, this]() {printOddNumbers(arr, n); });
+	void printNumbers(int arr[], int n) {
+		thread t1(&PrintEvenOddNumbersUsing2Threads::printEvenNumbers, this, arr, n);
+		thread t2(&PrintEvenOddNumbersUsing2Threads::printOddNumbers, this, arr, n);
 
-        t1.join();
-        t2.join();
-    }
+		// another way of calling it
+		//thread t1([arr, n, this]() {printEvenNumbers(arr, n);});
+		//thread t1([arr, n, this]() {printOddNumbers(arr, n);});
 
-    void printEvenNumbers(int arr[], int n) {
-        while (true) {
-            unique_lock lock(m);
-            cv1.wait(lock, [this, arr, n]() {return pos >= n || !(arr[pos] & 1); });
-            if (pos >= n) {
-                lock.unlock();
-                break;
-            }
+		t1.join();
+		t2.join();
+	}
 
-            cout << "Even thread: " << arr[pos] << endl;
-            pos++;
+	void printEvenNumbers(int arr[], int n) {
+		while (true) {
+			unique_lock<mutex> lock(m);
+			cv.wait(lock, [this, arr, n]() {return pos >= n || (arr[pos] & 1) == 0; });
+			if (pos >= n) break;
 
-            lock.unlock();
-            if (arr[pos] & 1) cv2.notify_one();
-        }
-    }
+			cout << "Even thread: " << arr[pos++] << endl;
 
-    void printOddNumbers(int arr[], int n) {
-        while (true) {
-            unique_lock lock(m);
-            cv2.wait(lock, [this, arr, n]() {return (pos >= n || arr[pos] & 1); });
-            if (pos >= n) {
-                lock.unlock();
-                break;
-            }
+			cv.notify_all();
+		}
+	}
 
-            cout << "Odd thread: " << arr[pos] << endl;
-            pos++;
+	void printOddNumbers(int arr[], int n) {
+		while (true) {
+			unique_lock<mutex> lock(m);
+			cv.wait(lock, [this, arr, n]() { return pos >= n || (arr[pos] & 1) == 1; });
+			if (pos >= n) break;
 
-            lock.unlock();
-            if (!(arr[pos] & 1)) cv1.notify_one();
-        }
-    }
+			cout << "Odd thread: " << arr[pos++] << endl;
+
+			cv.notify_all();
+		}
+	}
 };

@@ -12,28 +12,30 @@ Following is the O(n) time and O(1) extra space approach. Let us understand the 
 */
 class FindMaxRepeatElement {
 public:
-    int findMaxRepeatElem(vector<int> v, int k, int n) {
-        for (auto e : v) {
-            v[e % k] += k;
-        }
-        int mxIndex = -1;
-        for (int i = 0; i < n; i++) {
-            if (mxIndex == -1) mxIndex = i;
-            else if (v[i] > v[mxIndex]) mxIndex = i;
-        }
-        for (int i = 0; i < n; i++) {
-            v[i] = v[i] % k;
-        }
+	int findMaxRepeatElem(vector<int> v, int k, int n) {
+		for (auto e : v) {
+			v[e % k] += k;
+		}
 
-        return mxIndex;
-    }
+		int mxIndex = -1;
+		for (int i = 0; i < n; i++) {
+			if (mxIndex == -1) mxIndex = i;
+			else if (v[i] > v[mxIndex]) mxIndex = i;
+		}
 
-    static void test() {
-        FindMaxRepeatElement obj;
-        vector<int> arr = { 2, 3, 3, 5, 3, 4, 1, 7 };
-        int k = 8;
-        int n = 8;
+		for (int i = 0; i < n; i++) {
+			v[i] = v[i] % k;
+		}
 
-        cout << obj.findMaxRepeatElem(arr, k, n) << endl;
-    }
+		return mxIndex;
+	}
+
+	static void test() {
+		FindMaxRepeatElement obj;
+		vector<int> arr = { 2, 3, 3, 5, 3, 4, 1, 7 };
+		int k = 8;
+		int n = 8;
+
+		cout << obj.findMaxRepeatElem(arr, k, n) << endl;
+	}
 };

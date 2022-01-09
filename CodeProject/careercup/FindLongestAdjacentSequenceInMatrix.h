@@ -21,97 +21,97 @@ This approach is linear in time and space with the size of the input. The space 
 class FindLongestAdjacentSequenceInMatrix
 {
 public:
-    static void test() {
-        {
-            vector<vector<int>> matrix = {
-                {1,5,9},
-                {2,3,8},
-                {4,6,7}
-            };
+	static void test() {
+		{
+			vector<vector<int>> matrix = {
+				{1,5,9},
+				{2,3,8},
+				{4,6,7}
+			};
 
-            auto res = findLongestSeq(matrix);
-            cout << to_string(res) << endl;
-        }
+			auto res = findLongestSeq(matrix);
+			cout << to_string(res) << endl;
+		}
 
-        {
-            vector<vector<int>> matrix = {
-                {1,4,9},
-                {2,3,5},
-                {8,6,7}
-            };
+		{
+			vector<vector<int>> matrix = {
+				{1,4,9},
+				{2,3,5},
+				{8,6,7}
+			};
 
-            auto res = findLongestSeq(matrix);
-            cout << to_string(res) << endl;
-        }
+			auto res = findLongestSeq(matrix);
+			cout << to_string(res) << endl;
+		}
 
-        {
-            vector<vector<int>> matrix = {
-                {1,4,9},
-                {3,2,5},
-                {8,6,7}
-            };
+		{
+			vector<vector<int>> matrix = {
+				{1,4,9},
+				{3,2,5},
+				{8,6,7}
+			};
 
-            auto res = findLongestSeq(matrix);
-            cout << to_string(res) << endl;
-        }
+			auto res = findLongestSeq(matrix);
+			cout << to_string(res) << endl;
+		}
 
-        {
-            vector<vector<int>> matrix = {
-                {5,4,9},
-                {3,2,1},
-                {8,6,7}
-            };
+		{
+			vector<vector<int>> matrix = {
+				{5,4,9},
+				{3,2,1},
+				{8,6,7}
+			};
 
-            auto res = findLongestSeq(matrix);
-            cout << to_string(res) << endl;
-        }
+			auto res = findLongestSeq(matrix);
+			cout << to_string(res) << endl;
+		}
 
-        {
-            vector<vector<int>> matrix = {
-                {3,4,5},
-                {2,1,6},
-                {9,8,7}
-            };
+		{
+			vector<vector<int>> matrix = {
+				{3,4,5},
+				{2,1,6},
+				{9,8,7}
+			};
 
-            auto res = findLongestSeq(matrix);
-            cout << to_string(res) << endl;
-        }
-    }
+			auto res = findLongestSeq(matrix);
+			cout << to_string(res) << endl;
+		}
+	}
 
-    static vector<int> findLongestSeq(vector<vector<int>> matrix)
-    {
-        int n = matrix.size();
-        vector<bool> bits(n * n, false);
+	static vector<int> findLongestSeq(vector<vector<int>> matrix)
+	{
+		int n = matrix.size();
+		vector<bool> bits(n * n, false);
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < matrix[i].size(); j++) {
-                if ((i > 0 && matrix[i][j] + 1 == matrix[i - 1][j]) ||
-                    (j > 0 && matrix[i][j] + 1 == matrix[i][j - 1]) ||
-                    (i < n - 1 && matrix[i][j] + 1 == matrix[i + 1][j]) ||
-                    (j < n - 1 && matrix[i][j] + 1 == matrix[i][j + 1]))
-                {
-                    bits[matrix[i][j] - 1] = true;
-                }
-            }
-        }
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < matrix[i].size(); j++) {
+				if ((i > 0 && matrix[i][j] + 1 == matrix[i - 1][j]) ||
+					(j > 0 && matrix[i][j] + 1 == matrix[i][j - 1]) ||
+					(i < n - 1 && matrix[i][j] + 1 == matrix[i + 1][j]) ||
+					(j < n - 1 && matrix[i][j] + 1 == matrix[i][j + 1]))
+				{
+					bits[matrix[i][j] - 1] = true;
+				}
+			}
+		}
 
-        int mxLen = 0;
-        int mxStart = -1;
-        int curLen = 0;
-        for (int i = 0; i <= n * n; i++) {
-            if (i < n * n && bits[i]) curLen++;
-            else {
-                if (curLen > mxLen) {
-                    mxLen = curLen;
-                    mxStart = i - curLen;
-                }
-                curLen = 0;
-            }
-        }
+		int mxLen = 0;
+		int mxStart = -1;
+		int curLen = 0;
+		for (int i = 0; i <= n * n; i++) {
+			if (i < n * n && bits[i]) curLen++;
+			else {
+				if (curLen > mxLen) {
+					mxLen = curLen;
+					mxStart = i - curLen;
+				}
+				curLen = 0;
+			}
+		}
 
-        vector<int> res;
-        for (int i = mxStart + 1; i <= mxStart + mxLen + 1; i++) res.push_back(i);
+		vector<int> res;
+		for (int i = mxStart + 1; i <= mxStart + mxLen + 1; i++) res.push_back(i);
 
-        return res;
-    }
+		return res;
+	}
 };

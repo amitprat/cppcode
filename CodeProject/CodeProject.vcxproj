@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClInclude Include="array/ArrangePositiveNegativeNumbers.h" />
     <ClInclude Include="array/BinaryArrSort.h" />
-    <ClInclude Include="array/FindInsertPositionInSortedArr.h" />
     <ClInclude Include="array/GenerateNextPrevNumbersFromArr.h" />
     <ClInclude Include="array/IntersectionOfSortedArrInterval.h" />
     <ClInclude Include="array/IterativeQuickSort.h" />
@@ -148,13 +147,16 @@
     <ClInclude Include="array/SumOfPairTripletsQuadruples.h" />
     <ClInclude Include="array/UnionIntersectionOfSortedArrays.h" />
     <ClInclude Include="array\CoinCombination.h" />
+    <ClInclude Include="array\FindElementInArray.h" />
+    <ClInclude Include="array\FindInsertPositionInSortedArray.h" />
+    <ClInclude Include="array\FindMissingNumber.h" />
     <ClInclude Include="array\FindSurpasser.h" />
     <ClInclude Include="array\InversionCount.h" />
     <ClInclude Include="array\LargestNumber.h" />
     <ClInclude Include="array\LongestConsecutiveSeq.h" />
     <ClInclude Include="array\LongestSeqOfZerosAndOnes.h" />
     <ClInclude Include="array\MajorityElement.h" />
-    <ClInclude Include="array\MaxDiffInArray.h" />
+    <ClInclude Include="array\MaxDiffArrayWithConstraints.h" />
     <ClInclude Include="array\MergeKSortedArr.h" />
     <ClInclude Include="array\MinimumLengthSeq.h" />
     <ClInclude Include="array\MinimumSizeSubArraySum.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="careercup\CheckIfWordIsValid.h" />
     <ClInclude Include="careercup\ClosestValueInBST.h" />
     <ClInclude Include="careercup\CombinationSum.h" />
+    <ClInclude Include="careercup\CommandProcessor.h" />
     <ClInclude Include="careercup\CompareTwoBsts.h" />
     <ClInclude Include="careercup\CompressString.h" />
     <ClInclude Include="careercup\ConvertStringToPalindromeByAddingOneOrMoreCharactersToFront.h" />
@@ -187,6 +190,7 @@
     <ClInclude Include="careercup\CountStringMadeFromABC.h" />
     <ClInclude Include="careercup\CountTraingles.h" />
     <ClInclude Include="careercup\CountWaysToMakeChangeWithLimitedCount.h" />
+    <ClInclude Include="careercup\cpp20features.h" />
     <ClInclude Include="careercup\DataStructureWithAppendGetAndAddToAll.h" />
     <ClInclude Include="careercup\Decode.h" />
     <ClInclude Include="careercup\DeleteEveryKthNode.h" />
@@ -207,7 +211,6 @@
     <ClInclude Include="careercup\FindMaxRepeatElementInRange.h" />
     <ClInclude Include="careercup\FindMaxSizeOfSubstring.h" />
     <ClInclude Include="careercup\FindMinimumRange.h" />
-    <ClInclude Include="careercup\FindMissingNumber.h" />
     <ClInclude Include="careercup\FindMissingNumbers.h" />
     <ClInclude Include="careercup\FindNearestBike.h" />
     <ClInclude Include="careercup\FindNumberOccurringMoreThanKTimes.h" />
@@ -263,11 +266,11 @@
     <ClInclude Include="careercup\MinimumSpanningTree.h" />
     <ClInclude Include="careercup\MinimumSquareSum.h" />
     <ClInclude Include="careercup\MinimumStepsToReachTargetByKnight.h" />
-    <ClInclude Include="careercup\MinmumSeqOfAdjValues.h" />
-    <ClInclude Include="careercup\MinPerfectSquares.h" />
+    <ClInclude Include="careercup\MinimumSeqOfAdjValues.h" />
+    <ClInclude Include="careercup\MinimumPerfectSquares.h" />
     <ClInclude Include="careercup\MixedProblems.h" />
     <ClInclude Include="careercup\MultiThreading.h" />
-    <ClInclude Include="careercup\MyIterator.h" />
+    <ClInclude Include="careercup\PrintArrayElementsInOrder.h" />
     <ClInclude Include="careercup\NameMapping.h" />
     <ClInclude Include="careercup\NBy2DivisiblePairsByK.h" />
     <ClInclude Include="careercup\NearestLeafNodeFromGivenNode.h" />
@@ -287,7 +290,7 @@
     <ClInclude Include="careercup\PrintEvenOddNumbersUsing2Threads.h" />
     <ClInclude Include="careercup\PrintKWordsFromList.h" />
     <ClInclude Include="careercup\PrintLevelOfFriendship.h" />
-    <ClInclude Include="careercup\PrintMatricDiag.h" />
+    <ClInclude Include="careercup\PrintMatrixDiag.h" />
     <ClInclude Include="careercup\PrintMultiplesOfUglyNumbers.h" />
     <ClInclude Include="careercup\ProbabilityOfBeingAlive.h" />
     <ClInclude Include="careercup\RearrangeCharactersInString.h" />
@@ -300,7 +303,7 @@
     <ClInclude Include="careercup\ReverseBits.h" />
     <ClInclude Include="careercup\ReverseLevelOrderTraversal.h" />
     <ClInclude Include="careercup\RobotOrder.h" />
-    <ClInclude Include="careercup\RotateImage.h" />
+    <ClInclude Include="careercup\RotateMatrixBy90DegreeLeft.h" />
     <ClInclude Include="careercup\SeeIfAllTasksCanBeRescheduledOnGivenServers.h" />
     <ClInclude Include="careercup\SerializeDeserializeTree.h" />
     <ClInclude Include="careercup\SetRowColumnToZero.h" />
@@ -509,7 +512,6 @@
     <ClInclude Include="linkedlist\RemoveDuplicates.h" />
     <ClInclude Include="linkedlist\ReverseInGroups.h" />
     <ClInclude Include="linkedlist\SumLinkedList.h" />
-    <ClInclude Include="maths\FindElementInArray.h" />
     <ClInclude Include="maths\IsNumber.h" />
     <ClInclude Include="maths\MultiplyWithoutMultiplicationOperator.h" />
     <ClInclude Include="maths\PrintFactors.h" />

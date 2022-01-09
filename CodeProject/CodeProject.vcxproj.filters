@@ -25,9 +25,6 @@
     <Filter Include="Header Files\design">
       <UniqueIdentifier>{d13b6c5f-a1f0-480d-a09d-ed0686876f25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\sorting">
-      <UniqueIdentifier>{22b09ff7-4264-4d85-ab05-2d58462b2dee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\tree">
       <UniqueIdentifier>{48c490e5-68ab-4a78-a69c-ccac1289089f}</UniqueIdentifier>
     </Filter>
@@ -501,9 +498,6 @@
     <ClInclude Include="string/FindAnagramsWithOwnHash.h">
       <Filter>Header Files\string</Filter>
     </ClInclude>
-    <ClInclude Include="array/FindInsertPositionInSortedArr.h">
-      <Filter>Header Files\array</Filter>
-    </ClInclude>
     <ClInclude Include="dynamic/FindLargestSubsequence.h">
       <Filter>Header Files\misc</Filter>
     </ClInclude>
@@ -747,9 +741,6 @@
     <ClInclude Include="string\ReverseWordsInAString.h">
       <Filter>Header Files\string</Filter>
     </ClInclude>
-    <ClInclude Include="array\MaxDiffInArray.h">
-      <Filter>Header Files\array</Filter>
-    </ClInclude>
     <ClInclude Include="string\ReverseStr.h">
       <Filter>Header Files\string</Filter>
     </ClInclude>
@@ -966,7 +957,7 @@
     <ClInclude Include="careercup\FindMaxSizeOfSubstring.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\PrintMatricDiag.h">
+    <ClInclude Include="careercup\PrintMatrixDiag.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
     <ClInclude Include="careercup\MaxProductSubseq.h">
@@ -1169,9 +1160,6 @@
     </ClInclude>
     <ClInclude Include="maths\MultiplyWithoutMultiplicationOperator.h">
       <Filter>Header Files\maths</Filter>
-    </ClInclude>
-    <ClInclude Include="maths\FindElementInArray.h">
-      <Filter>Header Files\array</Filter>
     </ClInclude>
     <ClInclude Include="stack\MergeIntervals.h">
       <Filter>Header Files\stack</Filter>
@@ -1452,7 +1440,7 @@
     <ClInclude Include="careercup\ReverseLevelOrderTraversal.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\MyIterator.h">
+    <ClInclude Include="careercup\PrintArrayElementsInOrder.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
     <ClInclude Include="careercup\MixedProblems.h">
@@ -1488,10 +1476,10 @@
     <ClInclude Include="careercup\FlattenBinaryTree.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\RotateImage.h">
+    <ClInclude Include="careercup\RotateMatrixBy90DegreeLeft.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\MinPerfectSquares.h">
+    <ClInclude Include="careercup\MinimumPerfectSquares.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
     <ClInclude Include="careercup\SerializeDeserializeTree.h">
@@ -1560,7 +1548,7 @@
     <ClInclude Include="careercup\LeastNumberOfPerfectSquaresToReachN.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\MinmumSeqOfAdjValues.h">
+    <ClInclude Include="careercup\MinimumSeqOfAdjValues.h">
       <Filter>Header Files\careercup</Filter>
     </ClInclude>
     <ClInclude Include="careercup\I18N.h">
@@ -1759,10 +1747,25 @@
       <Filter>Header Files\design</Filter>
     </ClInclude>
     <ClInclude Include="careercup\ReverseBits.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\bits</Filter>
     </ClInclude>
-    <ClInclude Include="careercup\FindMissingNumber.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="careercup\CommandProcessor.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="careercup\cpp20features.h">
+      <Filter>Header Files\careercup</Filter>
+    </ClInclude>
+    <ClInclude Include="array\FindElementInArray.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="array\FindInsertPositionInSortedArray.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="array\FindMissingNumber.h">
+      <Filter>Header Files\array</Filter>
+    </ClInclude>
+    <ClInclude Include="array\MaxDiffArrayWithConstraints.h">
+      <Filter>Header Files\array</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -36,155 +36,155 @@ int C=N+M;
 
 int main()
 {
-    //merge two sorted lists into a list sorted by start time
-    int p1=0, p2=0, k=0;
-    while(k<C){
-        if (Person1[p1].first <  Person2[p2].first
-            ||( Person1[p1].first == Person2[p2].first &&
-                Person1[p1].second < Person2[p2].second ))
-            TimePoints[k++] = Person1[p1++];
-        else
-            TimePoints[k++] = Person2[p2++];
+	//merge two sorted lists into a list sorted by start time
+	int p1=0, p2=0, k=0;
+	while(k<C){
+		if (Person1[p1].first <  Person2[p2].first
+			||( Person1[p1].first == Person2[p2].first &&
+				Person1[p1].second < Person2[p2].second ))
+			TimePoints[k++] = Person1[p1++];
+		else
+			TimePoints[k++] = Person2[p2++];
 
-        if (p1 >=N) while(p2<M) TimePoints[k++] = Person2[p2++];
-        if (p2 >=M) while(p1<N) TimePoints[k++] = Person1[p1++];
-    };
+		if (p1 >=N) while(p2<M) TimePoints[k++] = Person2[p2++];
+		if (p2 >=M) while(p1<N) TimePoints[k++] = Person1[p1++];
+	};
 
-    //mark latest time so far and print free period
-    int latestSoFar = 0;
-    for(int i = 0; i < C-1; i++){
-        latestSoFar = max(latestSoFar, TimePoints[i].second);
-        if (TimePoints[i+1].first > latestSoFar) // next start time is after the latest
-            cout <<latestSoFar<<" "<<TimePoints[i+1].first<<endl;
-    }
-    return 0;
+	//mark latest time so far and print free period
+	int latestSoFar = 0;
+	for(int i = 0; i < C-1; i++){
+		latestSoFar = max(latestSoFar, TimePoints[i].second);
+		if (TimePoints[i+1].first > latestSoFar) // next start time is after the latest
+			cout <<latestSoFar<<" "<<TimePoints[i+1].first<<endl;
+	}
+	return 0;
 }
 */
 class FindFreeIntervalInCalenderOfTwoPeople
 {
 public:
-    static void test() {
-        FindFreeIntervalInCalenderOfTwoPeople obj;
+	static void test() {
+		FindFreeIntervalInCalenderOfTwoPeople obj;
 
-        vector<Interval> per1 = { {1, 5}, {10, 14}, {19, 20}, {27, 30} };
-        vector<Interval> per2 = { {3, 5}, {12, 15}, {18, 21}, {23, 24} };
+		vector<Interval> per1 = { {1, 5}, {10, 14}, {19, 20}, {27, 30} };
+		vector<Interval> per2 = { {3, 5}, {12, 15}, {18, 21}, {23, 24} };
 
-        vector<Interval> res = obj.findFreeIntervals1(per1, per2);
+		vector<Interval> res = obj.findFreeIntervals1(per1, per2);
 
-        cout << to_string(res) << endl;
+		cout << to_string(res) << endl;
 
-        res = obj.findFreeIntervals2(per1, per2);
+		res = obj.findFreeIntervals2(per1, per2);
 
-        cout << to_string(res) << endl;
+		cout << to_string(res) << endl;
 
-        res = obj.findFreeIntervals3(per1, per2);
+		res = obj.findFreeIntervals3(per1, per2);
 
-        cout << to_string(res) << endl;
-    }
+		cout << to_string(res) << endl;
+	}
 
-    // start after first interval
-    vector<Interval> findFreeIntervals1(vector<Interval>& per1, vector<Interval>& per2)
-    {
-        vector<Interval> mergedSet = mergeSorted(per1, per2);
-        vector<Interval> result;
+	// start after first interval
+	vector<Interval> findFreeIntervals1(vector<Interval>& per1, vector<Interval>& per2)
+	{
+		vector<Interval> mergedSet = mergeSorted(per1, per2);
+		vector<Interval> result;
 
-        int prevEndTime = 0;
-        for (int i = 0; i < mergedSet.size() - 1; i++) {
-            prevEndTime = max(prevEndTime, mergedSet[i].end);
+		int prevEndTime = 0;
+		for (int i = 0; i < mergedSet.size() - 1; i++) {
+			prevEndTime = max(prevEndTime, mergedSet[i].end);
 
-            if (mergedSet[i + 1].start > prevEndTime) {
-                result.push_back({ prevEndTime + 1, mergedSet[i + 1].start - 1 });
-            }
-        }
+			if (mergedSet[i + 1].start > prevEndTime) {
+				result.push_back({ prevEndTime + 1, mergedSet[i + 1].start - 1 });
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    // start from rangeStart - 1, rangeEnd - 30
-    vector<Interval> findFreeIntervals2(vector<Interval>& per1, vector<Interval>& per2)
-    {
-        vector<Interval> mergedSet = mergeSorted(per1, per2);
-        vector<Interval> result;
+	// start from rangeStart - 1, rangeEnd - 30
+	vector<Interval> findFreeIntervals2(vector<Interval>& per1, vector<Interval>& per2)
+	{
+		vector<Interval> mergedSet = mergeSorted(per1, per2);
+		vector<Interval> result;
 
-        int rangeStart = 1, rangeEnd = 30;
-        for (int i = 0; i < mergedSet.size() - 1; i++) {
-            if (mergedSet[i].start > rangeStart) {
-                result.push_back({ rangeStart + 1, mergedSet[i].start - 1 });
-            }
+		int rangeStart = 1, rangeEnd = 30;
+		for (int i = 0; i < mergedSet.size() - 1; i++) {
+			if (mergedSet[i].start > rangeStart) {
+				result.push_back({ rangeStart + 1, mergedSet[i].start - 1 });
+			}
 
-            rangeStart = max(rangeStart, mergedSet[i].end);
-        }
-        if (rangeStart < rangeEnd) {
-            result.push_back({ rangeStart + 1, rangeEnd });
-        }
+			rangeStart = max(rangeStart, mergedSet[i].end);
+		}
+		if (rangeStart < rangeEnd) {
+			result.push_back({ rangeStart + 1, rangeEnd });
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    vector<Interval> findFreeIntervals3(vector<Interval>& per1, vector<Interval>& per2)
-    {
-        int rangeStart = 1, rangeEnd = 30;
-        vector<bool> availabilitySet(rangeEnd + 1, true);
+	vector<Interval> findFreeIntervals3(vector<Interval>& per1, vector<Interval>& per2)
+	{
+		int rangeStart = 1, rangeEnd = 30;
+		vector<bool> availabilitySet(rangeEnd + 1, true);
 
-        for (auto& it : per1) {
-            for (int j = it.start; j <= it.end; j++) {
-                availabilitySet[j] = false;
-            }
-        }
+		for (auto& it : per1) {
+			for (int j = it.start; j <= it.end; j++) {
+				availabilitySet[j] = false;
+			}
+		}
 
-        for (auto& it : per2) {
-            for (int j = it.start; j <= it.end; j++) {
-                availabilitySet[j] = false;
-            }
-        }
+		for (auto& it : per2) {
+			for (int j = it.start; j <= it.end; j++) {
+				availabilitySet[j] = false;
+			}
+		}
 
-        int start = -1, end = -1;
-        vector<Interval> result;
-        for (int i = rangeStart; i <= rangeEnd; i++) {
-            if (availabilitySet[i]) {
-                if (start == -1) start = i;
+		int start = -1, end = -1;
+		vector<Interval> result;
+		for (int i = rangeStart; i <= rangeEnd; i++) {
+			if (availabilitySet[i]) {
+				if (start == -1) start = i;
 
-                end = i;
-            }
-            else {
-                if (start != -1) {
-                    result.push_back({ start, end });
-                }
+				end = i;
+			}
+			else {
+				if (start != -1) {
+					result.push_back({ start, end });
+				}
 
-                start = end = -1;
-            }
-        }
+				start = end = -1;
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    vector<Interval> mergeSorted(vector<Interval>& per1, vector<Interval>& per2)
-    {
-        vector<Interval> result;
-        int i = 0, j = 0;
-        while (i < per1.size() || j < per2.size()) {
-            if (i < per1.size() && j < per2.size()) {
-                if (per1[i].start < per2[j].start) {
-                    result.push_back(per1[i++]);
-                }
-                else if (per2[i].start < per1[j].start) {
-                    result.push_back(per2[j++]);
-                }
-                else if (per1[i].end <= per2[j].end) {
-                    result.push_back(per1[i++]);
-                }
-                else {
-                    result.push_back(per2[j++]);
-                }
-            }
-            else if (i < per1.size()) {
-                result.push_back(per1[i++]);
-            }
-            else {
-                result.push_back(per2[j++]);
-            }
-        }
+	vector<Interval> mergeSorted(vector<Interval>& per1, vector<Interval>& per2)
+	{
+		vector<Interval> result;
+		int i = 0, j = 0;
+		while (i < per1.size() || j < per2.size()) {
+			if (i < per1.size() && j < per2.size()) {
+				if (per1[i].start < per2[j].start) {
+					result.push_back(per1[i++]);
+				}
+				else if (per2[i].start < per1[j].start) {
+					result.push_back(per2[j++]);
+				}
+				else if (per1[i].end <= per2[j].end) {
+					result.push_back(per1[i++]);
+				}
+				else {
+					result.push_back(per2[j++]);
+				}
+			}
+			else if (i < per1.size()) {
+				result.push_back(per1[i++]);
+			}
+			else {
+				result.push_back(per2[j++]);
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 };

@@ -25,31 +25,31 @@ C(n)=C(n-3)+C(n-2)+C(n-1) (if n>2)
 def C(n):
    L=[1,1,2]
    while n:
-       n-=1
-       new=L[0]+L[1]+L[2]
-       L[0]=L[1]
-       L[1]=L[2]
-       L[2]=new
+	   n-=1
+	   new=L[0]+L[1]+L[2]
+	   L[0]=L[1]
+	   L[1]=L[2]
+	   L[2]=new
    return L[0]
 */
 class NumberOfWaysToSelectNIdenticalObjectsOutOfBucket
 {
 public:
-    static void test() {
-        int res = numberOfWays(4);
-        cout << res << endl;
-    }
+	static void test() {
+		int res = numberOfWays(4);
+		cout << res << endl;
+	}
 
-    static int numberOfWays(int n)
-    {
-        int res[] = { 1,1,2 };
-        while (n) {
-            int tmp = res[0] + res[1] + res[2];
-            res[0] = res[1];
-            res[1] = res[2];
-            res[2] = tmp;
-            n--;
-        }
-        return res[0];
-    }
+	static int numberOfWays(int n)
+	{
+		int res[] = { 1,1,2 };
+		while (n) {
+			int tmp = res[0] + res[1] + res[2];
+			res[0] = res[1];
+			res[1] = res[2];
+			res[2] = tmp;
+			n--;
+		}
+		return res[0];
+	}
 };

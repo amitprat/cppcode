@@ -11,150 +11,175 @@ Two parts:
 
 For every move, only constant time (O(1)) needed.
 */
+
 class SnakeGame
 {
-    class Game
-    {
-    public:
-        enum class Dir {
-            North,
-            Right,
-            Down,
-            Left
-        };
-        struct Snake
-        {
-            Point head, tail;
-            deque<Point> queue;
-            Dir curDir;
+	class Game
+	{
+		enum class Dir {
+			Up,
+			Right,
+			Down,
+			Left
+		};
 
-            void init(Point start) {
-                head = tail = start;
-                queue.push_back(start);
-                curDir = Dir::North;
-            }
-        };
-        vector<vector<int>> board;
-        Snake snake;
+		struct Snake
+		{
+			Point head, tail;
+			deque<Point> queue;
+			Dir curDir;
 
-        Game(int n, Point startPos) {
-            board.resize(n, vector<int>(n, 0));
-            snake.init(startPos);
-            board[startPos.x][startPos.y] = 3;
-        }
+			void init(Point start) {
+				head = tail = start;
+				queue.push_back(start);
+				curDir = Dir::Up;
+			}
+		};
 
-        void init(int blocks, int food) {
-            int n = board.size();
-            srand(time(nullptr));
-            while (blocks--) {
-                int v = rand() % (n * n);
-                int r = v / n;
-                int c = v % n;
-                board[r][c] = 1;
-            }
+		vector<vector<int>> board;
+		Snake snake;
 
-            while (food--) {
-                int v = rand() % (n * n);
-                int r = v / n;
-                int c = v % n;
-                board[r][c] = 2;
-            }
-        }
+	public:
+		Game(int n, Point startPos) {
+			board.resize(n, vector<int>(n, 0));
+			snake.init(startPos);
+			board[startPos.x][startPos.y] = 3;
+		}
 
-        void move() {
-            switch (snake.curDir)
-            {
-            case Dir::North:
-                snake.head.y += 1;
-                board[snake.head.x][snake.head.y] = 3;
-                board[snake.tail.x][snake.tail.y] = 0;
-                snake.tail.y += 1;
-                snake.queue.push_front(snake.head);
-                snake.queue.pop_back();
-                if (board[snake.head.x][snake.head.y] == 2) {
-                    snake.tail.y -= 1;
-                    board[snake.tail.x][snake.tail.y] = 3;
-                    snake.queue.push_back(snake.tail);
-                }
-                break;
+		void init(int blocks, int food, Point start) {
+			int n = board.size();
+			srand(time(nullptr));
 
-            case Dir::Down:
-                snake.head.y -= 1;
-                snake.tail.y -= 1;
-                board[snake.head.x][snake.head.y] = 3;
-                board[snake.tail.x][snake.tail.y] = 0;
-                snake.queue.push_front(snake.head);
-                snake.queue.pop_back();
-                if (board[snake.head.x][snake.head.y] == 2) {
-                    snake.tail.y += 1;
-                    board[snake.tail.x][snake.tail.y] = 1;
-                    snake.queue.push_back(snake.tail);
-                }
-                break;
+			while (blocks) {
+				int v = rand() % (n * n);
+				int r = v / n;
+				int c = v % n;
 
-            case Dir::Right:
-                snake.head.x += 1;
-                snake.tail.x += 1;
-                board[snake.head.x][snake.head.y] = 3;
-                board[snake.tail.x][snake.tail.y] = 0;
-                snake.queue.push_front(snake.head);
-                snake.queue.pop_back();
-                if (board[snake.head.x][snake.head.y] == 2) {
-                    snake.tail.x -= 1;
-                    board[snake.tail.x][snake.tail.y] = 3;
-                    snake.queue.push_back(snake.tail);
-                }
-                break;
+				if (start.x == r && start.y == c) continue;
+				if (board[r][c] == 1) continue;
+				blocks--;
 
-            case Dir::Left:
-                snake.head.x -= 1;
-                snake.tail.x -= 1;
-                board[snake.head.x][snake.head.y] = 3;
-                board[snake.tail.x][snake.tail.y] = 0;
-                snake.queue.push_front(snake.head);
-                snake.queue.pop_back();
-                if (board[snake.head.x][snake.head.y] == 2) {
-                    snake.tail.x += 1;
-                    board[snake.tail.x][snake.tail.y] = 3;
-                    snake.queue.push_back(snake.tail);
-                }
-                break;
-            }
-        }
+				board[r][c] = 1;
+			}
 
-        void left() {
-            snake.curDir = (Dir)(((int)snake.curDir - 1 + 4) % 4);
-        }
+			while (food) {
+				int v = rand() % (n * n);
+				int r = v / n;
+				int c = v % n;
 
-        void right() {
-            snake.curDir = (Dir)(((int)snake.curDir + 1) % 4);
-        }
+				if (start.x == r && start.y == c) continue;
+				if (board[r][c] == 2) continue;
+				food--;
 
-        void print() {
-            cout << "---------------------------------------\n";
-            for (int i = 0; i < board.size(); i++) {
-                for (int j = 0; j < board[i].size(); j++) {
-                    cout << board[i][j] << "\t";
-                }
-                cout << endl;
-            }
-            cout << "---------------------------------------\n\n";
-        }
-    };
+				board[r][c] = 2;
+			}
+		}
+
+		void move() {
+			bool isFood = false;
+			switch (snake.curDir)
+			{
+			case Dir::Up:
+				snake.head.x = next(snake.head.x, -1);
+				isFood = board[snake.head.x][snake.head.y] == 2;
+
+				board[snake.head.x][snake.head.y] = 3;
+				snake.queue.push_front(snake.head);
+
+				removeTail(isFood);
+				break;
+
+			case Dir::Down:
+				snake.head.x = next(snake.head.x, 1);
+				isFood = board[snake.head.x][snake.head.y] == 2;
+
+				board[snake.head.x][snake.head.y] = 3;
+				snake.queue.push_front(snake.head);
+
+				removeTail(isFood);
+				break;
+
+			case Dir::Right:
+				snake.head.y = next(snake.head.y, 1);
+				isFood = board[snake.head.x][snake.head.y] == 2;
+
+				board[snake.head.x][snake.head.y] = 3;
+				snake.queue.push_front(snake.head);
+
+				removeTail(isFood);
+				break;
+
+			case Dir::Left:
+				snake.head.y = next(snake.head.y, -1);
+				isFood = board[snake.head.x][snake.head.y] == 2;
+
+				board[snake.head.x][snake.head.y] = 3;
+				snake.queue.push_front(snake.head);
+
+				removeTail(isFood);
+				break;
+			}
+		}
+
+		void removeTail(bool isFood) {
+			if (!isFood) {
+				board[snake.tail.x][snake.tail.y] = 0;
+				snake.queue.pop_back();
+				snake.tail = snake.queue.back();
+			}
+		}
+
+		void left() {
+			snake.curDir = (Dir)(((int)snake.curDir - 1 + 4) % 4);
+		}
+
+		void right() {
+			snake.curDir = (Dir)(((int)snake.curDir + 1) % 4);
+		}
+
+		int next(int pos, int off) {
+			return (pos + off + board.size()) % board.size();
+		}
+
+		void print() {
+			cout << "---------------------------------------\n";
+			for (int i = 0; i < board.size(); i++) {
+				for (int j = 0; j < board[i].size(); j++) {
+					cout << tochar(board[i][j]) << "\t";
+				}
+				cout << endl;
+			}
+			cout << "---------------------------------------\n\n";
+		}
+
+		char tochar(int num) {
+			switch (num) {
+			case 0: return 'E';
+			case 1: return 'B';
+			case 2:return 'F';
+			case 3: return 'S';
+			default: return num + '0';
+			}
+		}
+	};
 
 public:
-    static void test() {
-        Game game(5, { 0,0 });
-        game.init(4, 4);
+	static void test() {
+		Game game(5, { 0,0 });
+		game.init(4, 10, { 0,0 });
 
-        game.print();
+		game.print();
 
-        game.move();
-        game.right();
-        game.move();
-        game.move();
-        game.move();
+		game.move();
+		game.right();
+		game.move();
+		game.move();
+		game.move();
+		game.left();
+		game.move();
+		game.move();
+		game.move();
 
-        game.print();
-    }
+		game.print();
+	}
 };
